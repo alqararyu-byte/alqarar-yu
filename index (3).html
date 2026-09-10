@@ -1,0 +1,1070 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>كتلة القرار الطلابية - جامعة اليرموك</title>
+<meta name="description" content="كتلة القرار الطلابية في جامعة اليرموك: الخطط الدراسية الشجرية لجميع الكليات، خريطة الحرم الجامعي، وقنوات التواصل الرسمية للكتلة.">
+<meta property="og:title" content="كتلة القرار الطلابية - جامعة اليرموك">
+<meta property="og:description" content="بوابتك الشاملة لكل ما تحتاجه أكاديمياً وخدمياً داخل حرم جامعة اليرموك.">
+<meta property="og:image" content="https://raw.githubusercontent.com/mistarihi7/alqrar-yu/main/logo.png">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@600;700;800;900&family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --red:#CC0B20;
+    --green:#088162;
+    --green-deep:#065f49;
+    --gray:#81858E;
+    --gray-light:#C9CBD1;
+    --navy:#05274A;
+    --ink:#0E1A24;
+    --paper:#F5F5F2;
+    --paper-alt:#ECEAE4;
+    --line:#DAD8D0;
+    --white:#FFFFFF;
+    --radius-s:8px;
+    --radius-m:14px;
+    --maxw:1100px;
+  }
+  *{box-sizing:border-box;-webkit-tap-highlight-color: transparent;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0; background:var(--paper); color:var(--ink);
+    font-family:'IBM Plex Sans Arabic', sans-serif; font-weight:400; line-height:1.75;
+    -webkit-font-smoothing:antialiased; overflow-x: hidden;
+  }
+  h1,h2,h3,h4{font-family:'Cairo', sans-serif; margin:0; color:var(--navy); line-height:1.3;}
+  p{margin:0;}
+  img{max-width:100%; display:block;}
+  a{color:inherit; text-decoration:none;}
+  ul{margin:0; padding:0; list-style:none;}
+  button, input, select{font-family:inherit;}
+  
+  .wrap{max-width:var(--maxw); margin:0 auto; padding:0 20px; width: 100%;}
+  section{padding:50px 0; scroll-margin-top:80px;}
+  
+  /* Header */
+  header{
+    position:sticky; top:0; z-index:100;
+    background:rgba(245,245,242,0.95); backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav{
+    max-width:var(--maxw); margin:0 auto; padding:12px 20px;
+    display:flex; align-items:center; justify-content:space-between; gap:15px;
+  }
+  .brand{display:flex; align-items:center; gap:10px;}
+  .brand img{width:46px; height:46px; border-radius:50%; object-fit:cover; border:1px solid var(--line); background:#fff;}
+  .brand-text{display:flex; flex-direction:column; line-height:1.2;}
+  .brand-text strong{font-family:'Cairo',sans-serif; font-weight:800; font-size:15px; color:var(--navy);}
+  .brand-text small{font-size:11px; color:var(--gray); font-weight:500;}
+  
+  nav.links{display:none; align-items:center; gap:20px;}
+  nav.links a{font-size:14px; font-weight:600; color:var(--ink); position:relative; padding:4px 0;}
+  nav.links a::after{
+    content:""; position:absolute; right:0; bottom:0; width:0; height:2px; background:var(--red); transition:width .25s ease;
+  }
+  nav.links a:hover::after{width:100%;}
+  nav.links a.active{color:var(--green-deep);}
+  nav.links a.active::after{width:100%; background:var(--green);}
+  
+  .cta-btn{
+    background:var(--navy); color:#fff; padding:10px 18px; border-radius:var(--radius-s);
+    font-weight:700; font-size:13.5px; white-space:nowrap; transition:background .2s ease; border:none; cursor:pointer;
+  }
+  .cta-btn:hover{background:var(--green-deep);}
+
+  #langToggle{
+    background:#fff; color:var(--navy); border:1px solid var(--line); padding:8px 12px; border-radius:var(--radius-s);
+    font-weight:700; font-size:12.5px; cursor:pointer; white-space:nowrap;
+  }
+  #langToggle:hover{border-color:var(--green); color:var(--green-deep);}
+  
+  .menu-toggle{
+    display:flex; font-size:24px; color:var(--navy); padding:5px; cursor:pointer; background:none; border:none; align-items:center; justify-content:center;
+  }
+  .mobile-nav {
+    position: fixed; top: 65px; right: -100%; width: 100%; height: calc(100vh - 65px);
+    background: var(--paper); border-top: 1px solid var(--line); display: flex; flex-direction: column;
+    padding: 30px; gap: 15px; transition: right 0.3s ease; z-index: 99;
+  }
+  .mobile-nav.active { right: 0; }
+  .mobile-nav a { font-size: 17px; font-weight: 700; color: var(--navy); padding: 10px 0; border-bottom: 1px solid var(--line); }
+  .mobile-nav a.active { color: var(--green-deep); }
+
+  /* Back to top + floating WhatsApp */
+  .float-btn{
+    position:fixed; z-index:90; width:48px; height:48px; border-radius:50%;
+    display:flex; align-items:center; justify-content:center; box-shadow:0 8px 20px rgba(5,39,74,0.25);
+    transition:opacity .25s ease, transform .25s ease; cursor:pointer; border:none;
+  }
+  #floatWhatsapp{ bottom:22px; left:22px; background:#25D366; color:#fff; text-decoration:none; }
+  #floatWhatsapp svg{width:24px; height:24px; fill:#fff;}
+  #shareBtn{
+    bottom:80px; left:22px; background:#fff; color:var(--navy); border:1px solid var(--line);
+  }
+  #backToTop{
+    bottom:138px; left:22px; background:#fff; color:var(--navy); border:1px solid var(--line);
+    opacity:0; pointer-events:none; transform:translateY(10px); font-size:20px;
+  }
+  #backToTop.show{ opacity:1; pointer-events:auto; transform:translateY(0); }
+
+  /* Collapsible section (used by the building-codes guide) */
+  .collapsible{max-width:900px; margin:0 auto; background:#fff; border:1px solid var(--line); border-radius:var(--radius-m); padding:4px 18px;}
+  .collapsible summary{
+    font-family:'Cairo',sans-serif; font-weight:800; font-size:14.5px; color:var(--navy);
+    padding:16px 0; cursor:pointer; list-style:none; display:flex; align-items:center; justify-content:space-between; gap:10px;
+  }
+  .collapsible summary::-webkit-details-marker{display:none;}
+  .collapsible summary::after{content:"+"; font-size:22px; color:var(--green); flex:none; transition:transform .2s ease;}
+  .collapsible[open] summary::after{transform:rotate(45deg);}
+  .collapsible-body{padding:0 0 20px;}
+
+  /* Hero */
+  .hero{padding:30px 0; text-align: center;}
+  .hero-grid{display:flex; flex-direction:column; gap:25px; align-items:center;}
+  .hero-eyebrow{
+    display:inline-flex; align-items:center; gap:8px; background:#fff; border:1px solid var(--line);
+    padding:6px 14px; border-radius:30px; font-size:12px; font-weight:600; color:var(--green-deep); margin-bottom:15px;
+  }
+  .hero-eyebrow .dot{width:6px; height:6px; border-radius:50%; background:var(--red);}
+  .hero h1{font-size:clamp(26px, 5vw, 42px); font-weight:900; letter-spacing:-.5px;}
+  .hero h1 span{color:var(--green);}
+  .hero .lede{margin-top:12px; font-size:14.5px; color:#334049; max-width:650px; margin-left:auto; margin-right:auto;}
+  .hero-actions{display:flex; gap:10px; margin-top:18px; justify-content:center; flex-wrap:wrap;}
+  .hero-visual{display:flex; align-items:center; justify-content:center; width:100%; order:-1;}
+  .hero-visual .ring{
+    width:180px; height:180px; border-radius:50%; background:#fff; border:1px solid var(--line);
+    display:flex; align-items:center; justify-content:center; box-shadow:0 15px 30px -15px rgba(5,39,74,0.25); padding: 12px;
+  }
+  .hero-visual img{width:100%; height:100%; object-fit:contain; border-radius: 50%;}
+  .hero-pillars{
+    margin-top:25px; display:grid; grid-template-columns:1fr; gap:12px; border-top:1px solid var(--line); padding-top:20px; text-align:right;
+  }
+  .hero-pillars div{background:#fff; padding:14px; border-radius:var(--radius-s); border:1px solid var(--line);}
+  .hero-pillars strong{display:block; font-family:'Cairo',sans-serif; font-weight:800; font-size:14px; color:var(--navy); margin-bottom:4px;}
+  .hero-pillars p{font-size:12.5px; color:var(--gray); line-height:1.5;}
+
+  /* Sections */
+  .section-head{margin-bottom:25px; text-align:center;}
+  .section-head .kicker-line{display:inline-flex; align-items:center; gap:8px; margin-bottom:8px;}
+  .section-head .kicker-line .dash{width:24px; height:2px; background:var(--red); border-radius:2px;}
+  .section-head .kicker-line span{font-size:12px; color:var(--gray); font-weight:600;}
+  .section-head h2{font-size:clamp(20px, 4vw, 28px); font-weight:800;}
+  .section-head p{margin-top:8px; color:#3A4652; font-size:13.5px; max-width:700px; margin-left:auto; margin-right:auto;}
+
+  .content-card{
+    background:#fff; border:1px solid var(--line); border-radius:var(--radius-m);
+    padding:16px; text-align:center; box-shadow:0 10px 25px rgba(5,39,74,0.04); max-width:950px; margin:0 auto;
+  }
+  .image-frame{
+    width:100%; border-radius:var(--radius-s); overflow:hidden;
+    border:1px solid var(--line); background:#fff; display:flex; justify-content:center; align-items:center; padding:5px;
+  }
+
+  /* Colleges Interactive Grid */
+  .colleges-grid{display:grid; grid-template-columns:1fr; gap:10px; max-width:850px; margin:0 auto;}
+  .college-badge{
+    background:#fff; border:1px solid var(--line); border-radius:var(--radius-s);
+    padding:12px 16px; display:flex; align-items:center; gap:12px; cursor:pointer;
+    transition:all 0.2s ease; user-select:none;
+  }
+  .college-badge:hover, .college-badge.active{
+    border-color:var(--green); background:#f4faf8; transform:translateY(-2px);
+  }
+  .college-num{
+    background:var(--paper-alt); color:var(--navy); font-family:'Cairo',sans-serif;
+    font-weight:800; font-size:13px; width:28px; height:28px; border-radius:50%;
+    display:flex; align-items:center; justify-content:center; flex:none;
+  }
+  .college-badge.active .college-num{background:var(--green); color:#fff;}
+  .college-badge span:not(.college-num){font-weight:700; font-size:13.5px; color:var(--navy);}
+  .college-badge--featured{border:2px solid var(--green);}
+  .college-badge--featured .college-num{background:var(--green); color:#fff;}
+  .college-badge--featured span:not(.college-num){color:var(--green-deep); font-weight:800;}
+  .college-badge--full{grid-column:1 / -1; background:var(--paper-alt);}
+  .college-badge--full .college-num{background:var(--navy); color:#fff;}
+
+  /* Dynamic College Details Box */
+  .college-details-box{
+    background:#fff; border:1px solid var(--green); border-radius:var(--radius-m);
+    padding:20px; max-width:850px; margin:20px auto 0; box-shadow:0 10px 25px rgba(5,39,74,0.06); text-align:right;
+    display:none; animation:fadeIn 0.3s ease-in-out;
+  }
+  @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+  
+  .college-details-title{font-size:17px; font-weight:800; color:var(--navy); margin-bottom:8px; display:flex; align-items:center; gap:8px;}
+  .college-details-text{font-size:13.5px; color:#3A4652; line-height:1.7; background:var(--paper); padding:12px 15px; border-radius:var(--radius-s); border-right:3px solid var(--green);}
+
+  /* IT Majors Section Inside Details */
+  .it-majors-section{margin-top:20px; border-top:1px dashed var(--line); padding-top:18px;}
+  .majors-grid{display:grid; grid-template-columns:1fr; gap:8px; margin-top:12px;}
+  @media(min-width:600px){ .majors-grid{grid-template-columns:repeat(2, 1fr);} }
+  
+  .major-btn{
+    background:var(--paper); border:1px solid var(--line); border-radius:var(--radius-s);
+    padding:12px 15px; font-weight:700; font-size:13.5px; color:var(--navy); text-align:right;
+    cursor:pointer; transition:all 0.2s ease; display:flex; align-items:center; justify-content:space-between;
+  }
+  .major-btn:hover, .major-btn.active{background:var(--navy); color:#fff; border-color:var(--navy);}
+  .major-btn span.arrow{font-size:12px; opacity:0.8;}
+
+  .plan-view-box{
+    border-top:1px dashed var(--line); padding-top:20px; margin-top:20px; display:none; text-align:center;
+  }
+  .plan-view-box.active{display:block;}
+  .plan-title-tag{
+    font-family:'Cairo',sans-serif; font-weight:800; font-size:15px; color:var(--green-deep); margin-bottom:12px;
+  }
+  .pdf-dl-btn{
+    display:inline-flex; align-items:center; gap:6px; background:var(--navy); color:#fff;
+    font-family:'Cairo',sans-serif; font-weight:700; font-size:13px; padding:10px 18px;
+    border-radius:var(--radius-s); transition:background .2s ease;
+  }
+  .pdf-dl-btn:hover{background:var(--green-deep);}
+  .pdf-dl-btn::before{content:"⬇";}
+
+  /* Building & College Codes */
+  .tools-row{max-width:820px; margin:0 auto 18px;}
+  .search-box{
+    display:flex; align-items:center; gap:8px; background:#fff; border:1px solid var(--line);
+    border-radius:var(--radius-s); padding:10px 14px;
+  }
+  .search-box input{border:none; outline:none; background:none; font-family:inherit; font-size:13.5px; width:100%; color:var(--ink);}
+  .search-box svg{flex:none; color:var(--gray);}
+  .codes-grid{max-width:820px; margin:0 auto; display:grid; grid-template-columns:1fr; gap:8px;}
+  @media(min-width:640px){ .codes-grid{grid-template-columns:repeat(2, 1fr);} }
+  .code-chip{
+    display:flex; align-items:center; gap:12px; background:#fff; border:1px solid var(--line);
+    border-radius:var(--radius-s); padding:10px 14px;
+  }
+  .code-chip.hide{display:none;}
+  .code-chip .code-tag{
+    flex:none; min-width:38px; text-align:center; background:var(--navy); color:#fff; font-family:'Cairo',sans-serif;
+    font-weight:800; font-size:12.5px; padding:6px 8px; border-radius:6px;
+  }
+  .code-chip span:last-child{font-size:13px; font-weight:600; color:var(--navy);}
+
+  /* Achievements */
+  .achievements-list{max-width:820px; margin:0 auto; display:flex; flex-direction:column; gap:14px;}
+  .achievement-card{
+    background:#fff; border:1px solid var(--line); border-right:4px solid var(--green);
+    border-radius:var(--radius-s); padding:16px 18px; text-align:right;
+  }
+  .achievement-top{display:flex; align-items:center; justify-content:space-between; gap:10px; margin-bottom:8px; flex-wrap:wrap;}
+  .achievement-top-left{display:flex; align-items:center; gap:8px;}
+  .achievement-logo{width:26px; height:26px; border-radius:50%; object-fit:cover; border:1px solid var(--line); flex:none;}
+  .achievement-badge{background:#E8F4EF; color:var(--green-deep); font-size:11px; font-weight:800; padding:4px 10px; border-radius:20px; font-family:'Cairo',sans-serif;}
+  .achievement-badge.pending{background:#FFF3E0; color:#B7791F;}
+  .achievement-date{font-size:12px; color:var(--gray); font-weight:600;}
+  .achievement-card h4{font-size:14.5px; font-weight:800; color:var(--navy); margin-bottom:6px;}
+  .achievement-card p{font-size:13px; color:#4A5560; line-height:1.7;}
+  .achievement-link{display:inline-block; margin-top:8px; font-size:12.5px; font-weight:700; color:var(--green-deep);}
+  .achievement-link:hover{text-decoration:underline;}
+
+  /* Social */
+  .social-grid{display:grid; grid-template-columns:1fr; gap:12px; max-width:700px; margin:0 auto;}
+  .social-card{
+    background:#fff; border:1px solid var(--line); border-radius:var(--radius-m);
+    padding:16px; display:flex; align-items:center; gap:14px; text-decoration:none;
+    transition:transform 0.2s ease, box-shadow 0.2s ease;
+  }
+  .social-icon{width:42px; height:42px; border-radius:10px; display:flex; align-items:center; justify-content:center; flex:none;}
+  .social-icon.fb{background:#1877F2;}
+  .social-icon.ig{background:radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%);}
+  .social-icon.wa{background:#25D366;}
+  .social-icon svg{width:24px; height:24px; fill:#ffffff;}
+  .social-info strong{display:block; font-family:'Cairo',sans-serif; font-size:14.5px; color:var(--navy); margin-bottom:2px;}
+  .social-info span{font-size:12px; color:var(--gray);}
+
+  /* Join Form */
+  .form-card{
+    background:#fff; border:1px solid var(--line); border-radius:var(--radius-m);
+    padding:20px; max-width:650px; margin:0 auto; box-shadow:0 10px 30px rgba(5,39,74,0.05);
+  }
+  .form-group{margin-bottom:14px; text-align:right;}
+  .form-group label{display:block; font-family:'Cairo',sans-serif; font-weight:700; font-size:13px; color:var(--navy); margin-bottom:6px;}
+  .form-control{
+    width:100%; padding:10px 14px; border:1px solid var(--line); border-radius:var(--radius-s);
+    background:var(--paper); font-size:13.5px; color:var(--ink);
+  }
+  .form-control:focus{outline:none; border-color:var(--green); background:#fff; box-shadow:0 0 0 3px rgba(8,129,98,0.1);}
+  .form-submit{width:100%; padding:12px; background:var(--green-deep); color:#fff; font-family:'Cairo',sans-serif; font-weight:800; font-size:14.5px; border-radius:var(--radius-s); border:none; cursor:pointer;}
+  .form-submit:hover{background:var(--green);}
+  .success-msg{
+    display:none; background:#E8F4EF; color:var(--green-deep); border:1px solid var(--green);
+    padding:12px; border-radius:var(--radius-s); margin-top:14px; text-align:center; font-weight:700; font-size:13.5px;
+  }
+
+  /* Footer */
+  footer{background:var(--navy); color:#B9C4CF; padding:35px 0 20px; text-align: center;}
+  .footer-grid{display:flex; flex-direction:column; gap:20px; padding-bottom:20px; border-bottom:1px solid rgba(255,255,255,0.12); align-items: center;}
+  .footer-bottom{padding-top:15px; display:flex; justify-content:center; font-size:11.5px; color:#7C90A2; flex-direction:column; gap:5px;}
+
+  @media (min-width: 768px) {
+    .menu-toggle { display: none !important; }
+    .mobile-nav { display: none !important; }
+    nav.links { display: flex !important; }
+    .hero{text-align: right; padding: 50px 0;}
+    .hero-grid { display: grid; grid-template-columns: 1.1fr 0.9fr; text-align: right; gap: 30px; }
+    .hero .lede { margin-left: 0; }
+    .hero-actions { justify-content: flex-start; }
+    .hero-visual { order: 0; }
+    .hero-visual .ring { width: 220px; height: 220px; }
+    .hero-pillars { grid-template-columns: repeat(3, 1fr); }
+    .colleges-grid { grid-template-columns: repeat(2, 1fr); }
+    .social-grid { grid-template-columns: repeat(3, 1fr); }
+    .section-head { text-align: right; }
+    .section-head p { margin-left: 0; }
+    .footer-grid { flex-direction: row; justify-content: space-between; text-align: right; align-items: flex-start; }
+    .footer-bottom { flex-direction: row; justify-content: space-between; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="nav">
+    <div class="brand">
+      <img src="logo.png" onerror="this.src='https://raw.githubusercontent.com/mistarihi7/alqrar-yu/main/logo.png'" alt="شعار الكتلة">
+      <div class="brand-text">
+        <strong>كتلة القرار الطلابية</strong>
+        <small>جامعة اليرموك</small>
+      </div>
+    </div>
+    
+    <nav class="links">
+      <a href="#about" data-en="About Us">من نحن</a>
+      <a href="#structure" data-en="Structure">هيكلة الكتلة</a>
+      <a href="#map" data-en="Campus Map">خريطة الجامعة</a>
+      <a href="#codes" data-en="Building Codes">رموز الكليات</a>
+      <a href="#tracks" data-en="Colleges & Plans">الكليات والخطط</a>
+      <a href="#achievements" data-en="Activities & Achievements">أبرز النشاطات والإنجازات</a>
+      <a href="#social" data-en="Contact">التواصل</a>
+      <a href="#join" data-en="Join Us">انضم إلينا</a>
+    </nav>
+
+    <div style="display: flex; align-items: center; gap: 10px;">
+      <button id="langToggle" type="button">English</button>
+      <a href="#join" class="cta-btn" data-en="Register Now">سجل الآن</a>
+      <button class="menu-toggle" id="menuToggle" aria-label="القائمة">☰</button>
+    </div>
+  </div>
+</header>
+
+<div class="mobile-nav" id="mobileNav">
+  <a href="#about" class="mob-link" data-en="About Us">من نحن</a>
+  <a href="#structure" class="mob-link" data-en="Structure">هيكلة الكتلة</a>
+  <a href="#map" class="mob-link" data-en="Campus Map">خريطة الجامعة</a>
+  <a href="#codes" class="mob-link" data-en="Building Codes">رموز الكليات</a>
+  <a href="#tracks" class="mob-link" data-en="Colleges & Plans">الكليات والخطط</a>
+  <a href="#achievements" class="mob-link" data-en="Activities & Achievements">أبرز النشاطات والإنجازات</a>
+  <a href="#social" class="mob-link" data-en="Contact">التواصل الاجتماعي</a>
+  <a href="#join" class="mob-link" data-en="Join Us">انضم إلينا</a>
+</div>
+
+<main>
+  <!-- البنر الرئيسي -->
+  <section class="hero">
+    <div class="wrap">
+      <div class="hero-grid">
+        <div>
+          <div class="hero-eyebrow">
+            <span class="dot"></span>
+            <span data-en="The real student voice at Yarmouk University">صوت الطالب الحقيقي في جامعة اليرموك</span>
+          </div>
+          <h1><span data-en="We shape" style="color:inherit;">نصنع</span> <span data-en="the Decision">القرار</span> <span data-en="with a promising student vision" style="color:inherit;">برؤية طلابية واعدة</span></h1>
+          <p class="lede" data-en="Al-Qarar Student Bloc platform — your complete gateway to everything you need academically and administratively at Yarmouk University.">منصة كتلة القرار الطلابية؛ بوابتك الشاملة لكل ما تحتاجه أكاديمياً وخدمياً داخل حرم جامعة اليرموك.</p>
+          <div class="hero-actions">
+            <a href="#join" class="cta-btn" data-en="Apply to Join">قدم طلب الانتساب</a>
+            <a href="#social" class="cta-btn" style="background:var(--paper-alt); color:var(--navy); border:1px solid var(--line);" data-en="Contact Us">تواصل معنا</a>
+          </div>
+        </div>
+        <div class="hero-visual">
+          <div class="ring">
+            <img src="logo.png" onerror="this.src='https://raw.githubusercontent.com/mistarihi7/alqrar-yu/main/logo.png'" alt="شعار كتلة القرار">
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- قسم من نحن -->
+  <section id="about" style="background:#fff;">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="kicker-line">
+          <span class="dash"></span>
+          <span data-en="Who We Are">من نحن</span>
+          <span class="dash"></span>
+        </div>
+        <h2 data-en="Al-Qarar Student Bloc: Youth of This Country, Standing With You">كتلة القرار الطلابية: شباب الوطن، وسند حقيقي لك</h2>
+      </div>
+
+      <div class="content-card" style="text-align:right; max-width:900px;">
+        <p style="font-size:14.5px; line-height:2; color:#334049;"
+           data-en="Al-Qarar Student Bloc is a genuine student framework at Yarmouk University, made up of students who believe the university experience should be built on real partnership between student and institution — not just words. We are the youth of this homeland and of Jordan, and we work every day to support and stand behind every student, because our strength comes from our closeness to you and our honest belief in your causes.">
+          كتلة القرار الطلابية إطار طلابي حقيقي داخل جامعة اليرموك، يضم طلبة يؤمنون بأن التجربة الجامعية يجب أن تُبنى على شراكة فعلية بين الطالب والمؤسسة، لا على الشعارات فقط. نحن شباب هذا الوطن وشباب الأردن، ونعمل كل يوم لدعم كل طالب واحتضانه، لأن قوتنا تنبع من قربنا منكم وإيماننا الصادق بقضاياكم.
+        </p>
+        <p style="font-size:14.5px; line-height:2; color:#334049; margin-top:14px;"
+           data-en="We are incubated by Al-Mubadara Party, which gives our work an organized political and institutional umbrella without compromising our independence in representing students. In practice, we adopt student demands as they are and deliver them to the concerned university departments, follow up until they're resolved, and organize field and technical visits that connect students directly with decision-makers on campus.">
+          نحن نحتضنّ من قبل حزب المبادرة، وهو ما يمنح عملنا مظلة سياسية ومؤسسية منظمة دون أن يمسّ ذلك استقلاليتنا في تمثيل الطلبة. وعلى أرض الواقع، نتبنّى مطالب الطلبة كما هي ونوصلها إلى الجهة المعنية داخل الجامعة، ونتابعها حتى تُحل، كما ننظم زيارات ميدانية وتقنية تربط الطالب مباشرة بأصحاب القرار داخل الحرم الجامعي.
+        </p>
+      </div>
+
+      <div class="hero-pillars" style="margin-top:26px; border-top:none; padding-top:0;">
+        <div>
+          <strong data-en="Real Representation">تمثيل حقيقي</strong>
+          <p data-en="We honestly carry student concerns and proposals to every university department.">ننقل هموم ومقترحات الطلبة لكافة الدوائر والإدارات الجامعية بكل أمانة.</p>
+        </div>
+        <div>
+          <strong data-en="Academic Support">دعم أكاديمي</strong>
+          <p data-en="We provide study plans, guidance, and everything that matters for your academic journey.">نوفر الخطط الدراسية، الإرشاد، وكل ما يهم مسيرتك الجامعية.</p>
+        </div>
+        <div>
+          <strong data-en="Campus Guide">دليل الحرم</strong>
+          <p data-en="Detailed illustrated maps for colleges, gates, and essential facilities.">خرائط تفصيلية وتوضيحية لأماكن الكليات والبوابات والمرافق الحيوية.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- قسم الهيكل التنظيمي -->
+  <section id="structure">
+    <div class="wrap">
+      <div class="section-head" style="margin-bottom: 20px;">
+        <div class="kicker-line">
+          <span class="dash"></span>
+          <span>الهيكل التنظيمي</span>
+          <span class="dash"></span>
+        </div>
+        <h2 data-en="Al-Qarar Student Bloc Structure">هيكلة كتلة القرار الطلابية</h2>
+        <p style="margin-top: 12px; font-size: 14px; line-height: 1.8; color: var(--navy); font-weight: 600;"
+           data-en="Al-Qarar Student Bloc announces the adoption of its general organizational structure. This follows a defined administrative methodology for distributing tasks between the bloc's leadership, technical departments, and college committees, ensuring student follow-up runs professionally and transparently.">
+          تعلن كتلة القرار الطلابية عن اعتماد هيكلها التنظيمي العام.<br>
+          يأتي هذا اعتمادًا على منهجية العمل الإداري المحددة لتوزيع المهام بين رئاسة الكتلة، الأقسام الفنية، ولجان الكليات؛ لضمان سير المتابعات الطلابية بمهنية ووضوح.
+        </p>
+        <p style="margin-top:8px; font-size:14px; font-weight:600;">
+          <span style="display:block; color:var(--ink);" data-en="Administrative Board - Al-Qarar Student Bloc">الهيئة الإدارية - كتلة القرار الطلابية</span>
+          <span style="display:block; margin-top:4px; color:var(--red); font-weight:800;" data-en="#We_Listen_We_Represent_We_Deliver">#نسمع_نمثل_ننجز</span>
+        </p>
+      </div>
+
+      <div class="content-card">
+        <div class="image-frame">
+          <img src="structure.png" onerror="this.src='https://raw.githubusercontent.com/mistarihi7/alqrar-yu/main/structure.png'" alt="هيكلة كتلة القرار الطلابية" style="width: 100%; height: auto; object-fit: contain;">
+        </div>
+        <p style="margin-top: 10px; font-size: 12px; color: var(--gray);" data-en="Al-Qarar Student Bloc's official organizational and administrative structure">الهيكل التنظيمي والإداري الرسمي لكتلة القرار الطلابية</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- قسم خريطة جامعة اليرموك -->
+  <section id="map" style="background:#fff;">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="kicker-line">
+          <span class="dash"></span>
+          <span>دليل الحرم الجامعي</span>
+          <span class="dash"></span>
+        </div>
+        <h2 data-en="Yarmouk University Map">خريطة جامعة اليرموك</h2>
+        <p data-en="An illustrated guide to help students navigate and locate colleges, administrative buildings, and essential facilities.">دليل إرشادي مصور لتسهيل تنقل الطلبة والتعرف على أماكن الكليات، المباني الإدارية والمرافق الحيوية.</p>
+      </div>
+
+      <div class="content-card">
+        <div class="image-frame">
+          <img src="campus-map.png" onerror="this.src='https://raw.githubusercontent.com/mistarihi7/alqrar-yu/main/campus-map.png'" alt="خريطة جامعة اليرموك التفصيلية" style="width: 100%; height: auto; object-fit: contain;">
+        </div>
+        <p style="margin-top: 10px; font-size: 12px; color: var(--gray);" data-en="Official illustrated map of Yarmouk University's landmarks and campus">الخريطة الرسمية التوضيحية لمعالم وحرم جامعة اليرموك</p>
+        <a href="https://raw.githubusercontent.com/mistarihi7/alqrar-yu/main/campus-map.pdf" target="_blank" class="pdf-dl-btn" style="margin-top:12px;" data-en="Download Map (PDF)">تحميل الخريطة (PDF)</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- قسم رموز المباني والكليات -->
+  <section id="codes">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="kicker-line">
+          <span class="dash"></span>
+          <span data-en="Find Your Hall Fast">لتسهيل الوصول لقاعتك</span>
+          <span class="dash"></span>
+        </div>
+        <h2 data-en="Building & College Codes">دليل رموز الكليات والمباني</h2>
+        <p data-en="Every lecture hall and exam room number starts with a building code. Use this list to know exactly where to go.">كل قاعة محاضرات أو امتحان تبدأ برمز مبنى معيّن — استخدم هذا الدليل لتعرف وجهتك بالضبط.</p>
+      </div>
+
+      <details class="collapsible">
+        <summary data-en="Show the building codes guide">فتح دليل رموز الكليات والمباني</summary>
+        <div class="collapsible-body">
+          <div class="tools-row">
+            <div class="search-box">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
+              <input id="codeSearch" type="text" placeholder="ابحث عن كلية أو مبنى..." data-en-placeholder="Search for a college or building...">
+            </div>
+          </div>
+          <div class="codes-grid" id="codesGrid"></div>
+        </div>
+      </details>
+    </div>
+  </section>
+
+  <!-- قسم الكليات والخطط الشجرية والنبذ التعريفية -->
+  <section id="tracks" style="background:#fff;">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="kicker-line">
+          <span class="dash"></span>
+          <span>الدليل الأكاديمي الشامل</span>
+          <span class="dash"></span>
+        </div>
+        <h2 data-en="Tree-Structured Plans & Yarmouk University Colleges">الخطط الشجرية ونبذة عن كليات جامعة اليرموك</h2>
+        <p data-en="Click any college to view a brief overview, or click Faculty of Information Technology to see its overview, majors, and tree plans directly:">اضغط على أي كلية لعرض نبذة تعريفية عنها، أو اضغط على كلية تكنولوجيا المعلومات لعرض نبذتها وتخصصاتها والخطط الشجرية مباشرة:</p>
+      </div>
+
+      <!-- شبكة الكليات (17 كلية) - تُبنى تلقائياً من collegesData -->
+      <div class="colleges-grid" id="collegesGrid"></div>
+
+      <!-- صندوق تفاصيل الكلية المعروضة تفاعلياً -->
+      <div class="college-details-box" id="collegeDetailsBox">
+        <div class="college-details-title">
+          <span id="collegeIcon">🎓</span>
+          <span id="collegeTitleName">اسم الكلية</span>
+        </div>
+        <div class="college-details-text" id="collegeAboutText">
+          نبذة عن الكلية المحددة...
+        </div>
+
+        <!-- تخصصات كلية تكنولوجيا المعلومات (تظهر فقط عند اختيار كلية IT) - تُبنى تلقائياً من itMajorsData -->
+        <div class="it-majors-section" id="itMajorsSection" style="display: none;">
+          <div style="font-weight: 800; color: var(--navy); font-size: 14.5px;" data-en="💻 College majors (choose a major to view its tree plan):">💻 تخصصات الكلية (اختر التخصص لاستعراض خطته الشجرية):</div>
+
+          <div class="majors-grid" id="majorsGrid"></div>
+
+          <!-- صندوق عرض الخطة الشجرية للتخصص -->
+          <div class="plan-view-box" id="planViewBox">
+            <div class="plan-title-tag" id="planTitleText">الخطة الشجرية</div>
+            <div class="image-frame" style="background:#fff; padding:5px;">
+              <img id="planImage" src="" alt="الخطة الشجرية للتخصص" style="width:100%; height:auto; object-fit:contain; border-radius:6px;">
+            </div>
+            <p style="margin-top: 10px; font-size: 12px; color: var(--gray);" data-en="Officially approved tree-structured study plan">الخطة الدراسية الشجرية الرسمية المعتمدة</p>
+            <a href="#" id="planPdfLink" target="_blank" class="pdf-dl-btn" style="margin-top:12px;" data-en="Download Plan (PDF)">تحميل الخطة (PDF)</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- قسم أبرز النشاطات والإنجازات (يُحدَّث دورياً من achievementsData) -->
+  <section id="achievements" style="background:#fff;">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="kicker-line">
+          <span class="dash"></span>
+          <span data-en="Transparency & Accountability">شفافية ومحاسبة</span>
+          <span class="dash"></span>
+        </div>
+        <h2 data-en="Highlighted Activities & Achievements">أبرز النشاطات والإنجازات</h2>
+        <p data-en="A running record of the issues and activities the bloc has followed up on for students — updated periodically.">توثيق دوري لأبرز القضايا والأنشطة التي تابعتها الكتلة لصالح الطلبة — يُحدَّث أولاً بأول.</p>
+      </div>
+      <div class="achievements-list" id="achievementsList"></div>
+    </div>
+  </section>
+
+  <!-- قسم حسابات التواصل الاجتماعي -->
+  <section id="social">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="kicker-line">
+          <span class="dash"></span>
+          <span data-en="Stay Connected">ابق على تواصل</span>
+          <span class="dash"></span>
+        </div>
+        <h2 data-en="Al-Qarar Bloc's Social Media Accounts">حسابات كتلة القرار على منصات التواصل</h2>
+        <p data-en="Follow us to get all the latest news, announcements, and official student statements.">تابعنا ليصلك كل جديد من أخبار، إعلانات، وبيانات طلابية رسمية.</p>
+      </div>
+
+      <div class="social-grid">
+        <a href="https://web.facebook.com/profile.php?id=61591127655653" target="_blank" class="social-card">
+          <div class="social-icon fb">
+            <svg viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+          </div>
+          <div class="social-info">
+            <strong data-en="Facebook Page">صفحة الفيسبوك</strong>
+            <span data-en="Follow our latest posts and statements">تابع آخر المنشورات والبيانات</span>
+          </div>
+        </a>
+
+        <a href="https://www.instagram.com/alqrar_yu?stkn=ajd0YW96bXBmODB0" target="_blank" class="social-card">
+          <div class="social-icon ig">
+            <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+          </div>
+          <div class="social-info">
+            <strong data-en="Instagram Account">حساب إنستغرام</strong>
+            <span data-en="See our photo coverage and stories">شاهد التغطيات المصورة والقصص</span>
+          </div>
+        </a>
+
+        <a href="https://whatsapp.com/channel/0029VbD78BM89ingqgMzDK1O" target="_blank" class="social-card">
+          <div class="social-icon wa">
+            <svg viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
+          </div>
+          <div class="social-info">
+            <strong data-en="WhatsApp Channel">قناة الواتساب</strong>
+            <span data-en="Join to receive instant announcements">انضم لتصلك الإعلانات الفورية</span>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- نموذج الانتساب -->
+  <section id="join" style="background:#fff;">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="kicker-line">
+          <span class="dash"></span>
+          <span data-en="Be Part of the Change">كن جزءاً من التغيير</span>
+          <span class="dash"></span>
+        </div>
+        <h2 data-en="Al-Qarar Student Bloc Membership Form">نموذج الانتساب لكتلة القرار الطلابية</h2>
+        <p data-en="Fill in your details below to join our team so we can reach out to you.">املأ بياناتك أدناه لتنضم إلى فريق العمل ولنتمكن من التواصل معك.</p>
+      </div>
+
+      <div class="form-card">
+        <form id="joinForm">
+          <div class="form-group">
+            <label for="fullName" data-en="Full Name:">الاسم الكامل:</label>
+            <input type="text" id="fullName" class="form-control" placeholder="أدخل اسمك الثلاثي أو الرباعي" data-en-placeholder="Enter your full name" required>
+          </div>
+
+          <div class="form-group">
+            <label for="studentId" data-en="University ID:">الرقم الجامعي:</label>
+            <input type="text" id="studentId" class="form-control" placeholder="مثال: 2023xxxxxx" data-en-placeholder="e.g. 2023xxxxxx" required>
+          </div>
+
+          <div class="form-group">
+            <label for="studentPhone" data-en="Phone Number (WhatsApp):">رقم الهاتف (واتساب):</label>
+            <input type="tel" id="studentPhone" class="form-control" placeholder="07xxxxxxxx" required>
+          </div>
+
+          <div class="form-group">
+            <label for="collegeSelect" data-en="Choose Your College:">اختر كليتك:</label>
+            <select id="collegeSelect" class="form-control" required>
+              <option value="" disabled selected data-en="-- Tap to select your college --">-- اضغط لاختيار الكلية --</option>
+            </select>
+          </div>
+
+          <button type="submit" class="form-submit" data-en="Send Membership Request via WhatsApp">إرسال طلب الانتساب عبر الواتساب</button>
+        </form>
+
+        <div id="successMsg" class="success-msg" data-en="You've been redirected to WhatsApp to send your membership details. Welcome aboard!">
+          تم توجيهك إلى الواتساب بنجاح لإرسال بيانات الانتساب. أهلاً بك معنا!
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="footer-grid">
+      <div>
+        <div style="font-family:'Cairo',sans-serif; font-weight:800; font-size:14.5px; color:#fff; margin-bottom:6px;" data-en="Al-Qarar Student Bloc - Yarmouk University">كتلة القرار الطلابية - جامعة اليرموك</div>
+        <p style="font-size:12.5px;" data-en="Your permanent academic and service voice within the university.">صوتك الأكاديمي والخدمي الدائم داخل أروقة الجامعة.</p>
+      </div>
+      <div>
+        <h5 style="color:#fff; font-family:'Cairo',sans-serif; margin-bottom:8px; font-size:13.5px;" data-en="Quick Links">روابط سريعة</h5>
+        <ul style="display:flex; flex-direction:column; gap:5px; font-size:12.5px;">
+          <li><a href="#structure" data-en="Structure">هيكلة الكتلة</a></li>
+          <li><a href="#map" data-en="Campus Map">خريطة الجامعة</a></li>
+          <li><a href="#codes" data-en="Building Codes">رموز الكليات</a></li>
+          <li><a href="#tracks" data-en="Colleges & Plans">الكليات والخطط</a></li>
+          <li><a href="#achievements" data-en="Activities & Achievements">أبرز النشاطات والإنجازات</a></li>
+          <li><a href="#social" data-en="Social Media">التواصل الاجتماعي</a></li>
+          <li><a href="#join" data-en="Membership Form">نموذج الانتساب</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span data-en="All rights reserved © 2026 - Al-Qarar Student Bloc">جميع الحقوق محفوظة © 2026 - كتلة القرار الطلابية</span>
+      <span>📧 <a href="mailto:alqarar.yu@gmail.com" style="color:inherit;">alqarar.yu@gmail.com</a></span>
+      <span data-en="Yarmouk University - Irbid">جامعة اليرموك - إربد</span>
+    </div>
+  </div>
+</footer>
+
+<a id="floatWhatsapp" class="float-btn" href="#" target="_blank" aria-label="تواصل معنا عبر واتساب">
+  <svg viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
+</a>
+<button id="shareBtn" class="float-btn" aria-label="مشاركة الموقع" title="مشاركة الموقع">
+  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.6" y1="10.5" x2="15.4" y2="6.5"/><line x1="8.6" y1="13.5" x2="15.4" y2="17.5"/></svg>
+</button>
+<button id="backToTop" class="float-btn" aria-label="العودة لأعلى الصفحة">↑</button>
+<div id="shareToast" style="position:fixed; bottom:92px; left:80px; background:var(--navy); color:#fff; padding:10px 16px; border-radius:8px; font-size:12.5px; font-weight:600; opacity:0; pointer-events:none; transition:opacity .25s ease; z-index:95;"></div>
+
+<script>
+  // Mobile Menu Toggle
+  const menuToggle = document.getElementById('menuToggle');
+  const mobileNav = document.getElementById('mobileNav');
+  const mobLinks = document.querySelectorAll('.mob-link');
+
+  menuToggle.addEventListener('click', () => {
+    mobileNav.classList.toggle('active');
+    menuToggle.textContent = mobileNav.classList.contains('active') ? '✕' : '☰';
+  });
+
+  mobLinks.forEach(link => {
+    link.addEventListener('click', () => {
+      mobileNav.classList.remove('active');
+      menuToggle.textContent = '☰';
+    });
+  });
+
+  // Current language state
+  let currentLang = localStorage.getItem('siteLang') || 'ar';
+  let currentCollegeIndex = null;
+  const REPO_BASE = 'https://raw.githubusercontent.com/mistarihi7/alqrar-yu/main/';
+
+  // Data Array for all 17 Colleges (nameEn/aboutEn power the English toggle)
+  const collegesData = [
+    { name: "كلية الآداب", nameEn: "Faculty of Arts", about: "تعد من أعرق كليات جامعة اليرموك، وتضم أقسام اللغات (العربية، الإنجليزية، اللغات الحديثة)، التاريخ، الجغرافيا، والعلوم الاجتماعية، وتهدف إلى بناء حصانة فكرية ولغوية متميزة للطلبة.", aboutEn: "One of Yarmouk University's most established faculties, home to the language departments (Arabic, English, Modern Languages), History, Geography, and Social Sciences, building strong intellectual and linguistic foundations for students." },
+    { name: "كلية العلوم", nameEn: "Faculty of Science", about: "صرح علمي متميز يضم أقسام الرياضيات، الفيزياء، الكيمياء، العلوم الحياتية، الإحصاء، والأرض والبيئة، وتوفر مختبرات حديثة للبحث العلمي والتطبيق العملي.", aboutEn: "A leading scientific faculty with departments of Mathematics, Physics, Chemistry, Life Sciences, Statistics, and Earth & Environment, offering modern labs for research and hands-on application." },
+    { name: "كلية الأعمال", nameEn: "Faculty of Business", about: "تُعنى بتأهيل الكوادر القيادية في مجالات إدارة الأعمال، المحاسبة، العلوم المالية والمصرفية، التسويق، الاقتصاد، وإدارة العامة والاقتصاد الرقمي لتلبية احتياجات سوق العمل.", aboutEn: "Prepares future leaders in Business Administration, Accounting, Finance & Banking, Marketing, Economics, Public Administration, and the Digital Economy to meet labor-market needs." },
+    { name: "كلية الحجاوي للهندسة التكنولوجية", nameEn: "Hijjawi Faculty for Engineering Technology", about: "من الكليات الرائدة هندسياً في الأردن، وتضم التخصصات الهندسية المختلفة مثل الحاسوب، اتصالات، كهرباء، مدني، ميكانيك، وهندسة العمارة والتقنيات الحديثة.", aboutEn: "One of Jordan's leading engineering faculties, covering Computer, Communications, Electrical, Civil, and Mechanical Engineering, plus Architecture and modern technologies." },
+    { name: "كلية الشريعة والدراسات الإسلامية", nameEn: "Faculty of Sharia and Islamic Studies", about: "تهدف إلى ترسيخ الفكر الإسلامي المعتدل والإعداد العلمي المتميز في تخصصات الفقه وأصوله، أصول الدين، والدراسات الإسلامية والدعوة.", aboutEn: "Aims to build moderate Islamic thought and academic excellence in Fiqh and its principles, Usul al-Din, and Islamic Studies & Da'wah." },
+    { name: "كلية العلوم التربوية", nameEn: "Faculty of Educational Sciences", about: "تختص بتأهيل المربين والمعلمين والمرشدين النفسيين، وتضم أقسام المناهج، الإدارة التربوية، علم النفس التربوي، وتربية الطفل.", aboutEn: "Prepares educators, teachers, and psychological counselors, with departments in Curriculum, Educational Administration, Educational Psychology, and Early Childhood Education." },
+    { name: "كلية التربية البدنية وعلوم الرياضة", nameEn: "Faculty of Physical Education and Sport Sciences", about: "تُعنى بالإعداد البدني والرياضي وتأهيل مدربين ومعلمي رياضيين محترفين، وتضم صالات ومسابح وملاعب رياضية متكاملة.", aboutEn: "Focuses on physical training and preparing professional coaches and PE teachers, with integrated gyms, pools, and sports fields." },
+    { name: "كلية القانون", nameEn: "Faculty of Law", about: "تركز على تدريس العلوم الحقوقية والقانونية (القانون العام والقانون الخاص) وتأهيل القضاة والمحامين والمستشارين القانونيين بكفاءة عالية.", aboutEn: "Focuses on legal studies (public and private law) and prepares highly competent judges, lawyers, and legal consultants." },
+    { name: "كلية الفنون الجميلة", nameEn: "Faculty of Fine Arts", about: "حاضنة الإبداع والفنون وتضم أقسام التصميم، الفنون التشكيلية، الموسيقى، والدراما، وتساهم في إثراء الحركة الثقافية والفنية.", aboutEn: "A hub for creativity and the arts, with departments in Design, Visual Arts, Music, and Drama, enriching the cultural and artistic scene." },
+    { name: "كلية تكنولوجيا المعلومات وعلوم الحاسوب", nameEn: "Faculty of Information Technology and Computer Sciences", about: "من الكليات المواكبة للتطور الرقمي وتضم تخصصات نوعية مثل الذكاء الاصطناعي، الأمن السيبراني، علوم الحاسوب، نظم المعلومات، تكنولوجيا الأعمال، وتطوير الألعاب.", aboutEn: "A digitally forward faculty offering Artificial Intelligence, Cybersecurity, Computer Science, Information Systems, Business Technology, and Game Development." },
+    { name: "كلية الآثار والأنثروبولوجيا", nameEn: "Faculty of Archaeology and Anthropology", about: "تختص بدراسة وتوثيق التراث الحضاري والآثار وصيانتها ودراسة المجهود الإنساني والمجتمعات عبر التاريخ.", aboutEn: "Specializes in documenting and preserving cultural heritage and archaeology, and studying human communities throughout history." },
+    { name: "كلية السياحة والفنادق", nameEn: "Faculty of Tourism and Hotel Management", about: "تهتم بتدريب وتأهيل الكوادر البشرية في مجالات الإدارة السياحية والفندقية والإرشاد السياحي لدعم القطاع السياحي الوطني.", aboutEn: "Trains professionals in tourism and hotel management and tour guiding to support the national tourism sector." },
+    { name: "كلية الإعلام", nameEn: "Faculty of Media", about: "تخرّج الإعلاميين الصحفيين وصناع المحتوى، وتضم أقسام الصحافة، الإذاعة والتلفزيون، والعلاقات العامة والإعلان مع استوديوهات تدريبية حديثة.", aboutEn: "Graduates journalists and content creators, with departments in Journalism, Radio & TV, and Public Relations & Advertising, backed by modern training studios." },
+    { name: "كلية الطب", nameEn: "Faculty of Medicine", about: "تستهدف تخريج أطباء على مستوى عالٍ من الكفاءة العلمية والأخلاقية لتطوير الرعاية الصحية والخدمات الطبية في الأردن والمنطقة.", aboutEn: "Aims to graduate physicians of high scientific and ethical caliber to advance healthcare and medical services in Jordan and the region." },
+    { name: "كلية الصيدلة", nameEn: "Faculty of Pharmacy", about: "تُعنى بالعلوم الصيدلانية، الرعاية الصيدلانية، والتصنيع الدوائي، وتدريب الطلبة ميدانياً في الصيدليات والمستشفيات.", aboutEn: "Focuses on pharmaceutical sciences, pharmaceutical care, and drug manufacturing, with field training in pharmacies and hospitals." },
+    { name: "كلية التمريض", nameEn: "Faculty of Nursing", about: "تهدف إلى رفد القطاع الصحي بممرضين وممرضات مؤهلين بمهارات عالية للتعامل مع مختلف الحالات المرضية والصحية.", aboutEn: "Aims to supply the healthcare sector with highly skilled nurses capable of handling a wide range of medical and health conditions." },
+    { name: "الكلية التقنية (دبلوم)", nameEn: "Technical College (Diploma)", about: "تقدم برامج الدبلوم المتوسط والتدريب المهني التقني المباشر لرفد سوق العمل بالمهارات الحرفية والتكنولوجية المطلوبة.", aboutEn: "Offers intermediate diploma and direct vocational-technical training programs to supply the labor market with required craft and technological skills." }
+  ];
+
+  // Render the 17 college badges from collegesData
+  const collegesGrid = document.getElementById('collegesGrid');
+  collegesData.forEach((c, i) => {
+    const badge = document.createElement('div');
+    badge.className = 'college-badge';
+    if (i === 9) badge.classList.add('college-badge--featured');
+    if (i === 16) badge.classList.add('college-badge--full');
+    badge.innerHTML = `<div class="college-num">${String(i + 1).padStart(2, '0')}</div><span>${currentLang === 'en' ? c.nameEn : c.name}</span>`;
+    badge.addEventListener('click', () => selectCollege(i));
+    collegesGrid.appendChild(badge);
+  });
+
+  // Populate the membership form's college <select> from the same data (value always in Arabic for the WhatsApp message)
+  const collegeSelect = document.getElementById('collegeSelect');
+  collegesData.forEach((c, i) => {
+    const opt = document.createElement('option');
+    opt.value = c.name;
+    opt.textContent = `${i + 1}. ${currentLang === 'en' ? c.nameEn : c.name}`;
+    opt.dataset.ar = `${i + 1}. ${c.name}`;
+    opt.dataset.en = `${i + 1}. ${c.nameEn}`;
+    collegeSelect.appendChild(opt);
+  });
+
+  // Majors of the IT college, incl. tree-plan image + matching PDF filename
+  const itMajorsData = [
+    { nameAr: "علم البيانات والذكاء الاصطناعي", nameEn: "Data Science & Artificial Intelligence", img: "plan-ai.png", pdf: "plan-ai.pdf" },
+    { nameAr: "نظم معلومات حاسوبية", nameEn: "Computer Information Systems", img: "plan-cis.png", pdf: "plan-cis.pdf" },
+    { nameAr: "الأمن السيبراني", nameEn: "Cybersecurity", img: "plan-cyber.png", pdf: "plan-cyber.pdf" },
+    { nameAr: "تكنولوجيا معلومات الأعمال", nameEn: "Business Information Technology", img: "plan-bit.png", pdf: "plan-bit.pdf" },
+    { nameAr: "علوم الحاسوب", nameEn: "Computer Science", img: "plan-cs.png", pdf: "plan-cs.pdf" },
+    { nameAr: "الواقع الرقمي وتطوير الألعاب", nameEn: "Digital Reality & Game Development", img: "plan-games.png", pdf: "plan-games.pdf" }
+  ];
+
+  // Render the IT majors buttons from itMajorsData
+  const majorsGrid = document.getElementById('majorsGrid');
+  function renderMajorsGrid() {
+    majorsGrid.innerHTML = '';
+    itMajorsData.forEach((m, i) => {
+      const btn = document.createElement('button');
+      btn.className = 'major-btn';
+      btn.innerHTML = `<span>${currentLang === 'en' ? m.nameEn : m.nameAr}</span> <span class="arrow">▼</span>`;
+      btn.addEventListener('click', () => showPlan(i, btn));
+      majorsGrid.appendChild(btn);
+    });
+  }
+  renderMajorsGrid();
+
+  // College Selection Handler
+  function selectCollege(index) {
+    currentCollegeIndex = index;
+    const badges = document.querySelectorAll('.college-badge');
+    badges.forEach(b => b.classList.remove('active'));
+    badges[index].classList.add('active');
+
+    const detailsBox = document.getElementById('collegeDetailsBox');
+    const titleName = document.getElementById('collegeTitleName');
+    const aboutText = document.getElementById('collegeAboutText');
+    const itSection = document.getElementById('itMajorsSection');
+    const planBox = document.getElementById('planViewBox');
+
+    titleName.textContent = currentLang === 'en' ? collegesData[index].nameEn : collegesData[index].name;
+    aboutText.textContent = currentLang === 'en' ? collegesData[index].aboutEn : collegesData[index].about;
+
+    // Hide Plan box when switching colleges
+    planBox.classList.remove('active');
+
+    // Check if IT College selected (Index 9)
+    if (index === 9) {
+      itSection.style.display = 'block';
+    } else {
+      itSection.style.display = 'none';
+    }
+
+    detailsBox.style.display = 'block';
+    detailsBox.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  }
+
+  // Show Tree Plan Image + PDF download link
+  function showPlan(majorIndex, btnElement) {
+    const major = itMajorsData[majorIndex];
+    const majorBtns = document.querySelectorAll('.major-btn');
+    majorBtns.forEach(b => b.classList.remove('active'));
+    if (btnElement) btnElement.classList.add('active');
+
+    const planBox = document.getElementById('planViewBox');
+    const title = document.getElementById('planTitleText');
+    const img = document.getElementById('planImage');
+    const pdfLink = document.getElementById('planPdfLink');
+
+    const majorName = currentLang === 'en' ? major.nameEn : major.nameAr;
+    title.textContent = (currentLang === 'en' ? 'Tree Plan for: ' : 'الخطة الشجرية لتخصص: ') + majorName;
+
+    // Direct link with GitHub raw fallback (image preview)
+    img.src = major.img;
+    img.onerror = function () {
+      this.src = REPO_BASE + major.img;
+    };
+
+    // PDF download — same repo, matching filename (upload plan-xxx.pdf next to plan-xxx.png)
+    pdfLink.href = REPO_BASE + major.pdf;
+    pdfLink.setAttribute('download', major.pdf);
+
+    planBox.classList.add('active');
+    planBox.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  }
+
+  // ===== Building & College Codes (بيانات حقيقية زودنا بها مسؤول الكتلة) =====
+  const codesData = [
+    { nameAr: "كلية العلوم", nameEn: "Faculty of Science", code: "مج" },
+    { nameAr: "مبنى الأمير حسين بن عبدالله الثاني", nameEn: "Prince Al-Hussein bin Abdullah II Building", code: "PHu" },
+    { nameAr: "كلية التربية الرياضية", nameEn: "Faculty of Physical Education", code: "جم" },
+    { nameAr: "كلية الآداب", nameEn: "Faculty of Arts", code: "اد" },
+    { nameAr: "كلية التربية", nameEn: "Faculty of Education", code: "ت" },
+    { nameAr: "كلية الآثار والأنثروبولوجيا", nameEn: "Faculty of Archaeology and Anthropology", code: "اث" },
+    { nameAr: "كلية الحجاوي (للهندسة)", nameEn: "Hijjawi Faculty (Engineering)", code: "هـ / هـ.ن" },
+    { nameAr: "كلية الحجاوي (جديد)", nameEn: "Hijjawi Faculty (New)", code: "هج" },
+    { nameAr: "كلية تكنولوجيا المعلومات (المقدسي)", nameEn: "Faculty of IT (Al-Maqdisi)", code: "مق" },
+    { nameAr: "كلية القانون", nameEn: "Faculty of Law", code: "حق / L" },
+    { nameAr: "كلية الفنون", nameEn: "Faculty of Arts (Fine Arts)", code: "ف" },
+    { nameAr: "مبنى الجيولوجيا (ابن سينا القديم)", nameEn: "Geology Building (Old Ibn Sina)", code: "ح" },
+    { nameAr: "كلية الاقتصاد الجديد", nameEn: "New Faculty of Economics", code: "A" },
+    { nameAr: "كلية الشريعة", nameEn: "Faculty of Sharia", code: "ش" },
+    { nameAr: "مبنى الخوارزمي", nameEn: "Al-Khwarizmi Building", code: "خز" },
+    { nameAr: "القرية الانجليزية", nameEn: "The English Village", code: "ر" },
+    { nameAr: "مبنى الكيمياء", nameEn: "Chemistry Building", code: "مك" },
+    { nameAr: "الفارابي / المقصف", nameEn: "Al-Farabi / Cafeteria", code: "ق" },
+    { nameAr: "الاقتصاد القديم / السياحة والفنادق الجديدة", nameEn: "Old Economics / New Tourism & Hotels", code: "اق / مختبرات" },
+    { nameAr: "الطب والصيدلة", nameEn: "Medicine & Pharmacy", code: "M" },
+    { nameAr: "كلية الإعلام", nameEn: "Faculty of Media", code: "B" }
+  ];
+
+  const codesGrid = document.getElementById('codesGrid');
+  function renderCodesGrid() {
+    codesGrid.innerHTML = '';
+    codesData.forEach(c => {
+      const chip = document.createElement('div');
+      chip.className = 'code-chip';
+      chip.dataset.name = (c.nameAr + ' ' + c.nameEn).toLowerCase();
+      chip.innerHTML = `<span class="code-tag">${c.code}</span><span>${currentLang === 'en' ? c.nameEn : c.nameAr}</span>`;
+      codesGrid.appendChild(chip);
+    });
+  }
+  renderCodesGrid();
+
+  document.getElementById('codeSearch').addEventListener('input', (e) => {
+    const q = e.target.value.trim().toLowerCase();
+    document.querySelectorAll('.code-chip').forEach(chip => {
+      chip.classList.toggle('hide', q && !chip.dataset.name.includes(q));
+    });
+  });
+
+  // ===== أبرز النشاطات والإنجازات (تحديثها دورياً بقضايا وأنشطة حقيقية) =====
+  const achievementsData = [
+    {
+      titleAr: "مطالبة رسمية بتأجيل 50% من الرسوم الجامعية",
+      titleEn: "Official Request to Defer 50% of University Fees",
+      status: "pending",
+      descAr: "رفعت كتلة القرار الطلابية كتاباً رسمياً إلى كتلة حزب المبادرة النيابية، طالبت فيه بتأجيل الرسوم الجامعية بنسبة 50%، بما يخفف الأعباء المالية عن الطلبة ويضمن استمرارهم في مسيرتهم التعليمية. واستجابةً لهذا المطلب، طالب سعادة النائب الأول د. خميس عطية معالي وزير التعليم العالي والبحث العلمي بوضع آلية واضحة لتجزئة الرسوم الجامعية، بما يحقق العدالة ويمنح الطلبة فرصة حقيقية لاستكمال دراستهم دون تعثر. وننتظر، بإذن الله تعالى، رد كتلة حزب المبادرة النيابية، آملين أن يحظى هذا المطلب باهتمامهم ودعمهم لما فيه مصلحة الطلبة.",
+      descEn: "Al-Qarar Student Bloc submitted an official letter to the Al-Mubadara parliamentary bloc, requesting a 50% deferral of university fees to ease the financial burden on students and help them continue their education without interruption. In response, First Deputy MP Dr. Khamis Attieh urged the Minister of Higher Education and Scientific Research to set a clear mechanism for fee installments, ensuring fairness and giving students a real chance to complete their studies without setbacks. We are awaiting a response from the Al-Mubadara parliamentary bloc, hoping this request receives their attention and support for the benefit of students.",
+      link: "https://web.facebook.com/share/p/1JSepYYZmV/"
+    }
+  ];
+
+  function renderAchievements() {
+    const list = document.getElementById('achievementsList');
+    list.innerHTML = '';
+    achievementsData.forEach(a => {
+      const isPending = a.status === 'pending';
+      const card = document.createElement('div');
+      card.className = 'achievement-card';
+      card.innerHTML = `
+        <div class="achievement-top">
+          <div class="achievement-top-left">
+            <img class="achievement-logo" src="logo.png" onerror="this.src='https://raw.githubusercontent.com/mistarihi7/alqrar-yu/main/logo.png'" alt="شعار كتلة القرار">
+            <span class="achievement-badge ${isPending ? 'pending' : ''}" data-en="${isPending ? 'In Progress' : 'Resolved'}">${isPending ? 'قيد المتابعة' : 'منجز'}</span>
+          </div>
+        </div>
+        <h4>${currentLang === 'en' ? a.titleEn : a.titleAr}</h4>
+        <p>${currentLang === 'en' ? a.descEn : a.descAr}</p>
+        ${a.link ? `<a class="achievement-link" href="${a.link}" target="_blank" data-en="More details →">المزيد من التفاصيل ←</a>` : ''}`;
+      list.appendChild(card);
+    });
+  }
+  renderAchievements();
+
+  // ===== Language toggle (Arabic / English) =====
+  function applyLanguage(lang) {
+    currentLang = lang;
+    localStorage.setItem('siteLang', lang);
+    document.documentElement.setAttribute('lang', lang);
+
+    // Swap simple text nodes
+    document.querySelectorAll('[data-en]').forEach(el => {
+      if (el.dataset.ar === undefined) el.dataset.ar = el.textContent;
+      el.textContent = lang === 'en' ? el.dataset.en : el.dataset.ar;
+    });
+    // Swap placeholders
+    document.querySelectorAll('[data-en-placeholder]').forEach(el => {
+      if (el.dataset.arPlaceholder === undefined) el.dataset.arPlaceholder = el.placeholder;
+      el.placeholder = lang === 'en' ? el.dataset.enPlaceholder : el.dataset.arPlaceholder;
+    });
+
+    document.getElementById('langToggle').textContent = lang === 'en' ? 'العربية' : 'English';
+
+    // Re-render data-driven blocks
+    collegesGrid.querySelectorAll('.college-badge span:not(.college-num)').forEach((span, i) => {
+      span.textContent = lang === 'en' ? collegesData[i].nameEn : collegesData[i].name;
+    });
+    collegeSelect.querySelectorAll('option[data-ar]').forEach(opt => {
+      opt.textContent = lang === 'en' ? opt.dataset.en : opt.dataset.ar;
+    });
+    renderMajorsGrid();
+    renderCodesGrid();
+    const codeQ = document.getElementById('codeSearch').value.trim().toLowerCase();
+    if (codeQ) {
+      document.querySelectorAll('.code-chip').forEach(chip => {
+        chip.classList.toggle('hide', !chip.dataset.name.includes(codeQ));
+      });
+    }
+    renderAchievements();
+    if (currentCollegeIndex !== null) selectCollege(currentCollegeIndex);
+  }
+
+  document.getElementById('langToggle').addEventListener('click', () => {
+    applyLanguage(currentLang === 'ar' ? 'en' : 'ar');
+  });
+  if (currentLang === 'en') applyLanguage('en');
+
+  // ===== Share button (Web Share API with clipboard fallback) =====
+  const shareBtn = document.getElementById('shareBtn');
+  const shareToast = document.getElementById('shareToast');
+  function showToast(msg) {
+    shareToast.textContent = msg;
+    shareToast.style.opacity = '1';
+    setTimeout(() => { shareToast.style.opacity = '0'; }, 2200);
+  }
+  shareBtn.addEventListener('click', async () => {
+    const shareData = {
+      title: 'كتلة القرار الطلابية - جامعة اليرموك',
+      text: 'تصفح موقع كتلة القرار الطلابية: الخطط الدراسية، خريطة الجامعة، وكل جديد عن الكتلة.',
+      url: window.location.href
+    };
+    if (navigator.share) {
+      try { await navigator.share(shareData); } catch (err) { /* user cancelled */ }
+    } else {
+      try {
+        await navigator.clipboard.writeText(shareData.url);
+        showToast(currentLang === 'en' ? 'Link copied!' : 'تم نسخ الرابط!');
+      } catch (err) {
+        showToast(currentLang === 'en' ? 'Could not copy the link' : 'تعذر نسخ الرابط');
+      }
+    }
+  });
+
+  // Join Form WhatsApp Submission
+  const joinForm = document.getElementById('joinForm');
+  const successMsg = document.getElementById('successMsg');
+  const TARGET_WHATSAPP = "962776562573";
+
+  // Floating WhatsApp quick-contact button (reuses the same official number above)
+  const floatWa = document.getElementById('floatWhatsapp');
+  if (floatWa) {
+    const quickMsg = encodeURIComponent("مرحباً، أرغب بالاستفسار عن كتلة القرار الطلابية.");
+    floatWa.href = `https://wa.me/${TARGET_WHATSAPP}?text=${quickMsg}`;
+  }
+
+  joinForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    
+    const fullName = document.getElementById('fullName').value.trim();
+    const studentId = document.getElementById('studentId').value.trim();
+    const studentPhone = document.getElementById('studentPhone').value.trim();
+    const college = document.getElementById('collegeSelect').value;
+
+    if (!fullName || !studentId || !studentPhone || !college) {
+      alert('الرجاء تعبئة كافة الحقول المطلوبة قبل الإرسال.');
+      return;
+    }
+
+    const message = `📋 *طلب انتساب جديد لكتلة القرار*:%0A%0A` +
+                    `👤 *الاسم الكامل:* ${fullName}%0A` +
+                    `🎓 *الرقم الجامعي:* ${studentId}%0A` +
+                    `📱 *رقم الهاتف:* ${studentPhone}%0A` +
+                    `🏛️ *الكلية:* ${college}`;
+
+    successMsg.style.display = 'block';
+
+    setTimeout(() => {
+      window.open(`https://wa.me/${TARGET_WHATSAPP}?text=${message}`, '_blank');
+    }, 400);
+  });
+
+  // Back-to-top button visibility
+  const backToTop = document.getElementById('backToTop');
+  window.addEventListener('scroll', () => {
+    backToTop.classList.toggle('show', window.scrollY > 500);
+  });
+  backToTop.addEventListener('click', () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+
+  // Highlight current section in navigation while scrolling
+  const navAnchors = document.querySelectorAll('nav.links a, .mobile-nav a');
+  const sections = [...navAnchors].map(a => document.querySelector(a.getAttribute('href'))).filter(Boolean);
+  const sectionObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const id = '#' + entry.target.id;
+        navAnchors.forEach(a => a.classList.toggle('active', a.getAttribute('href') === id));
+      }
+    });
+  }, { rootMargin: '-45% 0px -50% 0px' });
+  sections.forEach(s => sectionObserver.observe(s));
+</script>
+</body>
+</html>
