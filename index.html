@@ -199,6 +199,17 @@
   .college-details-title{font-size:17px; font-weight:800; color:var(--navy); margin-bottom:8px; display:flex; align-items:center; gap:8px;}
   .college-details-text{font-size:13.5px; color:#3A4652; line-height:1.7; background:var(--paper); padding:12px 15px; border-radius:var(--radius-s); border-right:3px solid var(--green);}
 
+  .college-wa-wrap{margin-top:14px; display:none;}
+  .college-wa-btn{
+    display:inline-flex; align-items:center; gap:9px; background:#25D366; color:#fff;
+    font-family:'Cairo',sans-serif; font-weight:800; font-size:13.5px; padding:10px 18px;
+    border-radius:var(--radius-s); transition:background .2s ease, transform .15s ease;
+    box-shadow:0 6px 16px rgba(37,211,102,0.22);
+  }
+  .college-wa-btn:hover{background:#1ebe5d; transform:translateY(-1px);}
+  .college-wa-btn svg{width:19px; height:19px; fill:#fff; flex:none;}
+
+
   /* IT Majors Section Inside Details */
   .it-majors-section{margin-top:20px; border-top:1px dashed var(--line); padding-top:18px;}
   .majors-grid{display:grid; grid-template-columns:1fr; gap:8px; margin-top:12px;}
@@ -338,13 +349,13 @@
     
     <nav class="links">
       <a href="#about" data-en="About Us">من نحن</a>
-      <a href="#structure" data-en="Structure">هيكلة الكتلة</a>
       <a href="#map" data-en="Campus Map">خريطة الجامعة</a>
       <a href="#codes" data-en="Building Codes">رموز الكليات</a>
       <a href="#tracks" data-en="Colleges & Plans">الكليات والخطط</a>
       <a href="#achievements" data-en="Activities & Achievements">أبرز النشاطات والإنجازات</a>
       <a href="#social" data-en="Contact">التواصل</a>
       <a href="#join" data-en="Join Us">انضم إلينا</a>
+      <a href="#structure" data-en="Structure">هيكلة الكتلة</a>
     </nav>
 
     <div style="display: flex; align-items: center; gap: 10px;">
@@ -357,13 +368,13 @@
 
 <div class="mobile-nav" id="mobileNav">
   <a href="#about" class="mob-link" data-en="About Us">من نحن</a>
-  <a href="#structure" class="mob-link" data-en="Structure">هيكلة الكتلة</a>
   <a href="#map" class="mob-link" data-en="Campus Map">خريطة الجامعة</a>
   <a href="#codes" class="mob-link" data-en="Building Codes">رموز الكليات</a>
   <a href="#tracks" class="mob-link" data-en="Colleges & Plans">الكليات والخطط</a>
   <a href="#achievements" class="mob-link" data-en="Activities & Achievements">أبرز النشاطات والإنجازات</a>
   <a href="#social" class="mob-link" data-en="Contact">التواصل الاجتماعي</a>
   <a href="#join" class="mob-link" data-en="Join Us">انضم إلينا</a>
+  <a href="#structure" class="mob-link" data-en="Structure">هيكلة الكتلة</a>
 </div>
 
 <main>
@@ -401,17 +412,17 @@
           <span data-en="Who We Are">من نحن</span>
           <span class="dash"></span>
         </div>
-        <h2 data-en="Al-Qarar Student Bloc: Youth of This Country, Standing With You">كتلة القرار الطلابية: شباب الوطن، وسند حقيقي لك</h2>
+        <h2 data-en="Al-Qarar Student Bloc: Youth's Pledge and Best Impact... for Yarmouk and the Homeland">كتلة القرار الطلابي: عهد الشباب وخيرُ الأثر... لليرموك وللوطن</h2>
       </div>
 
       <div class="content-card" style="text-align:right; max-width:900px;">
         <p style="font-size:14.5px; line-height:2; color:#334049;"
-           data-en="Al-Qarar Student Bloc is a genuine student framework at Yarmouk University, made up of students who believe the university experience should be built on real partnership between student and institution — not just words. We are the youth of this homeland and of Jordan, and we work every day to support and stand behind every student, because our strength comes from our closeness to you and our honest belief in your causes.">
-          كتلة القرار الطلابية إطار طلابي حقيقي داخل جامعة اليرموك، يضم طلبة يؤمنون بأن التجربة الجامعية يجب أن تُبنى على شراكة فعلية بين الطالب والمؤسسة، لا على الشعارات فقط. نحن شباب هذا الوطن وشباب الأردن، ونعمل كل يوم لدعم كل طالب واحتضانه، لأن قوتنا تنبع من قربنا منكم وإيماننا الصادق بقضاياكم.
+           data-en="Al-Qarar Student Bloc is a genuine student framework at Yarmouk University, made up of students who believe the university experience should be built on real partnership between student and institution — not just words. We are Jordanian youth energies pulsing with belonging, placing ourselves at the service of every student, firmly convinced that real student work begins in the field and ends with achieving impact.">
+          كتلة القرار الطلابية إطار طلابي حقيقي داخل جامعة اليرموك، يضم طلبة يؤمنون بأن التجربة الجامعية يجب أن تُبنى على شراكة فعلية بين الطالب والمؤسسة، لا على الشعارات فقط. نحن طاقات شبابية أردنية تنبض بروح الانتماء، نضع أنفسنا في خدمة كل طالب، لأن قناعتنا راسخة بأن العمل الطلابي الحقيقي يبدأ من الميدان وينتهي بتحقيق الأثر.
         </p>
         <p style="font-size:14.5px; line-height:2; color:#334049; margin-top:14px;"
            data-en="We are incubated by Al-Mubadara Party, which gives our work an organized political and institutional umbrella without compromising our independence in representing students. In practice, we adopt student demands as they are and deliver them to the concerned university departments, follow up until they're resolved, and organize field and technical visits that connect students directly with decision-makers on campus.">
-          نحن نحتضنّ من قبل حزب المبادرة، وهو ما يمنح عملنا مظلة سياسية ومؤسسية منظمة دون أن يمسّ ذلك استقلاليتنا في تمثيل الطلبة. وعلى أرض الواقع، نتبنّى مطالب الطلبة كما هي ونوصلها إلى الجهة المعنية داخل الجامعة، ونتابعها حتى تُحل، كما ننظم زيارات ميدانية وتقنية تربط الطالب مباشرة بأصحاب القرار داخل الحرم الجامعي.
+          نحن مُحتضَنون من قِبل حزب مُبادرة، وهو ما يمنح عملنا مظلة سياسية ومؤسسية منظمة دون أن يمسّ ذلك استقلاليتنا في تمثيل الطلبة. وعلى أرض الواقع، نتبنّى مطالب الطلبة كما هي ونوصلها إلى الجهة المعنية داخل الجامعة، ونتابعها حتى تُحل، كما ننظم زيارات ميدانية وتقنية تربط الطالب مباشرة بأصحاب القرار داخل الحرم الجامعي.
         </p>
       </div>
 
@@ -432,38 +443,8 @@
     </div>
   </section>
 
-  <!-- قسم الهيكل التنظيمي -->
-  <section id="structure">
-    <div class="wrap">
-      <div class="section-head" style="margin-bottom: 20px;">
-        <div class="kicker-line">
-          <span class="dash"></span>
-          <span>الهيكل التنظيمي</span>
-          <span class="dash"></span>
-        </div>
-        <h2 data-en="Al-Qarar Student Bloc Structure">هيكلة كتلة القرار الطلابية</h2>
-        <p style="margin-top: 12px; font-size: 14px; line-height: 1.8; color: var(--navy); font-weight: 600;"
-           data-en="Al-Qarar Student Bloc announces the adoption of its general organizational structure. This follows a defined administrative methodology for distributing tasks between the bloc's leadership, technical departments, and college committees, ensuring student follow-up runs professionally and transparently.">
-          تعلن كتلة القرار الطلابية عن اعتماد هيكلها التنظيمي العام.<br>
-          يأتي هذا اعتمادًا على منهجية العمل الإداري المحددة لتوزيع المهام بين رئاسة الكتلة، الأقسام الفنية، ولجان الكليات؛ لضمان سير المتابعات الطلابية بمهنية ووضوح.
-        </p>
-        <p style="margin-top:8px; font-size:14px; font-weight:600;">
-          <span style="display:block; color:var(--ink);" data-en="Administrative Board - Al-Qarar Student Bloc">الهيئة الإدارية - كتلة القرار الطلابية</span>
-          <span style="display:block; margin-top:4px; color:var(--red); font-weight:800;" data-en="#We_Listen_We_Represent_We_Deliver">#نسمع_نمثل_ننجز</span>
-        </p>
-      </div>
-
-      <div class="content-card">
-        <div class="image-frame">
-          <img src="structure.png" onerror="this.src='https://raw.githubusercontent.com/mistarihi7/alqrar-yu/main/structure.png'" alt="هيكلة كتلة القرار الطلابية" style="width: 100%; height: auto; object-fit: contain;">
-        </div>
-        <p style="margin-top: 10px; font-size: 12px; color: var(--gray);" data-en="Al-Qarar Student Bloc's official organizational and administrative structure">الهيكل التنظيمي والإداري الرسمي لكتلة القرار الطلابية</p>
-      </div>
-    </div>
-  </section>
-
   <!-- قسم خريطة جامعة اليرموك -->
-  <section id="map" style="background:#fff;">
+  <section id="map">
     <div class="wrap">
       <div class="section-head">
         <div class="kicker-line">
@@ -486,7 +467,7 @@
   </section>
 
   <!-- قسم رموز المباني والكليات -->
-  <section id="codes">
+  <section id="codes" style="background:#fff;">
     <div class="wrap">
       <div class="section-head">
         <div class="kicker-line">
@@ -514,7 +495,7 @@
   </section>
 
   <!-- قسم الكليات والخطط الشجرية والنبذ التعريفية -->
-  <section id="tracks" style="background:#fff;">
+  <section id="tracks">
     <div class="wrap">
       <div class="section-head">
         <div class="kicker-line">
@@ -537,6 +518,12 @@
         </div>
         <div class="college-details-text" id="collegeAboutText">
           نبذة عن الكلية المحددة...
+        </div>
+        <div class="college-wa-wrap" id="collegeWaWrap">
+          <a href="#" id="collegeWaLink" target="_blank" rel="noopener noreferrer" class="college-wa-btn">
+            <svg viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
+            <span id="collegeWaText">انضم لقروب واتساب الطلبة المستجدين (26-27)</span>
+          </a>
         </div>
 
         <!-- تخصصات كلية تكنولوجيا المعلومات (تظهر فقط عند اختيار كلية IT) - تُبنى تلقائياً من itMajorsData -->
@@ -669,6 +656,36 @@
       </div>
     </div>
   </section>
+
+  <!-- قسم الهيكل التنظيمي -->
+  <section id="structure">
+    <div class="wrap">
+      <div class="section-head" style="margin-bottom: 20px;">
+        <div class="kicker-line">
+          <span class="dash"></span>
+          <span>الهيكل التنظيمي</span>
+          <span class="dash"></span>
+        </div>
+        <h2 data-en="Al-Qarar Student Bloc Structure">هيكلة كتلة القرار الطلابية</h2>
+        <p style="margin-top: 12px; font-size: 14px; line-height: 1.8; color: var(--navy); font-weight: 600;"
+           data-en="Al-Qarar Student Bloc announces the adoption of its general organizational structure. This follows a defined administrative methodology for distributing tasks between the bloc's leadership, technical departments, and college committees, ensuring student follow-up runs professionally and transparently.">
+          تعلن كتلة القرار الطلابية عن اعتماد هيكلها التنظيمي العام.<br>
+          يأتي هذا اعتمادًا على منهجية العمل الإداري المحددة لتوزيع المهام بين رئاسة الكتلة، الأقسام الفنية، ولجان الكليات؛ لضمان سير المتابعات الطلابية بمهنية ووضوح.
+        </p>
+        <p style="margin-top:8px; font-size:14px; font-weight:600;">
+          <span style="display:block; color:var(--ink);" data-en="Administrative Board - Al-Qarar Student Bloc">الهيئة الإدارية - كتلة القرار الطلابية</span>
+          <span style="display:block; margin-top:4px; color:var(--red); font-weight:800;" data-en="#We_Listen_We_Represent_We_Deliver">#نسمع_نمثل_ننجز</span>
+        </p>
+      </div>
+
+      <div class="content-card">
+        <div class="image-frame">
+          <img src="structure.png" onerror="this.src='https://raw.githubusercontent.com/mistarihi7/alqrar-yu/main/structure.png'" alt="هيكلة كتلة القرار الطلابية" style="width: 100%; height: auto; object-fit: contain;">
+        </div>
+        <p style="margin-top: 10px; font-size: 12px; color: var(--gray);" data-en="Al-Qarar Student Bloc's official organizational and administrative structure">الهيكل التنظيمي والإداري الرسمي لكتلة القرار الطلابية</p>
+      </div>
+    </div>
+  </section>
 </main>
 
 <footer>
@@ -681,13 +698,13 @@
       <div>
         <h5 style="color:#fff; font-family:'Cairo',sans-serif; margin-bottom:8px; font-size:13.5px;" data-en="Quick Links">روابط سريعة</h5>
         <ul style="display:flex; flex-direction:column; gap:5px; font-size:12.5px;">
-          <li><a href="#structure" data-en="Structure">هيكلة الكتلة</a></li>
           <li><a href="#map" data-en="Campus Map">خريطة الجامعة</a></li>
           <li><a href="#codes" data-en="Building Codes">رموز الكليات</a></li>
           <li><a href="#tracks" data-en="Colleges & Plans">الكليات والخطط</a></li>
           <li><a href="#achievements" data-en="Activities & Achievements">أبرز النشاطات والإنجازات</a></li>
           <li><a href="#social" data-en="Social Media">التواصل الاجتماعي</a></li>
           <li><a href="#join" data-en="Membership Form">نموذج الانتساب</a></li>
+          <li><a href="#structure" data-en="Structure">هيكلة الكتلة</a></li>
         </ul>
       </div>
     </div>
@@ -733,22 +750,22 @@
 
   // Data Array for all 17 Colleges (nameEn/aboutEn power the English toggle)
   const collegesData = [
-    { name: "كلية الآداب", nameEn: "Faculty of Arts", about: "تعد من أعرق كليات جامعة اليرموك، وتضم أقسام اللغات (العربية، الإنجليزية، اللغات الحديثة)، التاريخ، الجغرافيا، والعلوم الاجتماعية، وتهدف إلى بناء حصانة فكرية ولغوية متميزة للطلبة.", aboutEn: "One of Yarmouk University's most established faculties, home to the language departments (Arabic, English, Modern Languages), History, Geography, and Social Sciences, building strong intellectual and linguistic foundations for students." },
-    { name: "كلية العلوم", nameEn: "Faculty of Science", about: "صرح علمي متميز يضم أقسام الرياضيات، الفيزياء، الكيمياء، العلوم الحياتية، الإحصاء، والأرض والبيئة، وتوفر مختبرات حديثة للبحث العلمي والتطبيق العملي.", aboutEn: "A leading scientific faculty with departments of Mathematics, Physics, Chemistry, Life Sciences, Statistics, and Earth & Environment, offering modern labs for research and hands-on application." },
-    { name: "كلية الأعمال", nameEn: "Faculty of Business", about: "تُعنى بتأهيل الكوادر القيادية في مجالات إدارة الأعمال، المحاسبة، العلوم المالية والمصرفية، التسويق، الاقتصاد، وإدارة العامة والاقتصاد الرقمي لتلبية احتياجات سوق العمل.", aboutEn: "Prepares future leaders in Business Administration, Accounting, Finance & Banking, Marketing, Economics, Public Administration, and the Digital Economy to meet labor-market needs." },
-    { name: "كلية الحجاوي للهندسة التكنولوجية", nameEn: "Hijjawi Faculty for Engineering Technology", about: "من الكليات الرائدة هندسياً في الأردن، وتضم التخصصات الهندسية المختلفة مثل الحاسوب، اتصالات، كهرباء، مدني، ميكانيك، وهندسة العمارة والتقنيات الحديثة.", aboutEn: "One of Jordan's leading engineering faculties, covering Computer, Communications, Electrical, Civil, and Mechanical Engineering, plus Architecture and modern technologies." },
-    { name: "كلية الشريعة والدراسات الإسلامية", nameEn: "Faculty of Sharia and Islamic Studies", about: "تهدف إلى ترسيخ الفكر الإسلامي المعتدل والإعداد العلمي المتميز في تخصصات الفقه وأصوله، أصول الدين، والدراسات الإسلامية والدعوة.", aboutEn: "Aims to build moderate Islamic thought and academic excellence in Fiqh and its principles, Usul al-Din, and Islamic Studies & Da'wah." },
-    { name: "كلية العلوم التربوية", nameEn: "Faculty of Educational Sciences", about: "تختص بتأهيل المربين والمعلمين والمرشدين النفسيين، وتضم أقسام المناهج، الإدارة التربوية، علم النفس التربوي، وتربية الطفل.", aboutEn: "Prepares educators, teachers, and psychological counselors, with departments in Curriculum, Educational Administration, Educational Psychology, and Early Childhood Education." },
-    { name: "كلية التربية البدنية وعلوم الرياضة", nameEn: "Faculty of Physical Education and Sport Sciences", about: "تُعنى بالإعداد البدني والرياضي وتأهيل مدربين ومعلمي رياضيين محترفين، وتضم صالات ومسابح وملاعب رياضية متكاملة.", aboutEn: "Focuses on physical training and preparing professional coaches and PE teachers, with integrated gyms, pools, and sports fields." },
-    { name: "كلية القانون", nameEn: "Faculty of Law", about: "تركز على تدريس العلوم الحقوقية والقانونية (القانون العام والقانون الخاص) وتأهيل القضاة والمحامين والمستشارين القانونيين بكفاءة عالية.", aboutEn: "Focuses on legal studies (public and private law) and prepares highly competent judges, lawyers, and legal consultants." },
-    { name: "كلية الفنون الجميلة", nameEn: "Faculty of Fine Arts", about: "حاضنة الإبداع والفنون وتضم أقسام التصميم، الفنون التشكيلية، الموسيقى، والدراما، وتساهم في إثراء الحركة الثقافية والفنية.", aboutEn: "A hub for creativity and the arts, with departments in Design, Visual Arts, Music, and Drama, enriching the cultural and artistic scene." },
-    { name: "كلية تكنولوجيا المعلومات وعلوم الحاسوب", nameEn: "Faculty of Information Technology and Computer Sciences", about: "من الكليات المواكبة للتطور الرقمي وتضم تخصصات نوعية مثل الذكاء الاصطناعي، الأمن السيبراني، علوم الحاسوب، نظم المعلومات، تكنولوجيا الأعمال، وتطوير الألعاب.", aboutEn: "A digitally forward faculty offering Artificial Intelligence, Cybersecurity, Computer Science, Information Systems, Business Technology, and Game Development." },
-    { name: "كلية الآثار والأنثروبولوجيا", nameEn: "Faculty of Archaeology and Anthropology", about: "تختص بدراسة وتوثيق التراث الحضاري والآثار وصيانتها ودراسة المجهود الإنساني والمجتمعات عبر التاريخ.", aboutEn: "Specializes in documenting and preserving cultural heritage and archaeology, and studying human communities throughout history." },
-    { name: "كلية السياحة والفنادق", nameEn: "Faculty of Tourism and Hotel Management", about: "تهتم بتدريب وتأهيل الكوادر البشرية في مجالات الإدارة السياحية والفندقية والإرشاد السياحي لدعم القطاع السياحي الوطني.", aboutEn: "Trains professionals in tourism and hotel management and tour guiding to support the national tourism sector." },
-    { name: "كلية الإعلام", nameEn: "Faculty of Media", about: "تخرّج الإعلاميين الصحفيين وصناع المحتوى، وتضم أقسام الصحافة، الإذاعة والتلفزيون، والعلاقات العامة والإعلان مع استوديوهات تدريبية حديثة.", aboutEn: "Graduates journalists and content creators, with departments in Journalism, Radio & TV, and Public Relations & Advertising, backed by modern training studios." },
-    { name: "كلية الطب", nameEn: "Faculty of Medicine", about: "تستهدف تخريج أطباء على مستوى عالٍ من الكفاءة العلمية والأخلاقية لتطوير الرعاية الصحية والخدمات الطبية في الأردن والمنطقة.", aboutEn: "Aims to graduate physicians of high scientific and ethical caliber to advance healthcare and medical services in Jordan and the region." },
-    { name: "كلية الصيدلة", nameEn: "Faculty of Pharmacy", about: "تُعنى بالعلوم الصيدلانية، الرعاية الصيدلانية، والتصنيع الدوائي، وتدريب الطلبة ميدانياً في الصيدليات والمستشفيات.", aboutEn: "Focuses on pharmaceutical sciences, pharmaceutical care, and drug manufacturing, with field training in pharmacies and hospitals." },
-    { name: "كلية التمريض", nameEn: "Faculty of Nursing", about: "تهدف إلى رفد القطاع الصحي بممرضين وممرضات مؤهلين بمهارات عالية للتعامل مع مختلف الحالات المرضية والصحية.", aboutEn: "Aims to supply the healthcare sector with highly skilled nurses capable of handling a wide range of medical and health conditions." },
+    { name: "كلية الآداب", waGroup: "https://chat.whatsapp.com/FFNgAIUdQV77ktAaBFIBPe?mode=gi_t", nameEn: "Faculty of Arts", about: "تعد من أعرق كليات جامعة اليرموك، وتضم أقسام اللغات (العربية، الإنجليزية، اللغات الحديثة)، التاريخ، الجغرافيا، والعلوم الاجتماعية، وتهدف إلى بناء حصانة فكرية ولغوية متميزة للطلبة.", aboutEn: "One of Yarmouk University's most established faculties, home to the language departments (Arabic, English, Modern Languages), History, Geography, and Social Sciences, building strong intellectual and linguistic foundations for students." },
+    { name: "كلية العلوم", waGroup: "https://chat.whatsapp.com/J3ID1YhTzOwF3AGTKZL58x?mode=gi_t", nameEn: "Faculty of Science", about: "صرح علمي متميز يضم أقسام الرياضيات، الفيزياء، الكيمياء، العلوم الحياتية، الإحصاء، والأرض والبيئة، وتوفر مختبرات حديثة للبحث العلمي والتطبيق العملي.", aboutEn: "A leading scientific faculty with departments of Mathematics, Physics, Chemistry, Life Sciences, Statistics, and Earth & Environment, offering modern labs for research and hands-on application." },
+    { name: "كلية الأعمال", waGroup: "https://chat.whatsapp.com/EEsyT9mTk0hH9bQ12nibqS?mode=gi_t", nameEn: "Faculty of Business", about: "تُعنى بتأهيل الكوادر القيادية في مجالات إدارة الأعمال، المحاسبة، العلوم المالية والمصرفية، التسويق، الاقتصاد، وإدارة العامة والاقتصاد الرقمي لتلبية احتياجات سوق العمل.", aboutEn: "Prepares future leaders in Business Administration, Accounting, Finance & Banking, Marketing, Economics, Public Administration, and the Digital Economy to meet labor-market needs." },
+    { name: "كلية الحجاوي للهندسة التكنولوجية", waGroup: "https://chat.whatsapp.com/E1Ymg2i3cuLAJ9jHsFON7L?mode=gi_t", nameEn: "Hijjawi Faculty for Engineering Technology", about: "من الكليات الرائدة هندسياً في الأردن، وتضم التخصصات الهندسية المختلفة مثل الحاسوب، اتصالات، كهرباء، مدني، ميكانيك، وهندسة العمارة والتقنيات الحديثة.", aboutEn: "One of Jordan's leading engineering faculties, covering Computer, Communications, Electrical, Civil, and Mechanical Engineering, plus Architecture and modern technologies." },
+    { name: "كلية الشريعة والدراسات الإسلامية", waGroup: "https://chat.whatsapp.com/GeW3MIp7ngjIpvhjpCC9O3?mode=gi_t", nameEn: "Faculty of Sharia and Islamic Studies", about: "تهدف إلى ترسيخ الفكر الإسلامي المعتدل والإعداد العلمي المتميز في تخصصات الفقه وأصوله، أصول الدين، والدراسات الإسلامية والدعوة.", aboutEn: "Aims to build moderate Islamic thought and academic excellence in Fiqh and its principles, Usul al-Din, and Islamic Studies & Da'wah." },
+    { name: "كلية العلوم التربوية", waGroup: "https://chat.whatsapp.com/LuGxZPDTb4I54u2vOL9RFh?mode=gi_t", nameEn: "Faculty of Educational Sciences", about: "تختص بتأهيل المربين والمعلمين والمرشدين النفسيين، وتضم أقسام المناهج، الإدارة التربوية، علم النفس التربوي، وتربية الطفل.", aboutEn: "Prepares educators, teachers, and psychological counselors, with departments in Curriculum, Educational Administration, Educational Psychology, and Early Childhood Education." },
+    { name: "كلية التربية البدنية وعلوم الرياضة", waGroup: "https://chat.whatsapp.com/Iu9DvuCI86E5e3YxtrgyMm?mode=gi_t", nameEn: "Faculty of Physical Education and Sport Sciences", about: "تُعنى بالإعداد البدني والرياضي وتأهيل مدربين ومعلمي رياضيين محترفين، وتضم صالات ومسابح وملاعب رياضية متكاملة.", aboutEn: "Focuses on physical training and preparing professional coaches and PE teachers, with integrated gyms, pools, and sports fields." },
+    { name: "كلية القانون", waGroup: "https://chat.whatsapp.com/JsGbgkxJHanA4kgpoyJhga?mode=gi_t", nameEn: "Faculty of Law", about: "تركز على تدريس العلوم الحقوقية والقانونية (القانون العام والقانون الخاص) وتأهيل القضاة والمحامين والمستشارين القانونيين بكفاءة عالية.", aboutEn: "Focuses on legal studies (public and private law) and prepares highly competent judges, lawyers, and legal consultants." },
+    { name: "كلية الفنون الجميلة", waGroup: "https://chat.whatsapp.com/JE9q07gBBIZChyl18lETyy?mode=gi_t", nameEn: "Faculty of Fine Arts", about: "حاضنة الإبداع والفنون وتضم أقسام التصميم، الفنون التشكيلية، الموسيقى، والدراما، وتساهم في إثراء الحركة الثقافية والفنية.", aboutEn: "A hub for creativity and the arts, with departments in Design, Visual Arts, Music, and Drama, enriching the cultural and artistic scene." },
+    { name: "كلية تكنولوجيا المعلومات وعلوم الحاسوب", waGroup: "https://chat.whatsapp.com/JCDWxKkXtX0HxyEHBKZ1ui?mode=gi_t", nameEn: "Faculty of Information Technology and Computer Sciences", about: "من الكليات المواكبة للتطور الرقمي وتضم تخصصات نوعية مثل الذكاء الاصطناعي، الأمن السيبراني، علوم الحاسوب، نظم المعلومات، تكنولوجيا الأعمال، وتطوير الألعاب.", aboutEn: "A digitally forward faculty offering Artificial Intelligence, Cybersecurity, Computer Science, Information Systems, Business Technology, and Game Development." },
+    { name: "كلية الآثار والأنثروبولوجيا", waGroup: "https://chat.whatsapp.com/FL91EetjB4PB3XzKmOXsDI?mode=gi_t", nameEn: "Faculty of Archaeology and Anthropology", about: "تختص بدراسة وتوثيق التراث الحضاري والآثار وصيانتها ودراسة المجهود الإنساني والمجتمعات عبر التاريخ.", aboutEn: "Specializes in documenting and preserving cultural heritage and archaeology, and studying human communities throughout history." },
+    { name: "كلية السياحة والفنادق", waGroup: "https://chat.whatsapp.com/ICRPM95yZ119TcCQEAbdL3?mode=gi_t", nameEn: "Faculty of Tourism and Hotel Management", about: "تهتم بتدريب وتأهيل الكوادر البشرية في مجالات الإدارة السياحية والفندقية والإرشاد السياحي لدعم القطاع السياحي الوطني.", aboutEn: "Trains professionals in tourism and hotel management and tour guiding to support the national tourism sector." },
+    { name: "كلية الإعلام", waGroup: "https://chat.whatsapp.com/J6bpIW65LFIKQtcf4m8ciB?mode=gi_t", nameEn: "Faculty of Media", about: "تخرّج الإعلاميين الصحفيين وصناع المحتوى، وتضم أقسام الصحافة، الإذاعة والتلفزيون، والعلاقات العامة والإعلان مع استوديوهات تدريبية حديثة.", aboutEn: "Graduates journalists and content creators, with departments in Journalism, Radio & TV, and Public Relations & Advertising, backed by modern training studios." },
+    { name: "كلية الطب", waGroup: "https://chat.whatsapp.com/IXuEQ7ZELIpLetjkpWjdZ7?mode=gi_t", nameEn: "Faculty of Medicine", about: "تستهدف تخريج أطباء على مستوى عالٍ من الكفاءة العلمية والأخلاقية لتطوير الرعاية الصحية والخدمات الطبية في الأردن والمنطقة.", aboutEn: "Aims to graduate physicians of high scientific and ethical caliber to advance healthcare and medical services in Jordan and the region." },
+    { name: "كلية الصيدلة", waGroup: "https://chat.whatsapp.com/Lyco4Ri3qtX9r3wQosrRZK?mode=gi_t", nameEn: "Faculty of Pharmacy", about: "تُعنى بالعلوم الصيدلانية، الرعاية الصيدلانية، والتصنيع الدوائي، وتدريب الطلبة ميدانياً في الصيدليات والمستشفيات.", aboutEn: "Focuses on pharmaceutical sciences, pharmaceutical care, and drug manufacturing, with field training in pharmacies and hospitals." },
+    { name: "كلية التمريض", waGroup: "https://chat.whatsapp.com/J85Rgrq5pmd6znOEZUmH6O?mode=gi_t", nameEn: "Faculty of Nursing", about: "تهدف إلى رفد القطاع الصحي بممرضين وممرضات مؤهلين بمهارات عالية للتعامل مع مختلف الحالات المرضية والصحية.", aboutEn: "Aims to supply the healthcare sector with highly skilled nurses capable of handling a wide range of medical and health conditions." },
     { name: "الكلية التقنية (دبلوم)", nameEn: "Technical College (Diploma)", about: "تقدم برامج الدبلوم المتوسط والتدريب المهني التقني المباشر لرفد سوق العمل بالمهارات الحرفية والتكنولوجية المطلوبة.", aboutEn: "Offers intermediate diploma and direct vocational-technical training programs to supply the labor market with required craft and technological skills." }
   ];
 
@@ -814,6 +831,19 @@
 
     titleName.textContent = currentLang === 'en' ? collegesData[index].nameEn : collegesData[index].name;
     aboutText.textContent = currentLang === 'en' ? collegesData[index].aboutEn : collegesData[index].about;
+
+    const waWrap = document.getElementById('collegeWaWrap');
+    const waLink = document.getElementById('collegeWaLink');
+    const waText = document.getElementById('collegeWaText');
+    if (collegesData[index].waGroup) {
+      waLink.href = collegesData[index].waGroup;
+      waText.textContent = currentLang === 'en'
+        ? 'Join Freshmen WhatsApp Group (26-27)'
+        : 'انضم لقروب واتساب الطلبة المستجدين (26-27)';
+      waWrap.style.display = 'block';
+    } else {
+      waWrap.style.display = 'none';
+    }
 
     // Hide Plan box when switching colleges
     planBox.classList.remove('active');
@@ -906,12 +936,36 @@
   // ===== أبرز النشاطات والإنجازات (تحديثها دورياً بقضايا وأنشطة حقيقية) =====
   const achievementsData = [
     {
-      titleAr: "مطالبة رسمية بتأجيل 50% من الرسوم الجامعية",
-      titleEn: "Official Request to Defer 50% of University Fees",
-      status: "pending",
-      descAr: "رفعت كتلة القرار الطلابية كتاباً رسمياً إلى كتلة حزب المبادرة النيابية، طالبت فيه بتأجيل الرسوم الجامعية بنسبة 50%، بما يخفف الأعباء المالية عن الطلبة ويضمن استمرارهم في مسيرتهم التعليمية. واستجابةً لهذا المطلب، طالب سعادة النائب الأول د. خميس عطية معالي وزير التعليم العالي والبحث العلمي بوضع آلية واضحة لتجزئة الرسوم الجامعية، بما يحقق العدالة ويمنح الطلبة فرصة حقيقية لاستكمال دراستهم دون تعثر. وننتظر، بإذن الله تعالى، رد كتلة حزب المبادرة النيابية، آملين أن يحظى هذا المطلب باهتمامهم ودعمهم لما فيه مصلحة الطلبة.",
-      descEn: "Al-Qarar Student Bloc submitted an official letter to the Al-Mubadara parliamentary bloc, requesting a 50% deferral of university fees to ease the financial burden on students and help them continue their education without interruption. In response, First Deputy MP Dr. Khamis Attieh urged the Minister of Higher Education and Scientific Research to set a clear mechanism for fee installments, ensuring fairness and giving students a real chance to complete their studies without setbacks. We are awaiting a response from the Al-Mubadara parliamentary bloc, hoping this request receives their attention and support for the benefit of students.",
+      titleAr: "إنجاز تأجيل الرسوم الجامعية للطلبة",
+      titleEn: "University Fee Deferral Achieved for Students",
+      status: "resolved",
+      descAr: "بفضل الله وجهود ومتابعة كتلة القرار الطلابية المستمرة مع الجهات المعنية، تم إنجاز ملف تأجيل الرسوم الجامعية للطلبة، بما يخفف الأعباء المالية عنهم ويمكّنهم من استكمال تسجيلهم ومسيرتهم الدراسية دون تعثر.",
+      descEn: "Following continuous follow-up by Al-Qarar Student Bloc with the concerned authorities, university fee deferral for students has been achieved, easing financial burdens and enabling students to complete their registration and studies smoothly.",
       link: "https://web.facebook.com/share/p/1JSepYYZmV/"
+    },
+    {
+      titleAr: "إنجاز فتح باب التحويل الداخلي بين التخصصات",
+      titleEn: "Internal Major Transfer Window Opened",
+      status: "resolved",
+      descAr: "أنجزت كتلة القرار الطلابية متابعة ملف التحويل الداخلي، حيث تم فتح باب التحويل الداخلي للطلبة لإتاحة الفرصة أمامهم للانتقال إلى التخصصات التي تتوافق مع رغباتهم ومساراتهم الأكاديمية.",
+      descEn: "Al-Qarar Student Bloc successfully followed up on the internal transfer file, resulting in opening the internal major transfer window so students can move to programs aligned with their academic goals.",
+      link: "https://web.facebook.com/share/p/1ERsPxLdSv/"
+    },
+    {
+      titleAr: "انطلاقة كتلة القرار الطلابية والمؤتمر العام",
+      titleEn: "Launch of Al-Qarar Student Bloc & General Conference",
+      status: "resolved",
+      descAr: "من رحم الإنجازات وُلدت الحكاية، وبالعزيمة كُتبت الأمجاد؛ كتلة القرار الطلابية مسيرةٌ من العطاء، ورايةٌ لا تنحني ما دام فينا نبضٌ وإرادة. واليوم، من انطلاقة مؤتمرنا العام، نعلنها بثقةٍ لا تعرف التراجع: ما حققناه فخرٌ نعتز به، وما هو آتٍ مجدٌ نصنعه بأيدينا؛ فالقادم أعظم، والقرار دائمًا لنا.",
+      descEn: "Out of achievements the story was born, and with determination glories were written; Al-Qarar Student Bloc is a journey of giving and a banner that never bows as long as pulse and will remain within us. Today, from the launch of our General Conference, we declare with unwavering confidence: what we have achieved is a source of pride, and what lies ahead is a glory we build with our own hands; the best is yet to come, and the decision is always ours.",
+      link: "https://web.facebook.com/share/v/1A6JTDxjam/"
+    },
+    {
+      titleAr: "بيان صادر عن كتلة القرار الطلابية – جامعة اليرموك",
+      titleEn: "Official Statement by Al-Qarar Student Bloc – Yarmouk University",
+      status: "statement",
+      descAr: "يا أبناء شعبنا الأردني العظيم، يا زملائنا وزميلاتنا في رحاب جامعة اليرموك الشامخة، في ظل ما يشهده وطننا الأغلى من تحديات وما يحيط به من أطماع خاسرة ومحاولات يائسة للنيل من طمأنينته واستقراره، نقف اليوم في كتلة القرار الطلابية صفاً واحداً، وبصوت يعلو فوق كل محاولة جبانة، لنؤكد أن الأردن لم يكن يوماً ولن يكون إلا مقبرةً لقوى الظلام وأوكار الإرهاب والتطرف.",
+      descEn: "To the sons and daughters of our great Jordanian people, and our fellow students at Yarmouk University: amidst the challenges facing our beloved homeland and desperate attempts to undermine its peace and stability, Al-Qarar Student Bloc stands united today to affirm that Jordan has always been and will always remain a fortress against forces of darkness, terrorism, and extremism.",
+      link: "https://web.facebook.com/share/p/1A55mD4UxX/"
     }
   ];
 
@@ -926,7 +980,7 @@
         <div class="achievement-top">
           <div class="achievement-top-left">
             <img class="achievement-logo" src="logo.png" onerror="this.src='https://raw.githubusercontent.com/mistarihi7/alqrar-yu/main/logo.png'" alt="شعار كتلة القرار">
-            <span class="achievement-badge ${isPending ? 'pending' : ''}" data-en="${isPending ? 'In Progress' : 'Resolved'}">${isPending ? 'قيد المتابعة' : 'منجز'}</span>
+            <span class="achievement-badge ${isPending ? 'pending' : ''}" data-en="${isPending ? 'In Progress' : (a.status === 'statement' ? 'Official Statement' : 'Resolved')}">${isPending ? 'قيد المتابعة' : (a.status === 'statement' ? 'بيان رسمي' : 'منجز')}</span>
           </div>
         </div>
         <h4>${currentLang === 'en' ? a.titleEn : a.titleAr}</h4>
