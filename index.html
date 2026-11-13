@@ -352,14 +352,14 @@
   #chatLauncher svg { width: 20px; height: 20px; fill: #fff; flex: none; }
 
   .chat-widget {
-    position: fixed; bottom: 82px; right: 22px; z-index: 130;
-    width: min(410px, calc(100vw - 28px)); height: min(600px, calc(100vh - 110px));
-    background: #fff; border: 1px solid var(--line); border-radius: 16px;
-    box-shadow: 0 20px 50px rgba(5,39,74,0.25); display: flex; flex-direction: column;
-    overflow: hidden; opacity: 0; pointer-events: none; transform: translateY(16px) scale(0.97);
-    transition: opacity .25s ease, transform .25s ease;
+    position: fixed; top: 0; right: 0; bottom: 0; left: 0; z-index: 2000;
+    width: 100vw; height: 100vh; height: 100dvh;
+    background: var(--paper); border: none; border-radius: 0;
+    display: flex; flex-direction: column;
+    overflow: hidden; opacity: 0; pointer-events: none; transform: translateY(12px);
+    transition: opacity .22s ease, transform .22s ease;
   }
-  .chat-widget.open { opacity: 1; pointer-events: auto; transform: translateY(0) scale(1); }
+  .chat-widget.open { opacity: 1; pointer-events: auto; transform: translateY(0); }
 
   .chat-header {
     background: linear-gradient(135deg, var(--navy) 0%, var(--green-deep) 100%);
@@ -377,11 +377,11 @@
   .chat-icon-btn:hover { background: rgba(255,255,255,0.26); }
 
   .chat-messages {
-    flex: 1; overflow-y: auto; padding: 14px; background: var(--paper);
-    display: flex; flex-direction: column; gap: 12px;
+    flex: 1; overflow-y: auto; padding: 20px max(16px, calc((100vw - 900px) / 2)); background: var(--paper);
+    display: flex; flex-direction: column; gap: 14px;
   }
   .chat-msg {
-    max-width: 88%; padding: 11px 14px; border-radius: 13px; font-size: 13px; line-height: 1.7;
+    max-width: min(88%, 760px); padding: 14px 18px; border-radius: 14px; font-size: 14px; line-height: 1.8;
     word-wrap: break-word;
   }
   .chat-msg.bot {
@@ -416,8 +416,8 @@
   .chat-chip:hover { background: var(--green-deep); color: #fff; border-color: var(--green-deep); }
 
   .chat-input-area {
-    padding: 10px 12px; background: #fff; border-top: 1px solid var(--line);
-    display: flex; align-items: center; gap: 8px;
+    padding: 12px max(14px, calc((100vw - 900px) / 2)); background: #fff; border-top: 1px solid var(--line);
+    display: flex; align-items: center; gap: 10px;
   }
   .chat-input-area input {
     flex: 1; border: 1px solid var(--line); background: var(--paper);
@@ -433,7 +433,7 @@
 
 
   .chat-cat-tabs {
-    display: flex; gap: 4px; padding: 7px 10px; background: var(--paper-alt);
+    display: flex; gap: 6px; padding: 10px max(14px, calc((100vw - 900px) / 2)); background: var(--paper-alt);
     border-top: 1px solid var(--line); overflow-x: auto; scrollbar-width: none;
   }
   .chat-cat-tab {
@@ -445,8 +445,8 @@
     background: var(--navy); color: #fff; border-color: var(--navy);
   }
   .chat-quick-bar {
-    padding: 8px 10px; background: #fff; border-top: 1px solid var(--line);
-    display: flex; flex-wrap: wrap; gap: 5px; max-height: 92px; overflow-y: auto;
+    padding: 10px max(14px, calc((100vw - 900px) / 2)); background: #fff; border-top: 1px solid var(--line);
+    display: flex; flex-wrap: wrap; gap: 6px; max-height: 115px; overflow-y: auto;
   }
   .chat-source-line {
     margin-top: 10px; padding-top: 7px; border-top: 1px solid var(--line);
@@ -514,7 +514,7 @@
           <p class="lede" data-en="Al-Qarar Student Bloc platform — your complete gateway to everything you need academically and administratively at Yarmouk University.">منصة كتلة القرار الطلابية؛ بوابتك الشاملة لكل ما تحتاجه أكاديمياً وخدمياً داخل حرم جامعة اليرموك.</p>
           <div class="hero-actions">
             <a href="#join" class="cta-btn" data-en="Apply to Join">قدم طلب الانتساب</a>
-            <button type="button" class="cta-btn" style="background:var(--green-deep); color:#fff;" onclick="openChatWidget()" data-en="Ask AI Student Advisor">اسأل المستشار الذكي (دليل الطالب)</button>
+            <button type="button" class="cta-btn" style="background:var(--green-deep); color:#fff;" onclick="openChatWidget()" data-en="Al-qarar AI">Al-qarar AI</button>
             <a href="#social" class="cta-btn" style="background:var(--paper-alt); color:var(--navy); border:1px solid var(--line);" data-en="Contact Us">تواصل معنا</a>
           </div>
         </div>
@@ -1187,7 +1187,7 @@
   // Join Form WhatsApp Submission
   const joinForm = document.getElementById('joinForm');
   const successMsg = document.getElementById('successMsg');
-  const TARGET_WHATSAPP = "962776562573";
+  const TARGET_WHATSAPP = "962798601532";
 
   // Floating WhatsApp quick-contact button (reuses the same official number above)
   const floatWa = document.getElementById('floatWhatsapp');
@@ -1249,7 +1249,7 @@
 <button id="chatLauncher" type="button" aria-label="المستشار الذكي">
   <span class="bot-dot"></span>
   <svg viewBox="0 0 24 24"><path d="M12 2a2 2 0 0 1 2 2c0 .74-.4 1.39-1 1.73V7h1a7 7 0 0 1 7 7h1a1 1 0 0 1 1 1v3a1 1 0 0 1-1 1h-1v1a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-1H2a1 1 0 0 1-1-1v-3a1 1 0 0 1 1-1h1a7 7 0 0 1 7-7h1V5.73c-.6-.34-1-.99-1-1.73a2 2 0 0 1 2-2M7.5 13A2.5 2.5 0 0 0 5 15.5 2.5 2.5 0 0 0 7.5 18a2.5 2.5 0 0 0 2.5-2.5A2.5 2.5 0 0 0 7.5 13m9 0a2.5 2.5 0 0 0-2.5 2.5 2.5 2.5 0 0 0 2.5 2.5 2.5 2.5 0 0 0 2.5-2.5 2.5 2.5 0 0 0-2.5-2.5Z"/></svg>
-  <span data-en="AI Student Advisor">المستشار الذكي</span>
+  <span data-en="Al-qarar AI">Al-qarar AI</span>
 </button>
 
 <div class="chat-widget" id="chatWidget" role="dialog" aria-label="المستشار الذكي لكتلة القرار">
@@ -1257,7 +1257,7 @@
     <div class="chat-header-info">
       <img src="logo.png" onerror="this.src='https://raw.githubusercontent.com/mistarihi7/alqrar-yu/main/logo.png'" alt="شعار كتلة القرار">
       <div>
-        <strong data-en="Al-Qarar AI Advisor">المستشار الذكي - كتلة القرار</strong>
+        <strong data-en="Al-qarar AI">Al-qarar AI</strong>
         <small><span style="width:7px;height:7px;border-radius:50%;background:#25D366;display:inline-block;"></span> <span data-en="Verified YU & Jordan AI">ذكاء اصطناعي موثق ببيانات جامعة اليرموك والأردن</span></small>
       </div>
     </div>
@@ -1370,15 +1370,21 @@
 
   function openChatWidget() {
     chatWidget.classList.add('open');
+    document.body.style.overflow = 'hidden';
     setTimeout(() => chatInput.focus(), 150);
   }
+  function closeChatWidget() {
+    chatWidget.classList.remove('open');
+    document.body.style.overflow = '';
+  }
   window.openChatWidget = openChatWidget;
+  window.closeChatWidget = closeChatWidget;
 
   chatLauncher.addEventListener('click', () => {
-    chatWidget.classList.toggle('open');
-    if (chatWidget.classList.contains('open')) setTimeout(() => chatInput.focus(), 150);
+    if (chatWidget.classList.contains('open')) closeChatWidget();
+    else openChatWidget();
   });
-  chatCloseBtn.addEventListener('click', () => chatWidget.classList.remove('open'));
+  chatCloseBtn.addEventListener('click', closeChatWidget);
 
   const STOP_WORDS = new Set(['من','في','على','الي','الى','عن','مع','ان','إن','هل','ما','ماذا','كيف','متى','كم','وين','شو','ايش','بدي','اريد','هو','هي','هم','هذا','هذه','ذلك','تلك','او','أو','ثم','كل','بعض','لو','اذا','إذا','كان','كانت','يكون','فيها','منها','عنه','عنها','لي','لك','لهم','عند','بين','فوق','تحت','قبل','بعد','خلال','حول','جامعة','اليرموك','طالب','طلبه','الطلبه','الجامعة','احكيلي','اشرحلي','ممكن','تفاصيل','قانون','تعليمات','نظام','عنا','عندنا','حاليا','الحالي','اسماء','اسم']);
 
@@ -1970,7 +1976,7 @@
     chatMessages.innerHTML = '';
     conversationHistory = [];
     addChatMessage(
-      `أهلاً بك في <strong>المستشار الذكي لكتلة القرار الطلابية - جامعة اليرموك</strong>.<br>
+      `أهلاً بك في <strong>Al-qarar AI</strong> — المساعد الذكي الرسمي لكتلة القرار الطلابية في جامعة اليرموك.<br>
 تم تدريبي وتزويدي بقاعدة البيانات الموثقة لـ <strong>دليل الطالب الرسمي</strong>، وأسماء <strong>رئاسة الجامعة وعمادة شؤون الطلبة وعمداء الكليات ونوابهم ورؤساء الأقسام (2026/2027)</strong>، وأنظمة التعليم العالي في الأردن.<br><br>
 اختر أي قسم من التبويبات الأربع بالأسفل لاستعراض <strong>36 خياراً مباشراً</strong>، أو اكتب أي سؤال أكاديمي أو إداري أو عام في صندوق المحادثة.`
     );
@@ -2057,7 +2063,7 @@
           linksHtml += `<a class="chat-action-link wa" style="margin:2px 0;font-size:11.5px;padding:4px 9px;" href="${c.waGroup}" target="_blank">${c.name}</a>`;
         }
       });
-      linksHtml += `</div><div class="chat-source-line">المصدر: <a href="#tracks" onclick="document.getElementById('chatWidget').classList.remove('open')">الدليل الأكاديمي لكتلة القرار الطلابية - جامعة اليرموك</a></div>`;
+      linksHtml += `</div><div class="chat-source-line">المصدر: <a href="#tracks" onclick="closeChatWidget()">الدليل الأكاديمي لكتلة القرار الطلابية - جامعة اليرموك</a></div>`;
       return { verifiedHtml: linksHtml, contextText: '', sourceFooterHtml: '' };
     }
 
@@ -2218,7 +2224,7 @@
   async function generateSmartAiAnswer(userQuestion, retrievedContext, fallbackHtml, sourceFooterHtml) {
     const wikiData = await fetchLiveWikipedia(userQuestion);
 
-    const systemPrompt = `أنت "المستشار الذكي لكتلة القرار الطلابية" في جامعة اليرموك (الأردن). أنت نموذج ذكاء اصطناعي احترافي ودقيق جداً بمستوى Gemini وChatGPT، تجيب عن كافة الأسئلة الأكاديمية والإدارية في جامعة اليرموك، وعن التعليم العالي والمجتمع والقوانين والحياة الشبابية في الأردن، وعن أي سؤال علمي أو ثقافي أو عام في الحياة.
+    const systemPrompt = `أنت "Al-qarar AI" المساعد الذكي الرسمي لكتلة القرار الطلابية في جامعة اليرموك (الأردن). أنت نموذج ذكاء اصطناعي احترافي ودقيق جداً بمستوى Gemini وChatGPT، تجيب عن كافة الأسئلة الأكاديمية والإدارية في جامعة اليرموك، وعن التعليم العالي والمجتمع والقوانين والحياة الشبابية في الأردن، وعن أي سؤال علمي أو ثقافي أو عام في الحياة.
 
 قواعد صارمة جداً (عدم الالتزام بها مرفوض):
 1. يمنع منعاً باتاً الهبد أو التخمين أو اختراع أي أسماء أو أرقام أو قوانين. بالنسبة لجامعة اليرموك، التزم حرفياً بـ "الحقائق الرسمية الموثقة لجامعة اليرموك" المرفقة أدناه.
