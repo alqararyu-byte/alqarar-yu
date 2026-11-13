@@ -236,7 +236,7 @@
     border-radius:var(--radius-s); transition:background .2s ease;
   }
   .pdf-dl-btn:hover{background:var(--green-deep);}
-  .pdf-dl-btn::before{content:"⬇";}
+  .pdf-dl-btn::before{content:"";}
 
   /* Building & College Codes */
   .tools-row{max-width:820px; margin:0 auto 18px;}
@@ -333,6 +333,104 @@
     .footer-grid { flex-direction: row; justify-content: space-between; text-align: right; align-items: flex-start; }
     .footer-bottom { flex-direction: row; justify-content: space-between; }
   }
+
+  /* ===== Al-Qarar Smart Student Guide Chatbot ===== */
+  #chatLauncher {
+    position: fixed; bottom: 22px; right: 22px; z-index: 120;
+    background: linear-gradient(135deg, var(--navy) 0%, var(--green-deep) 100%);
+    color: #fff; border: 2px solid #fff; border-radius: 50px;
+    padding: 11px 18px; display: flex; align-items: center; gap: 10px;
+    font-family: 'Cairo', sans-serif; font-weight: 800; font-size: 13.5px;
+    box-shadow: 0 10px 28px rgba(5,39,74,0.32); cursor: pointer;
+    transition: transform .2s ease, box-shadow .2s ease;
+  }
+  #chatLauncher:hover { transform: translateY(-2px); box-shadow: 0 14px 32px rgba(5,39,74,0.4); }
+  #chatLauncher .bot-dot {
+    width: 9px; height: 9px; border-radius: 50%; background: #25D366;
+    box-shadow: 0 0 0 4px rgba(37,211,102,0.25); flex: none;
+  }
+  #chatLauncher svg { width: 20px; height: 20px; fill: #fff; flex: none; }
+
+  .chat-widget {
+    position: fixed; bottom: 82px; right: 22px; z-index: 130;
+    width: min(410px, calc(100vw - 28px)); height: min(600px, calc(100vh - 110px));
+    background: #fff; border: 1px solid var(--line); border-radius: 16px;
+    box-shadow: 0 20px 50px rgba(5,39,74,0.25); display: flex; flex-direction: column;
+    overflow: hidden; opacity: 0; pointer-events: none; transform: translateY(16px) scale(0.97);
+    transition: opacity .25s ease, transform .25s ease;
+  }
+  .chat-widget.open { opacity: 1; pointer-events: auto; transform: translateY(0) scale(1); }
+
+  .chat-header {
+    background: linear-gradient(135deg, var(--navy) 0%, var(--green-deep) 100%);
+    color: #fff; padding: 14px 16px; display: flex; align-items: center; justify-content: space-between; gap: 10px;
+  }
+  .chat-header-info { display: flex; align-items: center; gap: 10px; }
+  .chat-header-info img { width: 38px; height: 38px; border-radius: 50%; background: #fff; object-fit: cover; border: 1.5px solid rgba(255,255,255,0.7); }
+  .chat-header-info strong { display: block; font-family: 'Cairo', sans-serif; font-size: 14.5px; color: #fff; line-height: 1.25; }
+  .chat-header-info small { font-size: 11px; color: rgba(255,255,255,0.85); display: flex; align-items: center; gap: 5px; }
+  .chat-header-actions { display: flex; align-items: center; gap: 6px; }
+  .chat-icon-btn {
+    background: rgba(255,255,255,0.14); color: #fff; border: none; width: 30px; height: 30px;
+    border-radius: 8px; cursor: pointer; font-size: 14px; display: flex; align-items: center; justify-content: center;
+  }
+  .chat-icon-btn:hover { background: rgba(255,255,255,0.26); }
+
+  .chat-messages {
+    flex: 1; overflow-y: auto; padding: 14px; background: var(--paper);
+    display: flex; flex-direction: column; gap: 12px;
+  }
+  .chat-msg {
+    max-width: 88%; padding: 11px 14px; border-radius: 13px; font-size: 13px; line-height: 1.7;
+    word-wrap: break-word;
+  }
+  .chat-msg.bot {
+    align-self: flex-start; background: #fff; color: var(--ink);
+    border: 1px solid var(--line); border-top-right-radius: 4px;
+    box-shadow: 0 2px 8px rgba(5,39,74,0.04);
+  }
+  .chat-msg.user {
+    align-self: flex-end; background: var(--navy); color: #fff;
+    border-top-left-radius: 4px; font-weight: 500;
+  }
+  .chat-msg strong { color: var(--navy); font-family: 'Cairo', sans-serif; }
+  .chat-msg.user strong { color: #fff; }
+  .chat-msg a.chat-action-link {
+    display: inline-flex; align-items: center; gap: 6px; margin-top: 8px; margin-left: 6px;
+    background: var(--green-deep); color: #fff !important; padding: 6px 12px;
+    border-radius: 6px; font-family: 'Cairo', sans-serif; font-weight: 700; font-size: 12px;
+    text-decoration: none;
+  }
+  .chat-msg a.chat-action-link.wa { background: #25D366; }
+  .chat-msg a.chat-action-link:hover { opacity: 0.92; }
+
+  .chat-quick-bar {
+    padding: 8px 12px; background: #fff; border-top: 1px solid var(--line);
+    display: flex; gap: 6px; overflow-x: auto; scrollbar-width: thin;
+  }
+  .chat-chip {
+    flex: none; background: var(--paper); border: 1px solid var(--line);
+    color: var(--navy); font-family: 'Cairo', sans-serif; font-weight: 700; font-size: 11.5px;
+    padding: 5px 11px; border-radius: 20px; cursor: pointer; transition: all .15s ease;
+  }
+  .chat-chip:hover { background: var(--green-deep); color: #fff; border-color: var(--green-deep); }
+
+  .chat-input-area {
+    padding: 10px 12px; background: #fff; border-top: 1px solid var(--line);
+    display: flex; align-items: center; gap: 8px;
+  }
+  .chat-input-area input {
+    flex: 1; border: 1px solid var(--line); background: var(--paper);
+    border-radius: 22px; padding: 9px 14px; font-size: 13px; color: var(--ink); outline: none;
+  }
+  .chat-input-area input:focus { border-color: var(--green); background: #fff; }
+  .chat-send-btn {
+    background: var(--green-deep); color: #fff; border: none; width: 38px; height: 38px;
+    border-radius: 50%; cursor: pointer; font-weight: 800; font-size: 15px;
+    display: flex; align-items: center; justify-content: center; flex: none;
+  }
+  .chat-send-btn:hover { background: var(--green); }
+
 </style>
 </head>
 <body>
@@ -391,6 +489,7 @@
           <p class="lede" data-en="Al-Qarar Student Bloc platform — your complete gateway to everything you need academically and administratively at Yarmouk University.">منصة كتلة القرار الطلابية؛ بوابتك الشاملة لكل ما تحتاجه أكاديمياً وخدمياً داخل حرم جامعة اليرموك.</p>
           <div class="hero-actions">
             <a href="#join" class="cta-btn" data-en="Apply to Join">قدم طلب الانتساب</a>
+            <button type="button" class="cta-btn" style="background:var(--green-deep); color:#fff;" onclick="openChatWidget()" data-en="Ask AI Student Advisor">اسأل المستشار الذكي (دليل الطالب)</button>
             <a href="#social" class="cta-btn" style="background:var(--paper-alt); color:var(--navy); border:1px solid var(--line);" data-en="Contact Us">تواصل معنا</a>
           </div>
         </div>
@@ -513,7 +612,7 @@
       <!-- صندوق تفاصيل الكلية المعروضة تفاعلياً -->
       <div class="college-details-box" id="collegeDetailsBox">
         <div class="college-details-title">
-          <span id="collegeIcon">🎓</span>
+          
           <span id="collegeTitleName">اسم الكلية</span>
         </div>
         <div class="college-details-text" id="collegeAboutText">
@@ -528,7 +627,7 @@
 
         <!-- تخصصات كلية تكنولوجيا المعلومات (تظهر فقط عند اختيار كلية IT) - تُبنى تلقائياً من itMajorsData -->
         <div class="it-majors-section" id="itMajorsSection" style="display: none;">
-          <div style="font-weight: 800; color: var(--navy); font-size: 14.5px;" data-en="💻 College majors (choose a major to view its tree plan):">💻 تخصصات الكلية (اختر التخصص لاستعراض خطته الشجرية):</div>
+          <div style="font-weight: 800; color: var(--navy); font-size: 14.5px;" data-en="College majors (choose a major to view its tree plan):">تخصصات الكلية (اختر التخصص لاستعراض خطته الشجرية):</div>
 
           <div class="majors-grid" id="majorsGrid"></div>
 
@@ -710,7 +809,7 @@
     </div>
     <div class="footer-bottom">
       <span data-en="All rights reserved © 2026 - Al-Qarar Student Bloc">جميع الحقوق محفوظة © 2026 - كتلة القرار الطلابية</span>
-      <span>📧 <a href="mailto:alqarar.yu@gmail.com" style="color:inherit;">alqarar.yu@gmail.com</a></span>
+      <span><a href="mailto:alqarar.yu@gmail.com" style="color:inherit;">alqarar.yu@gmail.com</a></span>
       <span data-en="Yarmouk University - Irbid">جامعة اليرموك - إربد</span>
     </div>
   </div>
@@ -1085,11 +1184,11 @@
       return;
     }
 
-    const message = `📋 *طلب انتساب جديد لكتلة القرار*:%0A%0A` +
-                    `👤 *الاسم الكامل:* ${fullName}%0A` +
-                    `🎓 *الرقم الجامعي:* ${studentId}%0A` +
-                    `📱 *رقم الهاتف:* ${studentPhone}%0A` +
-                    `🏛️ *الكلية:* ${college}`;
+    const message = `*طلب انتساب جديد لكتلة القرار*:%0A%0A` +
+                    `*الاسم الكامل:* ${fullName}%0A` +
+                    `*الرقم الجامعي:* ${studentId}%0A` +
+                    `*رقم الهاتف:* ${studentPhone}%0A` +
+                    `*الكلية:* ${college}`;
 
     successMsg.style.display = 'block';
 
@@ -1120,5 +1219,857 @@
   }, { rootMargin: '-45% 0px -50% 0px' });
   sections.forEach(s => sectionObserver.observe(s));
 </script>
+
+<!-- المستشار الذكي لكتلة القرار (ذكاء اصطناعي مباشر + قاعدة معرفة دليل الطالب التفصيلية بدون أي إيموجي) -->
+<button id="chatLauncher" type="button" aria-label="المستشار الذكي">
+  <span class="bot-dot"></span>
+  <svg viewBox="0 0 24 24"><path d="M12 2a2 2 0 0 1 2 2c0 .74-.4 1.39-1 1.73V7h1a7 7 0 0 1 7 7h1a1 1 0 0 1 1 1v3a1 1 0 0 1-1 1h-1v1a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-1H2a1 1 0 0 1-1-1v-3a1 1 0 0 1 1-1h1a7 7 0 0 1 7-7h1V5.73c-.6-.34-1-.99-1-1.73a2 2 0 0 1 2-2M7.5 13A2.5 2.5 0 0 0 5 15.5 2.5 2.5 0 0 0 7.5 18a2.5 2.5 0 0 0 2.5-2.5A2.5 2.5 0 0 0 7.5 13m9 0a2.5 2.5 0 0 0-2.5 2.5 2.5 2.5 0 0 0 2.5 2.5 2.5 2.5 0 0 0 2.5-2.5 2.5 2.5 0 0 0-2.5-2.5Z"/></svg>
+  <span data-en="AI Student Advisor">المستشار الذكي</span>
+</button>
+
+<div class="chat-widget" id="chatWidget" role="dialog" aria-label="المستشار الذكي لكتلة القرار">
+  <div class="chat-header">
+    <div class="chat-header-info">
+      <img src="logo.png" onerror="this.src='https://raw.githubusercontent.com/mistarihi7/alqrar-yu/main/logo.png'" alt="شعار كتلة القرار">
+      <div>
+        <strong data-en="Al-Qarar AI Advisor">المستشار الذكي - كتلة القرار</strong>
+        <small><span style="width:7px;height:7px;border-radius:50%;background:#25D366;display:inline-block;"></span> <span data-en="AI Powered by Yarmouk University Guide">ذكاء اصطناعي متصل بدليل طالب جامعة اليرموك</span></small>
+      </div>
+    </div>
+    <div class="chat-header-actions">
+      <button type="button" class="chat-icon-btn" id="chatResetBtn" title="محادثة جديدة" style="font-size:12px;width:auto;padding:0 10px;font-family:'Cairo',sans-serif;font-weight:700;">جديد</button>
+      <button type="button" class="chat-icon-btn" id="chatCloseBtn" title="إغلاق" style="font-weight:800;">X</button>
+    </div>
+  </div>
+
+  <div class="chat-messages" id="chatMessages"></div>
+
+  <div class="chat-quick-bar" id="chatQuickBar">
+    <button type="button" class="chat-chip" data-q="حاسبة المعدل">حاسبة المعدل</button>
+    <button type="button" class="chat-chip" data-q="ما هي تعليمات مكتبة الحسين بن طلال والاستعارة؟">مكتبة الحسين بن طلال</button>
+    <button type="button" class="chat-chip" data-q="كم نسبة الغياب المسموحة ومتى يصير حرمان؟">الغياب والحرمان</button>
+    <button type="button" class="chat-chip" data-q="ما هي شروط التحويل الداخلي بين التخصصات؟">التحويل الداخلي</button>
+    <button type="button" class="chat-chip" data-q="متى ينزل للطالب إنذار أكاديمي ومتى يفصل؟">الإنذار الأكاديمي والفصل</button>
+    <button type="button" class="chat-chip" data-q="كيف أقدم طلب تأجيل فصل دراسي وكم فصل مسموح؟">تأجيل الدراسة</button>
+    <button type="button" class="chat-chip" data-q="ما هي امتحانات المستوى 099 وشروط الإعفاء؟">امتحانات المستوى 099</button>
+    <button type="button" class="chat-chip" data-q="ما هي نسب تغطية التأمين الصحي للطلاب؟">التأمين الصحي</button>
+    <button type="button" class="chat-chip" data-q="أريد روابط قروبات واتساب الطلبة المستجدين للكليات">قروبات المستجدين 26-27</button>
+    <button type="button" class="chat-chip" data-q="ما هي رموز مباني وكليات جامعة اليرموك؟">رموز المباني والقاعات</button>
+  </div>
+
+  <form class="chat-input-area" id="chatForm">
+    <input type="text" id="chatInput" placeholder="اكتب سؤالك هنا ليقوم الذكاء الاصطناعي بالإجابة..." data-en-placeholder="Type your question for the AI advisor..." autocomplete="off">
+    <button type="submit" class="chat-send-btn" aria-label="إرسال" style="font-size:12px;font-family:'Cairo',sans-serif;">إرسال</button>
+  </form>
+</div>
+
+<script>
+  // ===== المستشار الذكي لكتلة القرار (ذكاء اصطناعي توليدي مباشر بدون مفتاح + قاعدة معرفة دقيقة ومفصلة بدون إيموجي) =====
+  const chatLauncher = document.getElementById('chatLauncher');
+  const chatWidget = document.getElementById('chatWidget');
+  const chatCloseBtn = document.getElementById('chatCloseBtn');
+  const chatResetBtn = document.getElementById('chatResetBtn');
+  const chatMessages = document.getElementById('chatMessages');
+  const chatForm = document.getElementById('chatForm');
+  const chatInput = document.getElementById('chatInput');
+
+  let conversationHistory = [];
+
+  function openChatWidget() {
+    chatWidget.classList.add('open');
+    setTimeout(() => chatInput.focus(), 150);
+  }
+  window.openChatWidget = openChatWidget;
+
+  chatLauncher.addEventListener('click', () => {
+    chatWidget.classList.toggle('open');
+    if (chatWidget.classList.contains('open')) setTimeout(() => chatInput.focus(), 150);
+  });
+  chatCloseBtn.addEventListener('click', () => chatWidget.classList.remove('open'));
+
+  const STOP_WORDS = new Set(['من','في','على','الي','الى','عن','مع','ان','إن','هل','ما','ماذا','كيف','متى','كم','وين','شو','ايش','بدي','اريد','هو','هي','هم','هذا','هذه','ذلك','تلك','او','أو','ثم','كل','بعض','لو','اذا','إذا','كان','كانت','يكون','فيها','منها','عنه','عنها','لي','لك','لهم','عند','بين','فوق','تحت','قبل','بعد','خلال','حول','جامعة','اليرموك','طالب','طلبه','الطلبه','الجامعة','احكيلي','اشرحلي','ممكن','تفاصيل','قانون','تعليمات','نظام']);
+
+  const SYNONYM_MAP = {
+    'سنافر': 'مستجدين',
+    'سنفور': 'مستجد',
+    'توجيهي': 'ثانويه عامه',
+    'فاينل': 'الامتحان النهائي',
+    'فاينال': 'الامتحان النهائي',
+    'مد': 'الامتحان الفصلي',
+    'ميد': 'الامتحان الفصلي',
+    'كويز': 'اعمال فصليه',
+    'انذار': 'المراقبه الاكاديميه انذار',
+    'حرمان': 'المواظبه الغياب 15 35',
+    'تحويل': 'الانتقال من قسم الي اخر تحويل داخلي',
+    'قروب': 'واتساب مجموعه مستجدين',
+    'قروبات': 'واتساب مجموعات مستجدين',
+    'سحب': 'الانسحاب من المساقات السحب والاضافه',
+    'اسقاط': 'الانسحاب من المساقات',
+    'صيفي': 'الفصل الصيفي',
+    'تراكمي': 'المعدل التراكمي التقدير',
+    'مكرمه': 'البعثات العسكريه المكرمه الملكيه',
+    'دفتر': 'خدمه العلم',
+    'مكتبه': 'مكتبه الحسين بن طلال استعاره اعاره كتب',
+    'المكتبه': 'مكتبه الحسين بن طلال استعاره اعاره كتب',
+    'مقدسي': 'تكنولوجيا المعلومات مق',
+    'خوارزمي': 'خز مبني الخوارزمي',
+    'حجاوي': 'الهندسه التكنولوجيه هج',
+    'فارابي': 'المقصف ق الفارابي'
+  };
+
+  function normAr(str) {
+    return (str || '')
+      .toLowerCase()
+      .replace(/[\u064B-\u065F\u0670]/g, '')
+      .replace(/[أإآ]/g, 'ا')
+      .replace(/ة/g, 'ه')
+      .replace(/ى/g, 'ي')
+      .replace(/ؤ/g, 'و')
+      .replace(/ئ/g, 'ي')
+      .replace(/[^\u0600-\u06FFa-z0-9\s]/g, ' ')
+      .replace(/\s+/g, ' ')
+      .trim();
+  }
+
+  function stemWord(w) {
+    if (w.length <= 3) return w;
+    let s = w;
+    const prefixes = ['وال', 'بال', 'كال', 'فال', 'لل', 'ال'];
+    for (const pre of prefixes) {
+      if (s.startsWith(pre) && s.length - pre.length >= 3) {
+        s = s.slice(pre.length);
+        break;
+      }
+    }
+    const suffixes = ['ات', 'ون', 'ين', 'ان', 'ها', 'هم', 'كم', 'نا', 'يه', 'ه', 'ي'];
+    for (const suf of suffixes) {
+      if (s.endsWith(suf) && s.length - suf.length >= 3) {
+        s = s.slice(0, -suf.length);
+        break;
+      }
+    }
+    return s;
+  }
+
+  function tokenizeQuery(raw) {
+    let normalized = normAr(raw);
+    const words = normalized.split(' ').filter(Boolean);
+    const expanded = [...words];
+    for (const w of words) {
+      if (SYNONYM_MAP[w]) expanded.push(...normAr(SYNONYM_MAP[w]).split(' '));
+      const st = stemWord(w);
+      if (SYNONYM_MAP[st]) expanded.push(...normAr(SYNONYM_MAP[st]).split(' '));
+    }
+    const tokens = expanded.filter(w => w.length >= 2 && !STOP_WORDS.has(w));
+    const stems = tokens.map(stemWord);
+    return { normalized, tokens: [...new Set(tokens)], stems: [...new Set(stems)] };
+  }
+
+  // قاعدة المعرفة المفصلة والمستقلة (كل موضوع منفصل تماماً بدقة عالية من دليل الطالب الرسمي لجامعة اليرموك)
+  const yuKnowledgeBase = [
+    {
+      id: 'library',
+      title: 'مكتبة الحسين بن طلال وتعليمات الاستعارة والغرامات (ص 202-208)',
+      page: 202,
+      keywords: ['مكتبه', 'المكتبه', 'مكتبة الحسين', 'استعاره', 'اعاره', 'كتب', 'كتاب', 'تجديد الاعاره', 'غرامه المكتبه', 'قاعات المطالعه', 'رسائل جامعيه', 'تصنيف الكونغرس'],
+      answer: `<strong>مكتبة الحسين بن طلال وتعليمات الإعارة (دليل الطالب ص 202 - 208):</strong><br>
+• <strong>مبنى ومحتويات المكتبة:</strong> يتكون المبنى من 6 طوابق بمساحة 17,450 م²، ويضم أكثر من 600,000 مصدر معلومات (منها 515,000 مجلد من الكتب والرسائل الجامعية و90,000 مجلد دوريات)، بالإضافة إلى قاعات المطالعة، مختبرات البحث الآلي وقواعد البيانات العالمية، ونظام آلي ناطق للمكفوفين. وتعتمد المكتبة نظام تصنيف مكتبة الكونغرس الأمريكي.<br>
+• <strong>ساعات الدوام الرسمي:</strong> من الأحد إلى الخميس (8:00 صباحاً حتى 3:00 عصراً).<br>
+• <strong>عدد الكتب المسموح استعارتها ومدة الإعارة:</strong><br>
+  - <strong>طلبة البكالوريوس:</strong> استعارة حتى <strong>5 كتب</strong> لمدة <strong>14 يوماً</strong>، قابلة للتجديد لمرتين (قبل يوم من الاستحقاق بشرط عدم حجز الكتاب من مستفيد آخر)، ويشترط إبراز الهوية الجامعية.<br>
+  - <strong>طلبة الدراسات العليا:</strong> استعارة حتى <strong>10 كتب</strong> لمدة <strong>14 يوماً</strong> قابلة للتجديد.<br>
+  - <strong>أعضاء الهيئة التدريسية:</strong> استعارة حتى <strong>10 كتب</strong> لمدة فصل دراسي كامل.<br>
+• <strong>الغرامات وفقدان الكتب وتعليق الخدمة:</strong><br>
+  - غرامة التأخير عن إرجاع الكتاب هي <strong>100 فلس عن كل يوم تأخير</strong>.<br>
+  - إذا تأخر إرجاع الكتاب لمدة 6 أشهر (180 يوماً) يُعد مفقوداً، ويُغرّم المستعير <strong>3 أضعاف ثمن الكتاب</strong> بالإضافة إلى <strong>5 دنانير</strong> كلفة تجليد.<br>
+  - يترتب على مخالفة تعليمات المكتبة تعليق خدمة الطالب (منعه من الاستعارة، ومن تسجيل المساقات، ومن استلام كشف العلامات أو مصدقة التخرج حتى براءة الذمة).`
+    },
+    {
+      id: 'military_service',
+      title: 'مكتب خدمة العلم وتأجيل دفتر خدمة العلم (ص 210)',
+      page: 210,
+      keywords: ['خدمه العلم', 'دفتر خدمه العلم', 'تاجيل دفتر', 'تجنيد', 'مواليد الذكور'],
+      answer: `<strong>مكتب خدمة العلم في جامعة اليرموك (دليل الطالب ص 210):</strong><br>
+• يتولى مكتب خدمة العلم داخل الجامعة إجراءات تأجيل خدمة العلم للطلبة الذكور الأردنيين المنتظمين على مقاعد الدراسة.<br>
+• يُطلب من الطالب المستجد أو المنتظم مراجعة المكتب مصطحباً دفتر خدمة العلم وهويته الشخصية وإثبات الدوام لتثبيت التأجيل السنوي طيلة فترة دراسته الرسمية.`
+    },
+    {
+      id: 'military_scholarships',
+      title: 'ركن البعثات العسكرية والمكرمة الملكية السامية (ص 212)',
+      page: 212,
+      keywords: ['بعثات عسكريه', 'ركن البعثات', 'مكرمه عسكريه', 'مكرمه جيش', 'ابناء العاملين والمتقاعدين العسكريين', 'القوات المسلحه'],
+      answer: `<strong>ركن البعثات العسكرية - المكرمة الملكية السامية (دليل الطالب ص 212):</strong><br>
+• يشرف ركن البعثات العسكرية في جامعة اليرموك على متابعة كافة الشؤون الأكاديمية والمالية والإدارية للطلبة المبتعثين على نفقة المكرمة الملكية السامية لأبناء العاملين والمتقاعدين في القوات المسلحة الأردنية والأجهزة الأمنية.<br>
+• يتابع المكتب إجراءات تسجيل الطلبة المبتعثين، تسديد الرسوم، صرف المخصصات، واعتماد نماذج السحب والإضافة أو تغيير التخصص وفق تعليمات مديرية التعليم والثقافة العسكرية.`
+    },
+    {
+      id: 'campus_security',
+      title: 'دائرة الأمن والسلامة العامة والهوية الجامعية (ص 209)',
+      page: 209,
+      keywords: ['امن جامعي', 'الامن والسلامه', 'هويه جامعيه', 'فقدان الهويه', 'بوابات الجامعه', 'مفقودات'],
+      answer: `<strong>دائرة الأمن والسلامة العامة (دليل الطالب ص 209):</strong><br>
+• تتولى الدائرة حفظ الأمن والنظام داخل الحرم الجامعي وعلى البوابات، وتنظيم دخول الطلبة والزوار والمركبات، ومتابعة المفقودات والعثور عليها.<br>
+• يجب على كل طالب حمل هويته الجامعية وإبرازها عند الطلب على بوابات الجامعة أو داخل القاعات الامتحانية، ومراجعة دائرة الأمن والقبول والتسجيل فوراً في حال فقدانها لإصدار بدل فاقد.`
+    },
+    {
+      id: 'smoking_ban',
+      title: 'تعليمات منع التدخين والغرامات المالية (ص 200)',
+      page: 200,
+      keywords: ['تدخين', 'منع التدخين', 'غرامه التدخين', 'مخالفه تدخين', 'دخان', 'اراجيل'],
+      answer: `<strong>تعليمات منع التدخين في جامعة اليرموك رقم (6) لسنة 2009 (ص 200):</strong><br>
+• يُمنع التدخين منعاً باتاً داخل جميع المباني المغلقة والقاعات والمختبرات والممرات في جامعة اليرموك.<br>
+• <strong>العقوبات المالية والانضباطية للمخالفين (المادة 4):</strong><br>
+  1. غرامة مالية بقيمة <strong>10 دنانير</strong> عند ضبط الطالب يدخن للمرة الأولى داخل الأماكن غير المسموح بها.<br>
+  2. غرامة مالية بقيمة <strong>20 ديناراً</strong> عن كل مرة لاحقة، مع إحالة المخالفة للجنة التحقيق المختصة طبقاً لتعليمات الإجراءات التأديبية.`
+    },
+    {
+      id: 'disciplinary_rules',
+      title: 'تعليمات الإجراءات التأديبية للطلبة وحالات الغش (ص 178 و107)',
+      page: 178,
+      keywords: ['اجراءات تاديبيه', 'عقوبات تاديبيه', 'لجنه تحقيق', 'غش', 'انتحال شخصيه', 'فصل مؤقت', 'فصل نهائي', 'مشاجره', 'مخالفه'],
+      answer: `<strong>تعليمات الإجراءات التأديبية للطلبة رقم (4) لسنة 2022 (ص 178):</strong><br>
+• تسري هذه التعليمات على كافة الطلبة المسجلين في الجامعة عند ارتكاب أي مخالفة أكاديمية أو سلوكية داخل الحرم الجامعي أو في الامتحانات.<br>
+• <strong>حالات الغش أو انتحال الشخصية في الامتحانات (المادة 24):</strong> يُنظم ضبط رسمي من المراقب ومنسق المساق والأمن الجامعي، ويُحال الطالب إلى لجنة التحقيق في الكلية المختصة.<br>
+• تتدرج العقوبات التأديبية بحسب جسامة المخالفة من التنبيه الخطي، والإنذار (الأول والمزدوج والنهائي)، وإلغاء تسجيل مساق أو أكثر (واعتبار علامته صفراً)، وصولاً إلى الفصل المؤقت لفصل أو أكثر أو الفصل النهائي من الجامعة.`
+    },
+    {
+      id: 'community_service',
+      title: 'أسس الخدمات المجتمعية البديلة والعمل التطوعي (ص 195)',
+      page: 195,
+      keywords: ['خدمات مجتمعيه بديله', 'خدمه المجتمع', 'عمل تطوعي', 'ساعات تطوع', 'مركز الملكه رانيا'],
+      answer: `<strong>أسس الخدمات المجتمعية البديلة وخدمة المجتمع (ص 195):</strong><br>
+• تتبنى جامعة اليرموك فلسفة «الجامعة في خدمة المجتمع» من خلال عمادة شؤون الطلبة ومركز الملكة رانيا للدراسات الأردنية وخدمة المجتمع.<br>
+• تتيح أسس الخدمات المجتمعية البديلة استبدال بعض الإجراءات أو استيفاء متطلبات الأنشطة الطلابية عبر ساعات عمل تطوعي وخدمة عامة منظمة داخل مرافق الجامعة أو المجتمع المحلي بإشراف رسمي.`
+    },
+    {
+      id: 'student_clubs',
+      title: 'تعليمات الأندية الطلابية وشروط تأسيسها (ص 147)',
+      page: 147,
+      keywords: ['انديه طلابيه', 'نادي طلابي', 'تاسيس نادي', '200 طالب', 'نشاط طلابي', 'الهيئه الاداريه للنادي'],
+      answer: `<strong>تعليمات الأندية الطلابية رقم (5) لسنة 2013 (ص 147):</strong><br>
+• تُؤسس الأندية الطلابية في جامعة اليرموك بإشراف عمادة شؤون الطلبة بقرار من رئيس الجامعة بناءً على تنسيب العميد.<br>
+• <strong>شرط النصاب القانوني للتأسيس (المادة 4):</strong> يُشترط ألا يقل عدد الطلبة الموقعين على طلب تأسيس النادي عن <strong>200 طالب</strong>، ويُستثنى من ذلك نادي ذوي الاحتياجات الخاصة حيث يُكتفى بتوقيع <strong>100 طالب</strong>.<br>
+• يدير النادي هيئتان: الهيئة العامة (جميع الأعضاء المسددين لاشتراكاتهم) والهيئة الإدارية المنتخبة، ويُحظر على الأندية إثارة أي نعرات طائفية أو إقليمية أو جهوية.`
+    },
+    {
+      id: 'student_union',
+      title: 'تعليمات اتحاد الطلبة في جامعة اليرموك (ص 152)',
+      page: 152,
+      keywords: ['اتحاد الطلبه', 'مجلس الطلبه', 'انتخابات الاتحاد', 'رئيس اتحاد الطلبه', 'تمثيل طلابي'],
+      answer: `<strong>تعليمات اتحاد الطلبة في جامعة اليرموك رقم (2) لسنة 2024 (ص 152):</strong><br>
+• يمثل اتحاد الطلبة الجسم الطلابي الرسمي المنتخب في جامعة اليرموك، وتنظم التعليمات آلية الترشح والانتخاب لممثلي الأقسام والكليات والهيئة التنفيذية للاتحاد.<br>
+• يهدف الاتحاد إلى تمثيل الطلبة أمام إدارة الجامعة، الدفاع عن مصالحهم وحقوقهم الأكاديمية والخدمية، وتنظيم الأنشطة الثقافية والاجتماعية والوطنية بالتنسيق مع عمادة شؤون الطلبة.`
+    },
+    {
+      id: 'deanship_student_affairs',
+      title: 'عمادة شؤون الطلبة، التفوق الرياضي والفني، والسكنات (ص 127-142)',
+      page: 127,
+      keywords: ['عماده شؤون الطلبه', 'تفوق رياضي', 'تفوق فني', 'قروض ومنح', 'صندوق الطلبه', 'سكن جامعي', 'سكن الطالبات'],
+      answer: `<strong>عمادة شؤون الطلبة والخدمات الطلابية (ص 127 - 142):</strong><br>
+• تضم العمادة دوائر النشاط الرياضي، النشاط الثقافي والفني، الخدمات الطلابية، الرعاية الطلابية، والتأمين الصحي.<br>
+• <strong>القبول على التفوق الرياضي والفني:</strong> يخضع المتقدمون لاختبارات قدرات عملية تعقدها العمادة قبل بداية العام الدراسي (ولا تُضاف 10 علامات على معدل التوجيهي بل يعتمد القبول على اجتياز فحص القدرات).<br>
+• <strong>السكن الجامعي:</strong> يتوفر سكن جامعي للطالبات بالقرب من الحرم الجامعي بإشراف مختص، بينما تتوفر سكنات طلابية خاصة متعددة للطلاب في محيط الجامعة.`
+    },
+    {
+      id: 'health_insurance',
+      title: 'تعليمات التأمين الصحي ونسب التغطية العلاجية (ص 143-146)',
+      page: 143,
+      keywords: ['تامين صحي', 'التأمين الصحي', 'مستشفي', 'علاج', 'عياده', 'طوارئ', 'مختبر', 'اشعه', 'نفقات المعالجه'],
+      answer: `<strong>تعليمات التأمين الصحي للطلبة (دليل الطالب ص 143 - 146):</strong><br>
+• الاشتراك في التأمين الصحي <strong>إلزامي</strong> لجميع طلبة البكالوريوس المسجلين في الجامعة.<br>
+• <strong>نسب التغطية التي تتحملها الجامعة من نفقات المعالجة (المادة 9):</strong><br>
+  - <strong>100%</strong> من نفقات المعالجة في عيادات ومراكز ومستشفيات وزارة الصحة.<br>
+  - <strong>80%</strong> من نفقات المعالجة في مستشفيات الجامعات الأردنية، الخدمات الطبية الملكية، ومستشفيات وعيادات القطاع الخاص المتعاقد معها.<br>
+  - <strong>80%</strong> في الحالات الطارئة بمستشفيات القطاع الخاص غير المتعاقد معها (وفق أسعار المستشفيات المتعاقد معها وبتقرير طبي معتمد)، و<strong>35%</strong> للحالات غير الطارئة.<br>
+  - <strong>60%</strong> من أجور المختبرات الطبية والتشخيص الشعاعي خارج مراكز وزارة الصحة.`
+    },
+    {
+      id: 'gpa_calculation',
+      title: 'حساب المعدل الفصلي والتراكمي وسلم التقديرات وإعادة المواد (ص 52-53)',
+      page: 52,
+      keywords: ['معدل', 'تراكمي', 'فصلي', 'حساب المعدل', 'تقدير', 'تقديرات', 'ممتاز', 'جيد جدا', 'جيد', 'مقبول', 'اعاده ماده', 'اعادة مادة', 'رفع المعدل', 'سلم العلامات'],
+      answer: `<strong>حساب المعدل الفصلي والتراكمي وسلم التقديرات (ص 52 - 53):</strong><br>
+• <strong>طريقة حساب المعدل الفصلي:</strong> مجموع (علامة كل مساق × عدد ساعاته المعتمدة) مقسوماً على مجموع الساعات المعتمدة المسجلة في ذلك الفصل، ويُقرّب لأقرب منزلة عشرية واحدة.<br>
+• <strong>طريقة حساب المعدل التراكمي وإعادة المواد:</strong> يحسب لجميع المساقات التي درسها الطالب نجاحاً أو رسوباً، وفي حال <strong>إعادة دراسة مساق</strong> تدخل ساعاته المعتمدة <strong>مرة واحدة فقط</strong> في مجموع الساعات وتُعتمد <strong>آخر علامة</strong> حصل عليها الطالب.<br>
+• <strong>سلم التقديرات المعتمد لمرحلة البكالوريوس:</strong><br>
+  - <strong>ممتاز:</strong> من 84% إلى 100%<br>
+  - <strong>جيد جداً:</strong> من 76% إلى أقل من 84%<br>
+  - <strong>جيد:</strong> من 68% إلى أقل من 76%<br>
+  - <strong>مقبول:</strong> من 60% إلى أقل من 68%<br>
+• لا يجوز للطالب بعد إتمام متطلبات التخرج إعادة مواد أو دراسة مواد إضافية بقصد رفع معدله التراكمي.`
+    },
+    {
+      id: 'attendance_rules',
+      title: 'المواظبة والغياب والحرمان والأعذار المرضية (المادة 8 - ص 49)',
+      page: 49,
+      keywords: ['غياب', 'مواظبه', 'مواظبة', 'حرمان', 'نسبه الغياب', 'كم غياب', 'عذر طبي', 'تقرير طبي', 'غبت', 'محاضرات', '35', '15%'],
+      answer: `<strong>نظام المواظبة والغياب والحرمان (المادة 8 - ص 49):</strong><br>
+• <strong>النسبة المسموحة للغياب:</strong> لا يُسمح للطالب بالتغيب عن أكثر من <strong>15%</strong> من مجموع الساعات المقررة لأي مساق.<br>
+• <strong>الحرمان وعلامة الحد الأدنى:</strong> إذا تجاوز غياب الطالب <strong>15%</strong> من ساعات المساق دون عذر مرضي أو قهري مقبول، يُحرم من التقدم لجميع الامتحانات اللاحقة في المساق وتُرصد له علامة الحد الأدنى وهي <strong>35%</strong> وتدخل في معدله ما لم يكن قد انسحب من المساق ضمن الفترة القانونية.<br>
+• <strong>اعتماد العذر المرضي:</strong> يُشترط أن يكون بشهادة صادرة أو معتمدة من المرجع الطبي في جامعة اليرموك، وأن يقدمه الطالب لعميد الكلية خلال <strong>أسبوع واحد</strong> من تاريخ زوال العذر.<br>
+• <strong>الغياب لنشاط رسمي:</strong> يُعتبر غياب الطلبة المشاركين في نشاط رياضي أو فني أو كشفي أو خدمة مجتمع ضمن فرق الجامعة أو المنتخبات الوطنية غياباً مشروعاً بموجب إشعار خطي من عميد شؤون الطلبة.`
+    },
+    {
+      id: 'exams_grading',
+      title: 'تعليمات الامتحانات وتوزيع العلامات والغياب عن النهائي (المادة 9 - ص 50)',
+      page: 50,
+      keywords: ['امتحان', 'امتحانات', 'فاينل', 'نهائي', 'ميد', 'اعمال فصليه', 'ثلاث امتحانات', '3 امتحانات', 'غير مكتمل', 'تكميلي', 'تعويضي', 'رد الاوراق', '72 ساعه'],
+      answer: `<strong>تعليمات الامتحانات وتوزيع العلامات (المادة 9 - ص 50):</strong><br>
+• <strong>توزيع العلامة (من 100):</strong> يخصص للامتحان النهائي <strong>50 علامة</strong>، وللأعمال الفصلية <strong>50 علامة</strong> (تشمل امتحانين كتابيين على الأقل يُبلغ بهما الطلبة قبل أسبوع، ويجوز تخصيص حتى 10% للتقارير أو البحوث أو الشفوي). تُرد أوراق الامتحانات الفصلية للطلبة خلال أسبوع (و72 ساعة في الفصل الصيفي).<br>
+• <strong>تزامن 3 امتحانات نهائية في يوم واحد:</strong> إذا وُجد للطالب 3 امتحانات نهائية في اليوم نفسه، يحق له التقدم لامتحانين فقط ويحدد عميد الكلية المختص موعداً للامتحان الثالث في يوم آخر.<br>
+• <strong>الغياب عن الامتحان النهائي:</strong> من يتغيب دون عذر يوضع له <strong>صفر</strong> في الامتحان النهائي؛ أما من يتغيب بعذر يقبله عميد الكلية خلال أسبوعين من تاريخ الامتحان فتُرصد له علامة <strong>غير مكتمل (Incomplete)</strong> ليتقدم لامتحان تعويضي.`
+    },
+    {
+      id: 'computerized_exams',
+      title: 'تعليمات الامتحانات المحوسبة والتأخر والأعطال (ص 105-107)',
+      page: 105,
+      keywords: ['امتحان محوسب', 'الامتحانات المحوسبه', 'تاخر عن الامتحان', '10 دقائق', 'نصف الوقت', 'انقطاع الكهرباء', 'عطل فني', 'مراقب', 'عدم ترصيد'],
+      answer: `<strong>تعليمات الامتحانات المحوسبة (دليل الطالب ص 105 - 107):</strong><br>
+• <strong>التأخر عن الامتحان (المادة 14):</strong> يُسمح للطالب المتأخر بالدخول خلال أول <strong>10 دقائق</strong> فقط من بدء الامتحان بشرط عدم إعطائه وقتاً إضافياً.<br>
+• <strong>مغادرة القاعة (المادة 15 و16):</strong> لا يُسمح بالخروج قبل مضي <strong>نصف مدة الامتحان</strong>، ولا يُسمح بالعودة للقاعة بعد مغادرتها.<br>
+• <strong>الأعطال الفنية (المادة 11 و13 و21):</strong> إذا انقطعت الكهرباء أو حدث عطل فني استمر أكثر من <strong>20 دقيقة</strong>، أو تأخر المراقبون أكثر من ربع ساعة، يُلغى الامتحان وتُعاد جدولته. وإذا لم تُرصد علامة الطالب بسبب خلل فني مثبت يحق له التقدم لامتحان تكميلي.`
+    },
+    {
+      id: 'study_load',
+      title: 'العبء الدراسي، تصنيف السنوات، والمدة القصوى للدراسة (المادة 7 - ص 48)',
+      page: 48,
+      keywords: ['عبء', 'ساعات', 'كم ساعه', 'الحد الادني', 'الحد الاعلي', '12 ساعه', '18 ساعه', '21 ساعه', 'مده الدراسه', 'سنوات الدراسه', 'تصنيف السنه', 'سنه ثانيه', 'سنه ثالثه', 'سنه رابعه', 'فصل اضافي', 'الساعه المعتمده'],
+      answer: `<strong>العبء الدراسي وتصنيف السنوات والمدة القصوى (المادة 7 - ص 48 - 49):</strong><br>
+• <strong>السنة الدراسية:</strong> فصلان إجباريان مدة كل منهما 16 أسبوعاً، وفصل صيفي اختياري مدته 8 أسابيع.<br>
+• <strong>العبء الدراسي في الفصل الأول أو الثاني:</strong> الحد الأدنى <strong>12 ساعة</strong> والحد الأعلى <strong>18 ساعة</strong> معتمدة.<br>
+• <strong>رفع العبء إلى 21 ساعة:</strong> يُسمح بتسجيل حتى <strong>21 ساعة</strong> بموافقة رئيس القسم إذا كان المعدل التراكمي <strong>80% فأكثر</strong>، أو إذا توقف تخرج الطالب في ذلك الفصل على دراسة 21 ساعة. وفي فصل التخرج يجوز تسجيل أقل من 12 ساعة.<br>
+• <strong>تصنيف مستوى السنة الدراسية للطالب:</strong><br>
+  - <strong>سنة ثانية:</strong> إنجاز 33 ساعة معتمدة بنجاح ضمن الخطة.<br>
+  - <strong>سنة ثالثة:</strong> إنجاز 66 ساعة معتمدة بنجاح.<br>
+  - <strong>سنة رابعة:</strong> إنجاز 99 ساعة معتمدة بنجاح.<br>
+  - <strong>سنة خامسة:</strong> إنجاز 141 ساعة معتمدة بنجاح.<br>
+• <strong>الحد الأعلى لسنوات الدراسة:</strong> <strong>8 سنوات</strong> لكليات الطب والصيدلة والحجاوي للهندسة، و<strong>7 سنوات</strong> لباقي الكليات (ويُمنح فصل إضافي إذا بقي على تخرجه 21 ساعة فأقل أو لتدني معدله التراكمي عن 60%).`
+    },
+    {
+      id: 'probation_dismissal',
+      title: 'الإنذار الأكاديمي (المراقبة) والفصل والدراسة الخاصة (المادة 11 - ص 53)',
+      page: 53,
+      keywords: ['انذار', 'الإنذار', 'انذارات', 'مراقبه', 'تحت المراقبه', 'فصل اكاديمي', 'مفصول', 'دراسه خاصه', 'دراسة خاصة', 'تحت 60', 'اقل من 60', 'اقل من 50', 'تصويب وضع', 'انذار مشدد'],
+      answer: `<strong>وضع الطالب تحت المراقبة الأكاديمية والفصل والدراسة الخاصة (المادة 11 - ص 53 - 54):</strong><br>
+• <strong>الوقوع تحت المراقبة (الإنذار):</strong> يُوضع الطالب تحت المراقبة إذا نقص معدله التراكمي عن <strong>60%</strong> في نهاية أي فصل دراسي، باستثناء أول فصل دراسي لالتحاقه بالجامعة والفصل الصيفي.<br>
+• <strong>المهلة لإزالة الإنذار:</strong> يُمنح الطالب <strong>فصلين دراسيين</strong> (لا يُحسب الصيفي منهما) لرفع معدله التراكمي إلى <strong>60% فأعلى</strong>؛ وإذا أخفق يُوجّه له إنذار مشدد ثم يُفصل من التخصص.<br>
+• <strong>الفصل المباشر لتدني المعدل عن 50%:</strong> يُفصل من التخصص كل طالب يحصل على معدل تراكمي يقل عن <strong>50%</strong> في أي فصل دراسي (باستثناء فصله الأول في الجامعة والفصل الصيفي).<br>
+• <strong>نظام الدراسة الخاصة لتصويب الوضع:</strong> يحق للطالب المفصول أكاديمياً (بشرط أنه أنهى <strong>24 ساعة</strong> معتمدة بنجاح ضمن خطته) التقدم لدائرة القبول والتسجيل للتحويل إلى <strong>نظام الدراسة الخاصة</strong> بنفس تخصصه لمدة سنة دراسية كحد أقصى لرفع معدله إلى 60%.`
+    },
+    {
+      id: 'internal_transfer',
+      title: 'شروط التحويل الداخلي بين التخصصات (المادة 18 - ص 58)',
+      page: 58,
+      keywords: ['تحويل داخلي', 'انتقال داخلي', 'تغيير تخصص', 'احول تخصصي', 'شروط التحويل', 'تحويل من تخصص', 'شاغر', 'انجاز التحويل'],
+      answer: `<strong>شروط التحويل الداخلي بين التخصصات في جامعة اليرموك (المادة 18 - ص 58):</strong><br>
+• <strong>إنجاز كتلة القرار الطلابية:</strong> تابعت الكتلة ملف التحويل الداخلي وتم فتح باب التحويل الداخلي للطلبة (<a href="https://web.facebook.com/share/p/1ERsPxLdSv/" target="_blank" style="color:var(--green-deep);font-weight:700;">تفاصيل الإنجاز</a>).<br>
+• يُقدّم طلب التحويل إلكترونياً عبر موقع دائرة القبول والتسجيل وفق إحدى الطريقتين:<br>
+  1. <strong>بموجب معدل الثانوية العامة:</strong> أن يكون معدل الطالب في التوجيهي مقبولاً تنافسياً في التخصص المراد الانتقال إليه سنة التحاقه بالجامعة.<br>
+  2. <strong>بموجب المعدل التراكمي:</strong> دراسة ما لا يقل عن <strong>33 ساعة معتمدة</strong> بنجاح ضمن خطته الدراسية الحالية ولها علامات رقمية بمعدل تراكمي لا يقل عن <strong>جيد جداً (76% فأعلى)</strong>، وألا يقل معدله في التوجيهي عن <strong>3 علامات</strong> من أدنى معدل تنافسي قُبل في التخصص سنة قبوله.<br>
+• <strong>ضوابط هامة:</strong> لا يوجد تحويل إلى كلية الطب؛ يشترط معدل توجيهي لا يقل عن <strong>80%</strong> للتحويل إلى الهندسة أو الصيدلة، ولا يقل عن <strong>75%</strong> للشريعة؛ ولا يجوز للمستجد التحويل في أول فصل دراسي له. رسوم الطلب 5 دنانير للعادي و10 دنانير للموازي.`
+    },
+    {
+      id: 'external_transfer',
+      title: 'الانتقال من الجامعات الأخرى ودراسة الصيفي خارج اليرموك (المواد 15-17 - ص 57)',
+      page: 57,
+      keywords: ['انتقال خارجي', 'من جامعه اخري', 'تحويل خارجي', 'تجسير', 'معادله ساعات', 'دراسه في جامعه اخري', 'جامعه خاصه', '60 ساعه'],
+      answer: `<strong>الانتقال من الجامعات الأخرى وحساب الساعات (المواد 15 - 17 - ص 57 - 58):</strong><br>
+• <strong>شروط الانتقال من جامعة أردنية رسمية:</strong> أن يكون الطالب أردني الجنسية ومقبولاً بالبرنامج العادي (تنافس)، وأن يكون معدل التوجيهي مقبولاً تنافسياً في تخصص اليرموك سنة قبوله، وأنهى بنجاح ما لا يقل عن <strong>33 ساعة معتمدة</strong> في جامعته الأصلية دون عقوبات تأديبية.<br>
+• <strong>معادلة الساعات للمنتقلين:</strong> تُعادل المساقات المطابقة بحد أقصى <strong>60 ساعة معتمدة</strong>، ولا تدخل علاماتها في المعدل التراكمي باليرموك، ويُحسم فصل دراسي من الحد الأعلى للتخرج مقابل كل 15 ساعة معادلة.<br>
+• <strong>دراسة مساقات في جامعة رسمية أخرى لطلبة اليرموك:</strong> يُسمح بذلك خلال <strong>فصلين صيفيين فقط</strong> وبحد أقصى <strong>18 ساعة معتمدة</strong>، شريطة ألا تكون من المتطلبات الإجبارية وألا يكون متبقياً لتخرجه فصلان.`
+    },
+    {
+      id: 'postpone_withdraw',
+      title: 'تأجيل الدراسة، السحب والإضافة، وترصيد الرسوم (المواد 13-14 - ص 55)',
+      page: 55,
+      keywords: ['تاجيل الدراسه', 'تاجيل فصل', 'كيف اؤجل', 'انسحاب من ماده', 'سحب واضافه', 'اسقاط ماده', 'انقطاع', 'ترصيد الرسوم', '5 فصول', '4 فصول'],
+      answer: `<strong>تأجيل الدراسة، الانسحاب من المساقات، وترصيد الرسوم (المواد 13 - 14 - ص 55):</strong><br>
+• <strong>تقديم طلب تأجيل الدراسة:</strong> يُقدّم إلكترونياً عبر نظام الطلبة خلال أول <strong>7 أيام دراسية</strong> من بداية الفصل الأول أو الثاني (وفي حالات الضرورة القاهرة ينظر مجلس الكلية بالطلب قبل نهاية الأسبوع الـ 14).<br>
+• <strong>الحد الأعلى للتأجيل:</strong> لا تزيد مدة التأجيل عن <strong>5 فصول دراسية</strong> متصلة أو متقطعة طيلة الدراسة، ولا يجوز للطالب المستجد تأجيل أول فصل له.<br>
+• <strong>ترصيد الرسوم عند الانسحاب:</strong> تُرصد رسوم الساعات المسحوبة للفصل القادم فقط إذا تم الانسحاب من المساق خلال <strong>فترة السحب والإضافة</strong> الرسمية.`
+    },
+    {
+      id: 'fees_financial',
+      title: 'الدائرة المالية، تأجيل الرسوم، الغرامات، واسترداد الرسوم (ص 26-30)',
+      page: 26,
+      keywords: ['تاجيل الرسوم', 'تقسيط الرسوم', 'دفع الرسوم', 'غرامه تاخير', '15 دينار', 'الغاء تسجيل', 'الدائره الماليه', 'رسوم الساعات', 'استرداد الرسوم', 'رد الرسوم'],
+      answer: `<strong>الدائرة المالية، تأجيل الرسوم، واسترداد الرسوم (ص 26 - 30):</strong><br>
+• <strong>إنجاز تأجيل الرسوم الجامعية:</strong> أنجزت <strong>كتلة القرار الطلابية</strong> ملف تأجيل الرسوم الجامعية للطلبة لتمكينهم من التسجيل واستكمال دراستهم (<a href="https://web.facebook.com/share/p/1JSepYYZmV/" target="_blank" style="color:var(--green-deep);font-weight:700;">تفاصيل الإنجاز</a>).<br>
+• <strong>غرامة تأخير دفع الرسوم:</strong> تُدفع الرسوم قبل بدء الدراسة للفصل الجديد، ويترتب مبلغ <strong>15 ديناراً</strong> غرامة تأخير عند عدم الدفع في الوقت المحدد، ويُلغى التسجيل إذا لم تُدفع أو تُؤجل الرسوم بعد انتهاء فترة السحب والإضافة.<br>
+• <strong>استرداد الرسوم للطالب المستجد المنسحب من الجامعة:</strong> يُرد 90% من رسوم الساعات في الأسبوع الأول من القبول، 75% في الأسبوع الثاني، 50% في الأسبوع الثالث، و25% في الأسبوع الرابع (بالإضافة لرديات التأمينات).`
+    },
+    {
+      id: 'placement_exams',
+      title: 'امتحانات المستوى (099) والمساقات الاستدراكية والإعفاءات (ص 46)',
+      page: 46,
+      keywords: ['امتحان مستوي', 'امتحانات المستوي', '099', 'استدراكي', 'عربي 99', 'انجليزي 99', 'حاسوب 99', 'icdl', 'توفل', 'معادله امتحان مستوي'],
+      answer: `<strong>امتحانات المستوى والمساقات الاستدراكية (099) (ص 46):</strong><br>
+• <strong>المساقات الاستدراكية الثلاثة:</strong> اللغة العربية (<code>AL 099</code>)، اللغة الإنجليزية (<code>EL 099</code>)، ومهارات الحاسوب (<code>COMP 099</code>).<br>
+• <strong>النجاح والرسوب:</strong> إذا نجح الطالب في امتحان المستوى تُرصد له علامة (معفى)، وإذا أخفق يجب عليه تسجيل المساق والنجاح به خلال <strong>أول سنتين</strong> من دراسته. ومن يرسب بالمساق بعد دراسته يحق له إعادة امتحان المستوى خلال أول سنتين برسم 30 ديناراً.<br>
+• <strong>الإعفاءات والمعادلة:</strong> يُعفى الحاصل على شهادة <strong>ICDL</strong> من مساق مهارات الحاسوب الاستدراكي (099)، ويمكن معادلة علامة امتحان المستوى من جامعة رسمية أخرى طالما لم يتقدم الطالب للامتحان في اليرموك. (شهادة التوفل لا تعفي من إنجليزي 099 أو 111).`
+    },
+    {
+      id: 'uni_requirements',
+      title: 'متطلبات الجامعة الإجبارية والاختيارية وحزمة اللغات (ص 43-45)',
+      page: 43,
+      keywords: ['متطلبات الجامعه', 'اختياري جامعه', 'اجباري جامعه', 'حزمه اللغات', 'علوم عسكريه', 'تربيه وطنيه', 'لغه تركيه', 'لغه فرنسيه'],
+      answer: `<strong>متطلبات الجامعة الإجبارية والاختيارية وحزمة اللغات (ص 43 - 45):</strong><br>
+• <strong>متطلبات الجامعة الاختيارية (12 ساعة معتمدة):</strong> يختارها الطالب من خارج كليته وفق أحد خيارين:<br>
+  1. اختيار مساقات من الحزم الاختيارية المطروحة في الجامعة (ولا يجوز تسجيل مساق اختياري جامعة يُطرح في كلية الطالب نفسها).<br>
+  2. <strong>حزمة اللغات:</strong> دراسة 4 مساقات بواقع <strong>12 ساعة معتمدة</strong> في لغة أجنبية واحدة فقط (مثل التركية أو الفرنسية أو الألمانية في مركز اللغات)، ولا يُحسب للطالب إلا مساق واحد (الأعلى علامة) إذا لم يستكمل المساقات الأربعة في نفس اللغة.<br>
+• <strong>العلوم العسكرية والتربية الوطنية لغير الأردنيين:</strong> التربية الوطنية إجبارية لجميع الطلبة، أما العلوم العسكرية فيجوز لغير الأردني دراسة مساق بديل عنها وتدخل علامته في المعدل.`
+    },
+    {
+      id: 'graduation_substitute',
+      title: 'شروط التخرج، المساق البديل، المتطلب السابق، والتخصص الفرعي (ص 60-63)',
+      page: 60,
+      keywords: ['ماده بديله', 'مساق بديل', 'شروط التخرج', 'متوقع تخرجه', 'نموذج تخرج', 'متطلب سابق', 'مرافق', 'فرعي', 'تخصص فرعي'],
+      answer: `<strong>متطلبات التخرج، المساق البديل، والتخصص الفرعي (ص 60 - 63):</strong><br>
+• <strong>المتطلب السابق:</strong> لا يجوز تسجيل مساق قبل دراسة متطلبه السابق، إلا في <strong>فصل التخرج</strong> حيث يُسمح بتسجيل المساق ومتطلبه السابق معاً إذا توقف تخرج الطالب عليهما.<br>
+• <strong>شروط دراسة مساق بديل في فصل التخرج (المادة 20):</strong> يوافق مجلس القسم على مساق بديل أو مساقين إذا توقف تخرج الطالب عليهما في إحدى الحالات: (1) عدم طرح المساق الأصلي، (2) وجود تعارض لا يمكن حله في جدول الطالب، (3) الرسوب في المساق 3 مرات (شريطة ألا يكون متطلب جامعة أو كلية).<br>
+• <strong>نموذج التخرج:</strong> على الطالب المتوقع تخرجه تعبئة نموذج التخرج لدى دائرة القبول والتسجيل خلال أول أسبوعين من الفصل الأول/الثاني وأول أسبوع من الصيفي.<br>
+• <strong>التخصص الفرعي (Minor):</strong> برنامج إضافي من قسم آخر بحد أعلى <strong>21 ساعة معتمدة</strong>.`
+    },
+    {
+      id: 'medicine_faculty',
+      title: 'تعليمات منح درجة دكتور في الطب (MD) في جامعة اليرموك (ص 72-104)',
+      page: 72,
+      keywords: ['دكتور في الطب', 'نظام كليه الطب', 'ساعات الطب', '257', 'تكميلي طب', 'سريري', 'انتقال طب'],
+      answer: `<strong>تعليمات منح درجة دكتور في الطب (MD) (دليل الطالب ص 72 - 104):</strong><br>
+• <strong>مجموع ساعات الخطة:</strong> <strong>257 ساعة معتمدة</strong> (27 ساعة متطلبات جامعة، 18 ساعة متطلبات كلية إجبارية، 212 ساعة متطلبات تخصص).<br>
+• <strong>الانتقال من سنة إلى أخرى والامتحانات التكميلية:</strong> يشترط النجاح في جميع المساقات والحصول على معدل علمي لا يقل عن <strong>60%</strong> (دون حساب متطلبات الجامعة). ويُسمح لمن رسب في مساق أو مساقين بالتقدم لامتحان تكميلي قبل بدء السنة التالية.<br>
+• <strong>المواظبة في المساقات السريرية:</strong> الحد الأقصى للغياب هو <strong>15%</strong> (و20% بعذر يقبله العميد، و25% لتمثيل المملكة أو الجامعة رسمياً).<br>
+• <strong>حساب المعدل العام لخريج الطب:</strong> 15% لكل سنة من السنوات الأولى حتى الخامسة، و25% للسنة السادسة.`
+    },
+    {
+      id: 'pharmacy_training',
+      title: 'تعليمات التدريب الصيدلاني الميداني وتدريب صيدلية المجتمع (ص 64-71)',
+      page: 64,
+      keywords: ['تدريب صيدليه', 'صيدليه المجتمع', 'التدريب الصيدلاني', 'ساعات تدريب الصيدله'],
+      answer: `<strong>تعليمات التدريب الميداني لطلبة كلية الصيدلة (دليل الطالب ص 64 - 71):</strong><br>
+• يلتزم طلبة كلية الصيدلة بإتمام ساعات التدريب الصيدلاني الميداني وتدريب صيدلية المجتمع المعتمدة في الخطة الدراسية داخل الصيدليات والمستشفيات المعتمدة بإشراف الكلية كشرط أساسي للتخرج.`
+    },
+    {
+      id: 'graduate_studies',
+      title: 'تعليمات الدراسات العليا (الماجستير والدكتوراه) (ص 114-125)',
+      page: 114,
+      keywords: ['ماجستير', 'دكتوراه', 'دراسات عليا', 'مسار الشامل', 'مسار الرساله', 'تحويل من شامل لرساله'],
+      answer: `<strong>تعليمات الدراسات العليا في جامعة اليرموك (ص 114 - 125):</strong><br>
+• <strong>برنامج الماجستير:</strong> يطرح بمسارين (مسار الرسالة ومسار الامتحان الشامل بواقع 33 ساعة معتمدة على الأقل وبمعدل تراكمي لا يقل عن <strong>75%</strong>).<br>
+• <strong>التحويل من مسار الشامل إلى مسار الرسالة:</strong> يشترط إتمام <strong>18 ساعة معتمدة</strong> من الخطة بمعدل تراكمي <strong>80% فأكثر</strong> وتوفر مشرف أكاديمي.`
+    },
+    {
+      id: 'yu_portals_systems',
+      title: 'البوابات الإلكترونية، نظام الطلبة SIS، التعليم الإلكتروني، والبريد الجامعي',
+      page: 31,
+      keywords: ['بوابه الطالب', 'نظام الطلبه', 'sis', 'تعليم الكتروني', 'مودل', 'moodle', 'elearning', 'ايميل جامعي', 'بريد الكتروني', 'مركز الحاسب', 'مايكروسوفت', 'كلمه السر', 'نسيت كلمه السر'],
+      answer: `<strong>البوابات والأنظمة الإلكترونية في جامعة اليرموك:</strong><br>
+• <strong>نظام معلومات الطلبة (SIS):</strong> البوابة الرسمية لتسجيل المواد، السحب والإضافة، كشف العلامات، تأجيل الدراسة، والاطلاع على الجدول الدراسي عبر موقع الجامعة (<a href="https://sis.yu.edu.jo/" target="_blank" style="color:var(--green-deep);font-weight:700;">sis.yu.edu.jo</a>).<br>
+• <strong>منصة التعلم الإلكتروني (E-Learning / Moodle):</strong> لمتابعة المحاضرات الإلكترونية والمدمجة والواجبات والامتحانات عبر مركز التعلم الإلكتروني ومصادر التعليم المفتوحة (<a href="https://elc.yu.edu.jo/" target="_blank" style="color:var(--green-deep);font-weight:700;">elc.yu.edu.jo</a>).<br>
+• <strong>مركز الحاسب والمعلومات والبريد الجامعي (Office 365):</strong> يوفر لكل طالب بريداً إلكترونياً رسمياً وحزمة Microsoft Office 365 مجاناً، ويمكن مراجعة قسم الدعم الفني في مركز الحاسب (<a href="https://cic.yu.edu.jo/" target="_blank" style="color:var(--green-deep);font-weight:700;">cic.yu.edu.jo</a>) في حال فقدان كلمة المرور.`
+    },
+    {
+      id: 'yu_centers_deanships',
+      title: 'المراكز العلمية، مركز اللغات، الكراسي العلمية، والمتاحف في جامعة اليرموك (ص 25)',
+      page: 25,
+      keywords: ['مراكز الجامعه', 'مركز اللغات', 'الشريك اللغوي', 'مركز الملكه رانيا', 'متحف التراث', 'اذاعه اليرموك', 'yufm', 'الكراسي العلميه', 'مركز اللاجئين', 'مركز التميز'],
+      answer: `<strong>المراكز العلمية والخدمية والمتاحف في جامعة اليرموك (دليل الطالب ص 25):</strong><br>
+• <strong>مركز اللغات (<a href="https://langcenter.yu.edu.jo/" target="_blank" style="color:var(--green-deep);font-weight:700;">langcenter.yu.edu.jo</a>):</strong> يطرح مساقات اللغات العربية والإنجليزية وحزم اللغات الأجنبية (التركية، الفرنسية، الألمانية وغيرها)، برنامج العربية للناطقين بغيرها، برنامج الشريك اللغوي والثقافي، ودورات وامتحانات التوفل والدلف.<br>
+• <strong>مركز التعلم الإلكتروني ومصادر التعليم المفتوحة (<a href="https://elc.yu.edu.jo/" target="_blank" style="color:var(--green-deep);font-weight:700;">elc.yu.edu.jo</a>):</strong> يشرف على امتحانات المستوى للمستجدين، الامتحانات المحوسبة، ومنصات التعلم المدمج وعن بعد.<br>
+• <strong>مركز الملكة رانيا للدراسات الأردنية وخدمة المجتمع:</strong> ينظم الدورات التدريبية المهنية ومبادرات خدمة المجتمع.<br>
+• <strong>إذاعة اليرموك (YUFM) ومتحف التراث الأردني:</strong> مرافق ثقافية وإعلامية رائدة داخل الحرم الجامعي لتدريب الطلبة وتوثيق التراث الحضاري.`
+    },
+    {
+      id: 'yu_history_overview',
+      title: 'نشأة جامعة اليرموك، موقعها، وفلسفتها الأكاديمية (ص 21-24)',
+      page: 21,
+      keywords: ['نشاه الجامعه', 'تاسيس جامعه اليرموك', 'متي تاسست', 'تاريخ الجامعه', 'رئيس الجامعه', 'فلسفه الجامعه', 'عدد الكليات', 'بوابات اليرموك'],
+      answer: `<strong>نشأة جامعة اليرموك وهويتها الأكاديمية (دليل الطالب ص 21 - 24):</strong><br>
+• تأسست جامعة اليرموك بإرادة ملكية سامية عام <strong>1976</strong> في مدينة إربد شمال الأردن، وتُعد من أعرق الجامعات الأردنية الحكومية.<br>
+• تضم الجامعة <strong>16 كلية أكاديمية</strong> بالإضافة إلى الكلية التقنية (الدبلوم) وعمادة البحث العلمي والدراسات العليا وعمادة شؤون الطلبة، وتعتمد نظام الساعات المعتمدة والفصول الدراسية.`
+    },
+    {
+      id: 'academic_calendar',
+      title: 'التقويم الجامعي ومواعيد الفصول والسحب والإضافة والامتحانات (ص 218)',
+      page: 218,
+      keywords: ['تقويم جامعي', 'التقويم الجامعي', 'متي يبدا الفصل', 'موعد الامتحانات', 'متي السحب والاضافه', 'عطله بين الفصول', 'الفصل الاول', 'الفصل الثاني', 'الفصل الصيفي'],
+      answer: `<strong>التقويم الجامعي في جامعة اليرموك (ص 218):</strong><br>
+• يحدد التقويم الجامعي الصادر عن دائرة القبول والتسجيل بداية كل فصل دراسي، فترة السحب والإضافة، مواعيد الامتحانات الفصلية والنهائية، وآخر موعد لتأجيل الدراسة أو الانسحاب.<br>
+• للاطلاع على التواريخ التفصيلية المحدثة للعام الجامعي 2026/2027 عبر دائرة القبول والتسجيل: <a href="https://admreg.yu.edu.jo/index.php/unical" target="_blank" style="color:var(--green-deep);font-weight:700;">صفحة التقويم الجامعي الرسمي 2026/2027</a>.`
+    },
+    {
+      id: 'bloc_info',
+      title: 'كتلة القرار الطلابية - جامعة اليرموك (الرؤية، الإنجازات، والانتساب)',
+      page: null,
+      keywords: ['كتله القرار', 'كتلة القرار', 'من انتم', 'من نحن', 'انتساب', 'انضمام', 'انضم', 'حزب مبادره', 'انجازات', 'مؤتمر', 'بيان', 'هيكليه'],
+      answer: `<strong>كتلة القرار الطلابية – جامعة اليرموك (#نسمع_نمثل_ننجز):</strong><br>
+• <strong>من نحن:</strong> إطار طلابي داخل جامعة اليرموك ومُحتضَن من قِبل <strong>حزب مُبادرة</strong>، يتبنى مطالب الطلبة الأكاديمية والخدمية ويوصلها لأصحاب القرار داخل الحرم الجامعي ويتابعها حتى تُحل.<br>
+• <strong>أبرز الإنجازات الحديثة:</strong> إنجاز ملف تأجيل الرسوم الجامعية للطلبة، إنجاز فتح باب التحويل الداخلي بين التخصصات، توفير الخطط الشجرية ودليل رموز المباني وقروبات واتساب الطلبة المستجدين (26-27) لجميع الكليات.`
+    }
+  ];
+
+  function addChatMessage(htmlContent, sender = 'bot') {
+    const div = document.createElement('div');
+    div.className = `chat-msg ${sender}`;
+    div.innerHTML = htmlContent;
+    chatMessages.appendChild(div);
+    chatMessages.scrollTop = chatMessages.scrollHeight;
+    return div;
+  }
+
+  function welcomeChat() {
+    chatMessages.innerHTML = '';
+    conversationHistory = [];
+    addChatMessage(
+      `أهلاً بك في <strong>المستشار الذكي لكتلة القرار الطلابية</strong>.<br>
+أنا نموذج ذكاء اصطناعي متصل مباشرة بـ <strong>دليل الطالب الرسمي لجامعة اليرموك</strong> وتعليمات القبول والتسجيل والكليات.<br><br>
+اسألني بأسلوبك الطبيعي عن أي موضوع (مثل: <em>مكتبة الحسين بن طلال</em>، <em>الغياب والحرمان</em>، <em>شروط التحويل الداخلي</em>، <em>الإنذار الأكاديمي</em>، <em>تأجيل الدراسة</em>، <em>رموز القاعات</em>، أو <em>قروبات المستجدين</em>) وسأجيبك بدقة ومباشرة.`
+    );
+  }
+  welcomeChat();
+
+  chatResetBtn.addEventListener('click', welcomeChat);
+
+  // أداة حاسبة المعدل التفاعلية داخل الشات (بدون إيموجي)
+  window.runChatGpaCalc = function() {
+    const g1 = parseFloat(document.getElementById('cg1')?.value) || 0;
+    const h1 = parseFloat(document.getElementById('ch1')?.value) || 0;
+    const g2 = parseFloat(document.getElementById('cg2')?.value) || 0;
+    const h2 = parseFloat(document.getElementById('ch2')?.value) || 0;
+    const g3 = parseFloat(document.getElementById('cg3')?.value) || 0;
+    const h3 = parseFloat(document.getElementById('ch3')?.value) || 0;
+    const g4 = parseFloat(document.getElementById('cg4')?.value) || 0;
+    const h4 = parseFloat(document.getElementById('ch4')?.value) || 0;
+    const prevGpa = parseFloat(document.getElementById('cPrevGpa')?.value) || 0;
+    const prevHrs = parseFloat(document.getElementById('cPrevHrs')?.value) || 0;
+
+    const semPts = (g1*h1) + (g2*h2) + (g3*h3) + (g4*h4);
+    const semHrs = h1 + h2 + h3 + h4;
+    const outEl = document.getElementById('chatGpaResult');
+    if (semHrs <= 0) {
+      outEl.innerHTML = '<span style="color:var(--red);">الرجاء إدخال علامة وساعات مادة واحدة على الأقل.</span>';
+      return;
+    }
+    const semGpa = (semPts / semHrs).toFixed(1);
+    const totalHrs = semHrs + prevHrs;
+    const cumGpa = totalHrs > 0 ? (((prevGpa * prevHrs) + semPts) / totalHrs).toFixed(1) : semGpa;
+
+    let gradeLabel = 'تحت المراقبة الأكاديمية (أقل من 60%)';
+    const numCum = parseFloat(cumGpa);
+    if (numCum >= 84) gradeLabel = 'ممتاز';
+    else if (numCum >= 76) gradeLabel = 'جيد جداً';
+    else if (numCum >= 68) gradeLabel = 'جيد';
+    else if (numCum >= 60) gradeLabel = 'مقبول';
+
+    outEl.innerHTML = `<strong>المعدل الفصلي:</strong> ${semGpa}% | <strong>المعدل التراكمي المتوقع:</strong> ${cumGpa}% (التقدير: ${gradeLabel})`;
+  };
+
+  function getGpaCalculatorHtml() {
+    return `<strong>حاسبة المعدل الفصلي والتراكمي (جامعة اليرموك):</strong><br>
+<div style="margin-top:8px; display:flex; flex-direction:column; gap:6px; font-size:12px;">
+  <div style="display:grid; grid-template-columns:1fr 1fr; gap:6px;">
+    <input id="cPrevGpa" type="number" placeholder="معدلك التراكمي السابق (اختياري)" style="padding:5px 8px;border:1px solid var(--line);border-radius:6px;">
+    <input id="cPrevHrs" type="number" placeholder="ساعاتك المقطوعة السابقة" style="padding:5px 8px;border:1px solid var(--line);border-radius:6px;">
+  </div>
+  <div style="display:grid; grid-template-columns:2fr 1fr; gap:5px;">
+    <input id="cg1" type="number" placeholder="علامة المادة 1 (من 100)" style="padding:5px 8px;border:1px solid var(--line);border-radius:6px;">
+    <input id="ch1" type="number" value="3" placeholder="الساعات" style="padding:5px 8px;border:1px solid var(--line);border-radius:6px;">
+    <input id="cg2" type="number" placeholder="علامة المادة 2 (من 100)" style="padding:5px 8px;border:1px solid var(--line);border-radius:6px;">
+    <input id="ch2" type="number" value="3" placeholder="الساعات" style="padding:5px 8px;border:1px solid var(--line);border-radius:6px;">
+    <input id="cg3" type="number" placeholder="علامة المادة 3 (اختياري)" style="padding:5px 8px;border:1px solid var(--line);border-radius:6px;">
+    <input id="ch3" type="number" value="0" placeholder="الساعات" style="padding:5px 8px;border:1px solid var(--line);border-radius:6px;">
+    <input id="cg4" type="number" placeholder="علامة المادة 4 (اختياري)" style="padding:5px 8px;border:1px solid var(--line);border-radius:6px;">
+    <input id="ch4" type="number" value="0" placeholder="الساعات" style="padding:5px 8px;border:1px solid var(--line);border-radius:6px;">
+  </div>
+  <button type="button" onclick="runChatGpaCalc()" style="background:var(--navy);color:#fff;border:none;padding:7px;border-radius:6px;font-family:'Cairo',sans-serif;font-weight:700;cursor:pointer;">احسب المعدل والتقدير</button>
+  <div id="chatGpaResult" style="margin-top:4px;font-size:12.5px;color:var(--green-deep);"></div>
+</div>`;
+  }
+
+  // استرجاع السياق الدقيق للسؤال فقط (Focused RAG Retrieval)
+  function retrieveRelevantContext(rawQuery) {
+    const { normalized: q, tokens, stems } = tokenizeQuery(rawQuery);
+    if (!q) return { directHtml: null, contextText: '', actionLinksHtml: '' };
+
+    if (q.includes('حاسبه المعدل') || q.includes('احسب معدلي') || q.includes('احسبلي معدلي')) {
+      return { directHtml: getGpaCalculatorHtml(), contextText: '', actionLinksHtml: '' };
+    }
+
+    const matchedBlocks = [];
+    const contextParts = [];
+    const actionLinks = [];
+
+    // 1. هل يطلب جميع قروبات المستجدين؟
+    const mentionsSpecificCollege = collegesData.some(c => {
+      const shortN = normAr(c.name.replace('كلية ', '').split(' ')[0]);
+      return shortN.length >= 3 && q.includes(shortN);
+    });
+    if ((q.includes('قروبات') || q.includes('روابط واتساب') || (q.includes('سنافر') && q.includes('كليات')) || (q.includes('مستجدين') && q.includes('كليات'))) && !mentionsSpecificCollege) {
+      let linksHtml = `<strong>قروبات واتساب الطلبة المستجدين (26-27) لجميع الكليات:</strong><br><div style="display:flex;flex-wrap:wrap;gap:5px;margin-top:8px;">`;
+      collegesData.forEach(c => {
+        if (c.waGroup) {
+          linksHtml += `<a class="chat-action-link wa" style="margin:2px 0;font-size:11.5px;padding:4px 9px;" href="${c.waGroup}" target="_blank">${c.name}</a>`;
+        }
+      });
+      linksHtml += `</div>`;
+      return { directHtml: linksHtml, contextText: '', actionLinksHtml: '' };
+    }
+
+    // 2. هل يسأل عن خطة تخصص في كلية تكنولوجيا المعلومات؟
+    for (let i = 0; i < itMajorsData.length; i++) {
+      const m = itMajorsData[i];
+      const mKey = normAr(m.nameAr);
+      if (q.includes(mKey) || (q.includes('ذكاء') && i === 0) || (q.includes('سيبراني') && i === 2) || (q.includes('العاب') && i === 5)) {
+        contextParts.push(`تخصص ${m.nameAr} في كلية تكنولوجيا المعلومات وعلوم الحاسوب: تتوفر خطته الشجرية الرسمية بصيغة PDF عبر الرابط ${REPO_BASE + m.pdf}`);
+        actionLinks.push(`<a class="chat-action-link" href="${REPO_BASE + m.pdf}" target="_blank">تحميل الخطة الشجرية لتخصص ${m.nameAr} (PDF)</a>`);
+      }
+    }
+
+    // 3. هل يسأل عن رمز مبنى أو قاعة معينة؟
+    for (const item of codesData) {
+      const cName = normAr(item.nameAr);
+      const cCodeParts = normAr(item.code).split(' ').filter(Boolean);
+      const codeMatched = cCodeParts.some(cp => cp.length >= 1 && q.split(' ').includes(cp) && (q.includes('رمز') || q.includes('قاعه') || q.includes('مبني') || cp.length >= 2));
+      const nameMatched = q.includes(cName.replace('كليه ', '').replace('مبني ', '')) && (q.includes('رمز') || q.includes('قاعه') || q.includes('وين') || q.includes('مبني'));
+      if (codeMatched || nameMatched) {
+        contextParts.push(`مبنى/كلية (${item.nameAr}) رمزه في الجدول الدراسي في جامعة اليرموك هو: (${item.code}).`);
+        matchedBlocks.push(`<strong>رمز المبنى / الكلية في جدولك الدراسي:</strong><br>• <strong>الجهة:</strong> ${item.nameAr}<br>• <strong>الرمز المعتمد:</strong> ${item.code}`);
+      }
+    }
+
+    if ((q.includes('رموز المباني') || q.includes('رموز الكليات') || q.includes('رموز القاعات')) && matchedBlocks.length === 0) {
+      let allCodes = `<strong>دليل رموز مباني وكليات جامعة اليرموك:</strong><br>`;
+      codesData.forEach(c => { allCodes += `• <strong>${c.code}</strong> : ${c.nameAr}<br>`; });
+      return { directHtml: allCodes, contextText: '', actionLinksHtml: '' };
+    }
+
+    // 4. هل يسأل عن كلية محددة أو قروبها؟
+    for (let i = 0; i < collegesData.length; i++) {
+      const col = collegesData[i];
+      const shortName = normAr(col.name.replace('كلية ', '').split(' ')[0]);
+      if (shortName.length >= 3 && q.includes(shortName)) {
+        contextParts.push(`${col.name} في جامعة اليرموك: ${col.about}. ${col.waGroup ? 'يتوفر قروب واتساب للطلبة المستجدين (26-27) لهذه الكلية.' : ''}`);
+        if (col.waGroup) {
+          actionLinks.push(`<a class="chat-action-link wa" href="${col.waGroup}" target="_blank">انضم لقروب واتساب مستجدين ${col.name} (26-27)</a>`);
+        }
+        if (q.includes('قروب') || q.includes('نبذه') || q.includes('واتساب')) {
+          matchedBlocks.push(`<strong>${col.name}:</strong><br>${col.about}`);
+        }
+      }
+    }
+
+    // 5. البحث الدقيق في موسوعة دليل الطالب (يرجع فقط الموضوع المطابق بدقة، ولا يخلط مواضيع غير مرتبطة)
+    const scoredTopics = [];
+    for (const topic of yuKnowledgeBase) {
+      let score = 0;
+      const docText = normAr(topic.title + ' ' + topic.keywords.join(' ') + ' ' + topic.answer.replace(/<[^>]+>/g, ' '));
+      const docStems = new Set(docText.split(' ').filter(Boolean).map(stemWord));
+
+      for (const kw of topic.keywords) {
+        const nkw = normAr(kw);
+        if (q.includes(nkw)) {
+          score += nkw.split(' ').length * 8;
+        }
+      }
+      for (const tok of tokens) {
+        if (normAr(topic.title).includes(tok)) score += 5;
+        else if (docText.includes(tok)) score += 2;
+      }
+      for (const st of stems) {
+        if (st.length >= 3 && docStems.has(st)) score += 1.5;
+      }
+
+      if (score >= 5) {
+        scoredTopics.push({ topic, score });
+      }
+    }
+
+    scoredTopics.sort((a, b) => b.score - a.score);
+
+    // إذا كان الموضوع الأول متفوقاً بوضوح، نأخذه وحده فقط حتى لا نخلط مواضيع أخرى؛ وإذا كان السؤال مركباً نأخذ الثاني أيضاً
+    if (scoredTopics.length > 0) {
+      const primary = scoredTopics[0];
+      const selected = [primary];
+      if (scoredTopics.length > 1 && scoredTopics[1].score >= primary.score * 0.65) {
+        selected.push(scoredTopics[1]);
+      }
+      selected.forEach(({ topic }) => {
+        matchedBlocks.push(topic.answer);
+        contextParts.push(`${topic.title}:\n${topic.answer.replace(/<[^>]+>/g, ' ')}`);
+        if (topic.page) {
+          actionLinks.push(`<a class="chat-action-link" href="https://www.yu.edu.jo/studentguide/${topic.page}/" target="_blank">مرجع دليل الطالب (صفحة ${topic.page})</a>`);
+        }
+      });
+    }
+
+    const actionLinksHtml = actionLinks.length > 0 ? `<div style="margin-top:8px;">${actionLinks.join(' ')}</div>` : '';
+    const fallbackHtml = matchedBlocks.length > 0
+      ? matchedBlocks.join('<hr style="border:none;border-top:1px dashed var(--line);margin:10px 0;">') + actionLinksHtml
+      : null;
+
+    return {
+      directHtml: null,
+      fallbackHtml,
+      contextText: contextParts.join('\n\n'),
+      actionLinksHtml
+    };
+  }
+
+  // البحث الحي في الإنترنت وموسوعة ويكيبيديا وموقع جامعة اليرموك (Live Web & YU Search)
+  async function fetchLiveWebContext(userQuestion) {
+    const liveSnippets = [];
+    try {
+      // 1. بحث حي في ويكيبيديا العربية (يدعم CORS رسمياً عبر origin=*) حول السؤال مقترناً بجامعة اليرموك ثم السؤال العام
+      const searchTerms = [
+        userQuestion.includes('اليرموك') ? userQuestion : `${userQuestion} جامعة اليرموك`,
+        userQuestion
+      ];
+      for (const term of searchTerms) {
+        const wikiUrl = `https://ar.wikipedia.org/w/api.php?action=query&list=search&srsearch=${encodeURIComponent(term)}&utf8=&format=json&origin=*&srlimit=2`;
+        const res = await fetch(wikiUrl);
+        if (res.ok) {
+          const data = await res.json();
+          const items = data?.query?.search || [];
+          items.forEach(item => {
+            const cleanSnippet = (item.snippet || '').replace(/<[^>]+>/g, '');
+            if (cleanSnippet) {
+              liveSnippets.push(`معلومة ويب (${item.title}): ${cleanSnippet}`);
+            }
+          });
+        }
+        if (liveSnippets.length >= 2) break;
+      }
+    } catch (e) {
+      // تجاهل أخطاء الشبكة الفرعية
+    }
+    return liveSnippets.join('\n');
+  }
+
+  // توليد الإجابة عبر محرك الذكاء الاصطناعي المتصل بالويب ودليل الجامعة (يفكر خارج الصندوق ويحلل ويربط المعلومات)
+  async function generateAiAnswer(userQuestion, retrievedContext, fallbackHtml, actionLinksHtml) {
+    const liveWebInfo = await fetchLiveWebContext(userQuestion);
+
+    // خلاصة شاملة عن جامعة اليرموك تمنح النموذج وعياً كاملاً بالجامعة حتى لو كان السؤال استنتاجياً أو خارج الصندوق
+    const yuMasterBrief = `معلومات أساسية عن جامعة اليرموك (إربد - الأردن):
+- تأسست عام 1976، وتضم 16 كلية أكاديمية والكلية التقنية.
+- سلم التقديرات: ممتاز (84-100)، جيد جداً (76-أقل من 84)، جيد (68-أقل من 76)، مقبول (60-أقل من 68). الإنذار الأكاديمي تحت 60%، والفصل المباشر تحت 50%.
+- العبء الدراسي: 12 إلى 18 ساعة (و21 ساعة لمن معدله 80% فأعلى أو خريج). السنة الثانية 33 ساعة، الثالثة 66 ساعة، الرابعة 99 ساعة.
+- الغياب المسموح: 15% كحد أقصى، وتجاوزها دون عذر طبي معتمد خلال أسبوع يوجب الحرمان وعلامة 35%.
+- التحويل الداخلي: إما بمعدل التوجيهي التنافسي سنة القبول، أو بإنهاء 33 ساعة بمعدل جيد جداً (76%+) وألا يقل التوجيهي عن 3 علامات من معدل التخصص التنافسي (مع حد أدنى 80% للهندسة والصيدلة و75% للشريعة، ولا تحويل للطب).
+- مكتبة الحسين بن طلال: 6 طوابق، الإعارة للبكالوريوس 5 كتب لمدة 14 يوماً قابلة للتجديد مرتين، وللدراسات العليا 10 كتب، وغرامة التأخير 100 فلس يومياً، وبعد 180 يوماً يغرم 3 أضعاف سعر الكتاب + 5 دنانير تجليد.
+- التأمين الصحي: 100% في وزارة الصحة، 80% في مستشفيات الجامعات والخدمات الطبية الملكية والخاص المتعاقد معه.
+- البوابات الرسمية: الموقع الرئيسي (yu.edu.jo)، القبول والتسجيل (admreg.yu.edu.jo)، بوابة الطالب (sis.yu.edu.jo)، التعلم الإلكتروني (elc.yu.edu.jo)، المكتبة (library.yu.edu.jo)، مركز اللغات (langcenter.yu.edu.jo)، مركز الحاسب (cic.yu.edu.jo).
+- كتلة القرار الطلابية: إطار طلابي فاعل في جامعة اليرموك محتضن من حزب مبادرة، أنجز ملف تأجيل الرسوم الجامعية وفتح باب التحويل الداخلي ويوفر الخطط الشجرية وقروبات المستجدين.`;
+
+    const systemPrompt = `أنت "المستشار الذكي لكتلة القرار الطلابية" في جامعة اليرموك. أنت مستشار أكاديمي وطلابي فائق الذكاء، تفكر خارج الصندوق، وتجمع بين المعرفة الدقيقة بقوانين جامعة اليرموك والبحث في الإنترنت والتحليل المنطقي العميق.
+
+منهجيتك في الإجابة:
+1. يمنع منعاً باتاً استخدام أي إيموجي (Emojis) أو رموز تعبيرية في إجابتك.
+2. لا تكتفِ بنسخ النصوص الجامدة؛ افهم قصد الطالب وحلل سؤاله بذكاء:
+   - إذا سأل عن قانون أو دائرة أو مرفق (مثل المكتبة أو القبول والتسجيل أو التحويل)، اشرح له القواعد والأرقام بدقة، وأضف نصائح عملية ذكية تهم الطالب (كيف يستفيد من الخدمة، خطواتها العملية، وأي تنبيهات مهمة).
+   - إذا سأل سؤالاً استنتاجياً أو استشارياً أو خارج الصندوق (مثل: كيف أرفع معدلي، مقارنة بين تخصصين، كيف أرتب جدولي، نصائح للسنافر، أو أي سؤال علمي/قانوني/عام)، فكّر بعمق وقدم خطة عملية وحسابات دقيقة ومعلومات شاملة مرتبطة بالسؤال.
+3. ركز على موضوع سؤال الطالب فقط، ولا تقحم مواضيع أخرى غير مرتبطة بسؤاله.
+4. نسّق إجابتك بلغة عربية سليمة وواضحة جداً مقسمة إلى فقرات أو نقاط منظمة.
+
+${yuMasterBrief}
+
+النصوص التفصيلية المستخرجة من دليل الطالب وموقع الجامعة المرتبطة بالسؤال:
+${retrievedContext || 'لا يوجد نص حرفي مقتطع، اعتمد على الملخص الشامل لجامعة اليرموك ومعلومات الويب وتحليلك الذكي.'}
+
+معلومات إضافية من البحث الحي في الويب:
+${liveWebInfo || 'اعتمد على قاعدة معرفتك الموسوعية المحدثة.'}`;
+
+    const messagesPayload = [
+      { role: 'system', content: systemPrompt },
+      ...conversationHistory.slice(-6),
+      { role: 'user', content: userQuestion }
+    ];
+
+    // نحاول أولاً عبر نموذج البحث المتصل بالإنترنت (searchgpt) ثم النموذج التحليلي (openai) لضمان أعلى ذكاء وسرعة
+    const modelsToTry = ['searchgpt', 'openai'];
+
+    for (const modelName of modelsToTry) {
+      try {
+        const controller = new AbortController();
+        const timeoutId = setTimeout(() => controller.abort(), 11000);
+
+        const response = await fetch('https://text.pollinations.ai/openai', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            model: modelName,
+            messages: messagesPayload,
+            temperature: 0.35
+          }),
+          signal: controller.signal
+        });
+        clearTimeout(timeoutId);
+
+        if (response.ok) {
+          const data = await response.json();
+          let aiReply = data?.choices?.[0]?.message?.content || '';
+          aiReply = aiReply.replace(/[\u{1F300}-\u{1FAFF}\u{2600}-\u{27BF}\u{FE00}-\u{FE0F}]/gu, '').trim();
+          if (aiReply && aiReply.length > 20) {
+            conversationHistory.push({ role: 'user', content: userQuestion });
+            conversationHistory.push({ role: 'assistant', content: aiReply });
+            const formatted = aiReply
+              .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+              .replace(/^###\s*(.+)$/gm, '<strong>$1</strong>')
+              .replace(/^##\s*(.+)$/gm, '<strong>$1</strong>')
+              .replace(/\n/g, '<br>');
+            return formatted + actionLinksHtml;
+          }
+        }
+      } catch (err) {
+        // الانتقال للنموذج التالي تلقائياً
+      }
+    }
+
+    if (fallbackHtml) {
+      return fallbackHtml;
+    }
+
+    if (liveWebInfo) {
+      return `<strong>نتائج البحث المرتبطة بسؤالك:</strong><br>${liveWebInfo.replace(/\n/g, '<br>')}` + actionLinksHtml;
+    }
+
+    const encodedQ = encodeURIComponent(`مرحباً كتلة القرار، عندي استفسار طلابي: ${userQuestion}`);
+    return `بخصوص سؤالك عن "<strong>${userQuestion}</strong>":<br>
+يمكنك البحث في <a href="https://www.yu.edu.jo/studentguide/toc/" target="_blank" style="color:var(--green-deep);font-weight:700;text-decoration:underline;">دليل الطالب الرسمي لجامعة اليرموك</a> أو <a href="https://www.yu.edu.jo/" target="_blank" style="color:var(--green-deep);font-weight:700;text-decoration:underline;">الموقع الرسمي لجامعة اليرموك</a>، أو مراسلة مندوب كتلة القرار الطلابية مباشرة:<br>
+<a class="chat-action-link wa" href="https://wa.me/${TARGET_WHATSAPP}?text=${encodedQ}" target="_blank">تواصل مع مندوب كتلة القرار عبر واتساب</a>`;
+  }
+
+  async function handleUserQuestion(text) {
+    const clean = text.trim();
+    if (!clean) return;
+    addChatMessage(clean, 'user');
+    const loadingMsg = addChatMessage('جاري البحث والتحليل في دليل الجامعة والإنترنت...', 'bot');
+
+    const { directHtml, fallbackHtml, contextText, actionLinksHtml } = retrieveRelevantContext(clean);
+    if (directHtml) {
+      loadingMsg.innerHTML = directHtml;
+      chatMessages.scrollTop = chatMessages.scrollHeight;
+      return;
+    }
+
+    const finalAnswer = await generateAiAnswer(clean, contextText, fallbackHtml, actionLinksHtml);
+    loadingMsg.innerHTML = finalAnswer;
+    chatMessages.scrollTop = chatMessages.scrollHeight;
+  }
+
+  chatForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const val = chatInput.value;
+    chatInput.value = '';
+    handleUserQuestion(val);
+  });
+
+  document.querySelectorAll('.chat-chip').forEach(chip => {
+    chip.addEventListener('click', () => {
+      handleUserQuestion(chip.dataset.q);
+    });
+  });
+</script>
+
 </body>
 </html>
