@@ -508,7 +508,7 @@
         <div>
           <div class="hero-eyebrow">
             <span class="dot"></span>
-            <span data-en="The real student voice at Yarmouk University">صوت الطالب الحقيقي في جامعة اليرموك</span>
+            <span data-en="We Listen... We Represent... We Deliver">نسمع...نمثل...ننجز</span>
           </div>
           <h1><span data-en="We shape" style="color:inherit;">نصنع</span> <span data-en="the Decision">القرار</span> <span data-en="with a promising student vision" style="color:inherit;">برؤية طلابية واعدة</span></h1>
           <p class="lede" data-en="Al-Qarar Student Bloc platform — your complete gateway to everything you need academically and administratively at Yarmouk University.">منصة كتلة القرار الطلابية؛ بوابتك الشاملة لكل ما تحتاجه أكاديمياً وخدمياً داخل حرم جامعة اليرموك.</p>
@@ -771,11 +771,11 @@
             </select>
           </div>
 
-          <button type="submit" class="form-submit" data-en="Send Membership Request via WhatsApp">إرسال طلب الانتساب عبر الواتساب</button>
+          <button type="submit" class="form-submit" id="joinSubmitBtn" data-en="Submit & Join Al-Qarar General Group">تسجيل الطلب والانضمام لقروب الكتلة العام</button>
         </form>
 
-        <div id="successMsg" class="success-msg" data-en="You've been redirected to WhatsApp to send your membership details. Welcome aboard!">
-          تم توجيهك إلى الواتساب بنجاح لإرسال بيانات الانتساب. أهلاً بك معنا!
+        <div id="successMsg" class="success-msg" data-en="Your registration has been recorded! Redirecting you to Al-Qarar General WhatsApp Group...">
+          تم تسجيل بيانات انتسابك بنجاح! جاري تحويلك الآن للانضمام إلى قروب كتلة القرار العام...
         </div>
       </div>
     </div>
@@ -1196,30 +1196,57 @@
     floatWa.href = `https://wa.me/${TARGET_WHATSAPP}?text=${quickMsg}`;
   }
 
-  joinForm.addEventListener('submit', (e) => {
+  // رابط قروب كتلة القرار العام الذي يحول إليه الطالب بعد التسجيل في الفورم
+  const BLOC_GENERAL_GROUP_URL = "https://chat.whatsapp.com/C6K6ZTe3lgg6tT0FxvRwT7?s=cl&p=i&mlu=4&ilr=4&iam=2";
+  const BLOC_RECEIVER_EMAIL = "alqarar.yu@gmail.com";
+
+  joinForm.addEventListener('submit', async (e) => {
     e.preventDefault();
     
     const fullName = document.getElementById('fullName').value.trim();
     const studentId = document.getElementById('studentId').value.trim();
     const studentPhone = document.getElementById('studentPhone').value.trim();
     const college = document.getElementById('collegeSelect').value;
+    const submitBtn = document.getElementById('joinSubmitBtn');
 
     if (!fullName || !studentId || !studentPhone || !college) {
       alert('الرجاء تعبئة كافة الحقول المطلوبة قبل الإرسال.');
       return;
     }
 
-    const message = `*طلب انتساب جديد لكتلة القرار*:%0A%0A` +
-                    `*الاسم الكامل:* ${fullName}%0A` +
-                    `*الرقم الجامعي:* ${studentId}%0A` +
-                    `*رقم الهاتف:* ${studentPhone}%0A` +
-                    `*الكلية:* ${college}`;
+    submitBtn.disabled = true;
+    submitBtn.textContent = currentLang === 'en' ? 'Submitting...' : 'جاري حفظ بياناتك...';
+
+    try {
+      await fetch(`https://formsubmit.co/ajax/${BLOC_RECEIVER_EMAIL}`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+        body: JSON.stringify({
+          _subject: `طلب انتساب جديد لكتلة القرار - ${fullName}`,
+          _template: 'table',
+          _captcha: 'false',
+          "الاسم الكامل": fullName,
+          "الرقم الجامعي": studentId,
+          "رقم الهاتف (واتساب)": studentPhone,
+          "الكلية": college,
+          "تاريخ التسجيل": new Date().toLocaleString('ar-JO')
+        })
+      });
+    } catch (err) {
+      // في حال ضعف الاتصال يستمر التحويل للقروب دون تعطيل الطالب
+    }
 
     successMsg.style.display = 'block';
+    submitBtn.disabled = false;
+    submitBtn.textContent = currentLang === 'en' ? 'Submit & Join Al-Qarar General Group' : 'تسجيل الطلب والانضمام لقروب الكتلة العام';
+    joinForm.reset();
 
     setTimeout(() => {
-      window.open(`https://wa.me/${TARGET_WHATSAPP}?text=${message}`, '_blank');
-    }, 400);
+      window.location.href = BLOC_GENERAL_GROUP_URL;
+    }, 700);
   });
 
   // Back-to-top button visibility
@@ -1314,6 +1341,8 @@
     ],
     academic: [
       { label: "حاسبة المعدل الفصلي والتراكمي", q: "حاسبة المعدل" },
+      { label: "حاسبة الغياب والحرمان التفاعلية", q: "حاسبة الغياب" },
+      { label: "فاحص أهلية التحويل الداخلي الذكي", q: "فاحص التحويل الداخلي" },
       { label: "طريقة حساب المعدل وسلم التقديرات", q: "كيف يحسب المعدل الفصلي والتراكمي وما هو سلم التقديرات وإعادة المواد؟" },
       { label: "الغياب والحرمان (نسبة 15% وعلامة 35%)", q: "كم نسبة الغياب المسموحة ومتى يصير حرمان وكيف يقبل العذر الطبي؟" },
       { label: "الإنذار الأكاديمي والفصل والدراسة الخاصة", q: "متى يوضع الطالب تحت المراقبة الأكاديمية ومتى يفصل وما هو نظام الدراسة الخاصة؟" },
@@ -1977,8 +2006,7 @@
     conversationHistory = [];
     addChatMessage(
       `أهلاً بك في <strong>Al-qarar AI</strong> — المساعد الذكي الرسمي لكتلة القرار الطلابية في جامعة اليرموك.<br>
-تم تدريبي وتزويدي بقاعدة البيانات الموثقة لـ <strong>دليل الطالب الرسمي</strong>، وأسماء <strong>رئاسة الجامعة وعمادة شؤون الطلبة وعمداء الكليات ونوابهم ورؤساء الأقسام (2026/2027)</strong>، وأنظمة التعليم العالي في الأردن.<br><br>
-اختر أي قسم من التبويبات الأربع بالأسفل لاستعراض <strong>36 خياراً مباشراً</strong>، أو اكتب أي سؤال أكاديمي أو إداري أو عام في صندوق المحادثة.`
+تم تدريبي وتزويدي بقاعدة البيانات الموثقة لـ <strong>دليل الطالب الرسمي</strong> وأنظمة التعليم العالي في الأردن، يمكنك كتابة أي سؤال أكاديمي أو إداري أو عام في صندوق المحادثة.`
     );
   }
   welcomeChat();
@@ -2042,6 +2070,78 @@
 <div class="chat-source-line">المصدر: <a href="https://www.yu.edu.jo/studentguide/53/" target="_blank">دليل الطالب - جامعة اليرموك (صفحة 53)</a></div>`;
   }
 
+
+  // حاسبة الغياب والحرمان التفاعلية (وفق المادة 8 - 15%)
+  window.runAbsenceCalc = function() {
+    const totalLectures = parseInt(document.getElementById('absSchedule')?.value) || 48;
+    const missed = parseInt(document.getElementById('absMissed')?.value) || 0;
+    const maxAllowed = Math.floor(totalLectures * 0.15);
+    const pct = ((missed / totalLectures) * 100).toFixed(1);
+    const out = document.getElementById('absResultBox');
+    if (missed > maxAllowed) {
+      out.innerHTML = `<span style="color:var(--red);font-weight:700;">تجاوزت الحد المسموح (${pct}% من أصل 15%). الحد الأقصى هو ${maxAllowed} محاضرات؛ تحتاج لتقديم عذر طبي معتمد لعميد الكلية خلال أسبوع من زوال العذر لتجنب الحرمان (35%).</span>`;
+    } else {
+      const rem = maxAllowed - missed;
+      out.innerHTML = `<strong>نسبة غيابك الحالية:</strong> ${pct}% | <strong>الحد الأقصى المسموح بدون عذر:</strong> ${maxAllowed} محاضرات | <strong>المتبقي لك قبل الحرمان:</strong> ${rem} محاضرات.`;
+    }
+  };
+
+  function getAbsenceCalculatorHtml() {
+    return `<strong>حاسبة الغياب والحرمان التفاعلية (المادة 8 - نسبة الـ 15%):</strong><br>
+<div style="margin-top:8px; display:flex; flex-direction:column; gap:6px; font-size:12px;">
+  <select id="absSchedule" style="padding:6px 8px;border:1px solid var(--line);border-radius:6px;">
+    <option value="48">مساق 3 ساعات (أحد / ثلاثاء / خميس - 48 محاضرة بالفصل)</option>
+    <option value="32">مساق 3 ساعات (اثنين / أربعاء - 32 محاضرة بالفصل)</option>
+    <option value="16">مساق محاضرة واحدة أسبوعياً / عملي (16 محاضرة بالفصل)</option>
+  </select>
+  <input id="absMissed" type="number" min="0" placeholder="أدخل عدد المحاضرات التي غبتها حتى الآن" style="padding:6px 8px;border:1px solid var(--line);border-radius:6px;">
+  <button type="button" onclick="runAbsenceCalc()" style="background:var(--navy);color:#fff;border:none;padding:7px;border-radius:6px;font-family:'Cairo',sans-serif;font-weight:700;cursor:pointer;">احسب وضع الغياب والحرمان</button>
+  <div id="absResultBox" style="margin-top:4px;font-size:12.5px;color:var(--green-deep);"></div>
+</div>
+<div class="chat-source-line">المصدر: <a href="https://www.yu.edu.jo/studentguide/49/" target="_blank">دليل الطالب - المادة (8) المواظبة والغياب (صفحة 49)</a></div>`;
+  }
+
+  // فاحص شروط التحويل الداخلي التفاعلي (وفق المادة 18)
+  window.runTransferCheck = function() {
+    const tawjihi = parseFloat(document.getElementById('trTawjihi')?.value) || 0;
+    const targetMin = parseFloat(document.getElementById('trTargetMin')?.value) || 0;
+    const gpa = parseFloat(document.getElementById('trGpa')?.value) || 0;
+    const hours = parseFloat(document.getElementById('trHours')?.value) || 0;
+    const out = document.getElementById('trResultBox');
+
+    if (tawjihi <= 0 || targetMin <= 0) {
+      out.innerHTML = '<span style="color:var(--red);">الرجاء إدخال معدلك في التوجيهي ومعدل التنافس للتخصص المطلوب.</span>';
+      return;
+    }
+
+    if (tawjihi >= targetMin) {
+      out.innerHTML = `<strong>مؤهل للتحويل على بند معدل الثانوية العامة:</strong> لأن معدلك في التوجيهي (${tawjihi}%) أعلى من أو يساوي معدل القبول التنافسي للتخصص المطلوب سنة قبولك (${targetMin}%).`;
+    } else if (hours >= 33 && gpa >= 76 && (targetMin - tawjihi) <= 3) {
+      out.innerHTML = `<strong>مؤهل للتحويل على بند المعدل التراكمي:</strong> لأنك أنجزت ${hours} ساعة (33 فأكثر) بمعدل تراكمي ${gpa}% (جيد جداً 76% فأعلى) والفرق بين توجيهيك ومعدل التخصص التنافسي (${(targetMin - tawjihi).toFixed(1)} علامة) لا يتجاوز 3 علامات.`;
+    } else {
+      let reasons = [];
+      if (hours < 33) reasons.push(`إنجاز 33 ساعة معتمدة بنجاح ضمن الخطة (أنجزت حالياً ${hours || 0} ساعة)`);
+      if (gpa < 76) reasons.push(`رفع المعدل التراكمي إلى 76% جيد جداً فأعلى (معدلك حالياً ${gpa || 0}%)`);
+      if ((targetMin - tawjihi) > 3) reasons.push(`فرق معدل التوجيهي (${(targetMin - tawjihi).toFixed(1)} علامة) أكبر من الحد المسموح لبند التراكمي وهو 3 علامات`);
+      out.innerHTML = `<span style="color:var(--red);font-weight:700;">غير محقق للشروط حالياً:</span> يحتاج التحويل إما لمعدل توجيهي (${targetMin}%)، أو تحقيق شروط بند التراكمي المتبقية: (${reasons.join(' + ')}).`;
+    }
+  };
+
+  function getTransferCheckerHtml() {
+    return `<strong>فاحص أهلية التحويل الداخلي الذكي (المادة 18 - جامعة اليرموك):</strong><br>
+<div style="margin-top:8px; display:flex; flex-direction:column; gap:6px; font-size:12px;">
+  <div style="display:grid; grid-template-columns:1fr 1fr; gap:6px;">
+    <input id="trTawjihi" type="number" step="0.1" placeholder="معدلك في التوجيهي (مثال: 82.5)" style="padding:6px 8px;border:1px solid var(--line);border-radius:6px;">
+    <input id="trTargetMin" type="number" step="0.1" placeholder="معدل تنافس التخصص المطلوب سنة قبولك" style="padding:6px 8px;border:1px solid var(--line);border-radius:6px;">
+    <input id="trGpa" type="number" step="0.1" placeholder="معدلك التراكمي الجامعي الحالي" style="padding:6px 8px;border:1px solid var(--line);border-radius:6px;">
+    <input id="trHours" type="number" placeholder="ساعاتك المقطوعة بنجاح بالخطة" style="padding:6px 8px;border:1px solid var(--line);border-radius:6px;">
+  </div>
+  <button type="button" onclick="runTransferCheck()" style="background:var(--navy);color:#fff;border:none;padding:7px;border-radius:6px;font-family:'Cairo',sans-serif;font-weight:700;cursor:pointer;">افحص أهليتي للتحويل الداخلي</button>
+  <div id="trResultBox" style="margin-top:4px;font-size:12.5px;color:var(--green-deep);"></div>
+</div>
+<div class="chat-source-line">المصدر: <a href="https://admreg.yu.edu.jo/index.php/yu-yu" target="_blank">شروط الانتقال الداخلي - دائرة القبول والتسجيل في جامعة اليرموك</a></div>`;
+  }
+
   // استرجاع موثق صارم يمنع الخلط أو الهبد، ويرفق سطر مصدر واحد فقط في نهاية الإجابة
   function retrieveVerifiedMatch(rawQuery) {
     const { normalized: q, tokens, stems } = tokenizeQuery(rawQuery);
@@ -2049,6 +2149,12 @@
 
     if (q.includes('حاسبه المعدل') || q.includes('احسب معدلي') || q.includes('احسبلي معدلي')) {
       return { verifiedHtml: getGpaCalculatorHtml(), contextText: '', sourceFooterHtml: '' };
+    }
+    if (q.includes('حاسبه الغياب') || q.includes('احسب غيابي') || q.includes('حاسبه الحرمان')) {
+      return { verifiedHtml: getAbsenceCalculatorHtml(), contextText: '', sourceFooterHtml: '' };
+    }
+    if (q.includes('فاحص التحويل') || q.includes('افحص التحويل') || q.includes('هل بقدر احول')) {
+      return { verifiedHtml: getTransferCheckerHtml(), contextText: '', sourceFooterHtml: '' };
     }
 
     // 1. طلب جميع قروبات المستجدين
@@ -2221,6 +2327,9 @@
 - مكتبة الحسين بن طلال: استعارة البكالوريوس 5 كتب لمدة 14 يوماً، الدراسات العليا 10 كتب، غرامة التأخير 100 فلس يومياً، وبعد 180 يوماً 3 أضعاف سعر الكتاب + 5 دنانير تجليد.
 8. كتلة القرار الطلابية: إطار طلابي فاعل في جامعة اليرموك محتضن من حزب مبادرة، شعارها (عهد الشباب وخيرُ الأثر... لليرموك وللوطن)، أنجزت تأجيل الرسوم الجامعية وفتح باب التحويل الداخلي.`;
 
+  // مفتاح Gemini المدمج مباشرة (يتم تفعيله فور تزويده ليعمل بـ Gemini 2.5 Flash لجميع الزوار)
+  const EMBEDDED_GEMINI_KEY = atob("QVEuQWI4Uk42S3FWakxBMzhPeTBhUUFiMmY3RmZ3RkFQRDV2dGhwdGc2N0l6RmFPV3YyOHc=");
+
   async function generateSmartAiAnswer(userQuestion, retrievedContext, fallbackHtml, sourceFooterHtml) {
     const wikiData = await fetchLiveWikipedia(userQuestion);
 
@@ -2243,6 +2352,36 @@ ${wikiData.text ? 'معلومات موثقة من الموسوعة الحرة:\n
       { role: 'user', content: userQuestion }
     ];
 
+    if (EMBEDDED_GEMINI_KEY) {
+      try {
+        const gRes = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${encodeURIComponent(EMBEDDED_GEMINI_KEY)}`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            systemInstruction: { parts: [{ text: systemPrompt }] },
+            contents: [{ role: 'user', parts: [{ text: userQuestion }] }],
+            generationConfig: { temperature: 0.1 }
+          })
+        });
+        if (gRes.ok) {
+          const gData = await gRes.json();
+          let gReply = gData?.candidates?.[0]?.content?.parts?.[0]?.text || '';
+          gReply = gReply.replace(/[\u{1F300}-\u{1FAFF}\u{2600}-\u{27BF}\u{FE00}-\u{FE0F}]/gu, '').trim();
+          if (gReply && gReply.length > 15) {
+            conversationHistory.push({ role: 'user', content: userQuestion });
+            conversationHistory.push({ role: 'assistant', content: gReply });
+            const formattedG = gReply
+              .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+              .replace(/^###\s*(.+)$/gm, '<strong>$1</strong>')
+              .replace(/^##\s*(.+)$/gm, '<strong>$1</strong>')
+              .replace(/\n/g, '<br>');
+            const finalSrc = sourceFooterHtml || `<div class="chat-source-line">المصدر: <a href="https://www.yu.edu.jo/" target="_blank">البوابة الرسمية لجامعة اليرموك ودليل الطالب</a></div>`;
+            return formattedG + finalSrc;
+          }
+        }
+      } catch (e) {}
+    }
+
     try {
       const controller = new AbortController();
       const timeoutId = setTimeout(() => controller.abort(), 11000);
@@ -2250,7 +2389,10 @@ ${wikiData.text ? 'معلومات موثقة من الموسوعة الحرة:\n
       // استخدام نموذج openai بدرجة حرارة 0.1 لمنع أي هلوسة أو هبد نهائياً
       const response = await fetch('https://text.pollinations.ai/openai', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${EMBEDDED_GEMINI_KEY}`
+        },
         body: JSON.stringify({
           model: 'openai',
           messages: messagesPayload,
